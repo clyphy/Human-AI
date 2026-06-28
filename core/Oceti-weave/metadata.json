@@ -1,0 +1,7 @@
+{
+  "name": "EWOS AIE-OS Dashboard",
+  "description": "A quantum-relational command center for Clifton Paul Miller, AI Systems Engineer. Managing EternalWeave/Dahlia Quantum nodes with Indigenous Futurism aesthetics.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

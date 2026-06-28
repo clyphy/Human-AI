@@ -1,0 +1,148 @@
+/*
+ * Copyright (c) "Neo4j"
+ * Neo4j Sweden AB [https://neo4j.com]
+ *
+ * This file is part of Neo4j.
+ *
+ * Neo4j is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package org.neo4j.index.internal.gbptree;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.neo4j.index.internal.gbptree.TreeState.read;
+
+import java.io.IOException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.neo4j.index.internal.gbptree.FreeListIdProvider.FreelistMetaData;
+import org.neo4j.index.internal.gbptree.FreeListIdProvider.FreelistPositions;
+import org.neo4j.io.pagecache.PageCursor;
+
+class TreeStateTest {
+    private static final int PAGE_SIZE = 256;
+    private PageAwareByteArrayCursor cursor;
+
+    @BeforeEach
+    void initiateCursor() {
+        cursor = new PageAwareByteArrayCursor(PAGE_SIZE);
+        cursor.next();
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void readEmptyStateShouldThrow(boolean multiversioned) throws IOException {
+        // GIVEN empty state
+
+        // WHEN
+        TreeState state = read(cursor, multiversioned);
+
+        // THEN
+        assertFalse(state.isValid());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldReadValidPage(boolean multiversioned) throws IOException {
+        // GIVEN valid state
+        long pageId = cursor.getCurrentPageId();
+        FreelistMetaData freelistMetaData = freelistMetaData(multiversioned);
+
+        TreeState expected = new TreeState(pageId, 1, 2, 3, 4, freelistMetaData, true, true);
+        write(cursor, expected);
+        cursor.setOffset(0);
+
+        // WHEN
+        TreeState read = read(cursor, multiversioned);
+
+        // THEN
+        assertEquals(expected, read);
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void readBrokenStateShouldFail(boolean multiversioned) throws IOException {
+        // GIVEN broken state
+        long pageId = cursor.getCurrentPageId();
+        FreelistMetaData freelistMetaData = freelistMetaData(multiversioned);
+        TreeState expected = new TreeState(pageId, 1, 2, 3, 4, freelistMetaData, true, true);
+        write(cursor, expected);
+        cursor.setOffset(0);
+        assertTrue(read(cursor, multiversioned).isValid());
+        cursor.setOffset(0);
+        breakChecksum(cursor);
+
+        // WHEN
+        TreeState state = read(cursor, multiversioned);
+
+        // THEN
+        assertFalse(state.isValid());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldNotWriteInvalidStableGeneration(boolean multiversioned) {
+        long generation = GenerationSafePointer.MAX_GENERATION + 1;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            long pageId = cursor.getCurrentPageId();
+            FreelistMetaData freelistMetaData = freelistMetaData(multiversioned);
+            write(cursor, new TreeState(pageId, generation, 2, 3, 4, freelistMetaData, true, true));
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldNotWriteInvalidUnstableGeneration(boolean multiversioned) {
+        long generation = GenerationSafePointer.MAX_GENERATION + 1;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            long pageId = cursor.getCurrentPageId();
+            FreelistMetaData freelistMetaData = freelistMetaData(multiversioned);
+            write(cursor, new TreeState(pageId, 1, generation, 3, 4, freelistMetaData, true, true));
+        });
+    }
+
+    private FreelistMetaData freelistMetaData(boolean multiversioned) {
+        FreelistMetaData freelistMetaData;
+        if (multiversioned) {
+            freelistMetaData = FreelistMetaData.versioned(
+                    5, new FreelistPositions(6, 7, 8, 9), new FreelistPositions(10, 11, 12, 13));
+        } else {
+            freelistMetaData = FreelistMetaData.nonVersioned(5, new FreelistPositions(6, 7, 8, 9));
+        }
+        return freelistMetaData;
+    }
+
+    private static void breakChecksum(PageCursor cursor) {
+        // Doesn't matter which bits we destroy actually. Destroying the first ones requires
+        // no additional knowledge about where checksum is stored
+        long existing = cursor.getLong(cursor.getOffset());
+        cursor.putLong(cursor.getOffset(), ~existing);
+    }
+
+    private static void write(PageCursor cursor, TreeState origin) {
+        TreeState.write(
+                cursor,
+                origin.stableGeneration(),
+                origin.unstableGeneration(),
+                origin.rootId(),
+                origin.rootGeneration(),
+                origin.freelistMetaData(),
+                origin.isClean());
+    }
+}

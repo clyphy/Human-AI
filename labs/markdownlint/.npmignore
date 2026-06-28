@@ -1,0 +1,12 @@
+.eslintignore
+.eslintrc.json
+.github
+.markdownlint.json
+.vscode
+coverage
+demo/*
+!demo/markdownlint-browser.js
+example
+lib-es3
+npm-debug.log
+test

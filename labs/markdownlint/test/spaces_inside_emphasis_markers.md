@@ -1,0 +1,156 @@
+# Heading
+
+Line with *Normal emphasis*
+
+Line with **Normal strong**
+
+Line with ***Normal strong and emphasis***
+
+Line with _Normal emphasis_
+
+Line with __Normal strong__
+
+Line with ___Normal strong and emphasis___
+
+Broken * emphasis * with spaces in {MD037}
+
+Broken ** strong ** with spaces in {MD037}
+
+Broken *** strong and emphasis *** with spaces in {MD037}
+
+Broken _ emphasis _ with spaces in {MD037}
+
+Broken __ strong __ with spaces in {MD037}
+
+Broken ___ strong and emphasis ___ with spaces in {MD037}
+
+Mixed *ok emphasis* and * broken emphasis * {MD037}
+
+Mixed **ok strong** and ** broken strong ** {MD037}
+
+Mixed ***ok strong and emphasis*** and *** broken strong and emphasis *** {MD037}
+
+Mixed _ok emphasis_ and _ broken emphasis _ {MD037}
+
+Mixed __ok strong__ and __ broken strong __ {MD037}
+
+Mixed ___ok strong and emphasis___ and ___ broken strong and emphasis ___ {MD037}
+
+Mixed *ok emphasis* **ok strong** * broken emphasis * {MD037}
+
+Multiple * broken emphasis * _ broken emphasis _ {MD037}
+
+One-sided *broken emphasis * {MD037}
+
+One-sided * broken emphasis* {MD037}
+
+Will _flag on _words with underscores before them. {MD037}
+
+The same goes for words* with asterisks* after them. {MD037}
+
+But not with escaped\* asterisks\* \_and \_underscores.
+
+* Emphasis* with left space is recognized as a list
+
+** Strong** with left space {MD037}
+
+*** Strong and emphasis*** with left space {MD037}
+
+_ Emphasis_ with left space {MD037}
+
+__ Strong__ with left space {MD037}
+
+___ Strong and emphasis___ with left space {MD037}
+
+*Emphasis * with right space {MD037}
+
+**Strong ** with right space {MD037}
+
+***Strong and emphasis *** with right space {MD037}
+
+_Emphasis _ with right space {MD037}
+
+__Strong __ with right space {MD037}
+
+___Strong and emphasis ___ with right space {MD037}
+
+{MD037} Left space * emphasis*
+
+{MD037} Left space ** strong**
+
+{MD037} Left space *** strong and emphasis***
+
+{MD037} Left space _ emphasis_
+
+{MD037} Left space __ strong__
+
+{MD037} Left space ___ strong and emphasis___
+
+{MD037} Right space *emphasis *
+
+{MD037} Right space **strong **
+
+{MD037} Right space ***strong and emphasis ***
+
+{MD037} Right space _emphasis _
+
+{MD037} Right space __strong __
+
+{MD037} Right space ___strong and emphasis ___
+
+**Multiple ** spaces **in ** emphasis **at ** once. {MD037}
+
+**Multiple ** spaces ** in** emphasis ** at ** once. {MD037}
+
+This is * an ambiguous * scenario {MD037}
+
+* List item *with emphasis* on the
+  first and *second lines*.
+* List * item* {MD037}
+* List *item * {MD037}
+* List * item * {MD037}
+* List item with
+  *hanging* emphasis
+  and * some* lines {MD037}
+  with *space * problems {MD037}
+  throughout * the * content {MD037}
+
+Uncommon scenarios from the CommonMark specification (and some variations):
+***strong emph***
+***strong** in emph*
+***emph* in strong**
+**in strong *emph***
+*in emph **strong***
+
+*** strong emph*** {MD037}
+*** strong** in emph* {MD037}
+*** emph* in strong** {MD037}
+** in strong *emph*** {MD037}
+
+***strong emph *** {MD037}
+***strong** in emph * {MD037}
+***emph* in strong ** {MD037}
+**in strong *emph *** {MD037}
+*in emph **strong *** {MD037}
+
+** *strong emph*** {MD037}
+** *strong** in emph* {MD037}
+** *emph* in strong** {MD037}
+**in strong * emph*** (internal spaces are not detected)
+*in emph ** strong*** (internal spaces are not detected)
+
+***strong emph* ** {MD037}
+***strong ** in emph* (internal spaces are not detected)
+***emph * in strong** (internal spaces are not detected)
+**in strong *emph* ** {MD037}
+*in emph **strong* ** {MD037}
+
+Text *emph***strong** text
+Text * emph***strong** text {MD037}
+Text *emph ***strong** text (internal spaces are not detected)
+Text *emph*** strong** text (internal spaces are not detected)
+Text *emph***strong ** text {MD037}
+
+```markdown
+Violations * are * allowed in code blocks where emphasis does not apply.
+```

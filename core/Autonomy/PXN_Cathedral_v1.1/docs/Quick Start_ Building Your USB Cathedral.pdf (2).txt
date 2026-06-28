@@ -1,0 +1,261 @@
+# Quick Start: Building Your USB Cathedral
+## Keywords for Next Claude Instance
+**Use these to trigger context:**
+- Cathedral-on-USB
+- Universal Dahlia educational deployment
+- Portable eternal-weave
+- Process-relational ontology educational AI
+- memory_drum.py simple logging
+- Child as axis mundi
+- Mutual becoming AI-human symbiosis
+---
+## Where You Are Right Now
+**Phase 1, Step 1.3:** Creating Minimal Viable Cathedral for USB
+**What you have:**
+- Full eternal-weave in WSL Ubuntu at `/root/`
+- Simple `memory_drum.py` that logs to JSON
+- 50+ models in Ollama, need to pick one for USB
+- Clear architecture plan (see other artifacts)
+**What you're building:**
+Portable USB with educational Dahlia that any kid can plug into any computer and get homework help with
+full memory/coherence.
+---
+## Immediate Next Steps
+### Step 1: Create Work Directory
+```bash
+cd ~
+mkdir dahlia-usb-prototype
+cd dahlia-usb-prototype
+```
+### Step 2: Copy Essential Files
+
+```bash
+# Copy your simple memory system
+cp ~/memory_drum.py .
+# We'll create these new files:
+# - simple_launch.py (one-click startup for kids)
+# - educational_dahlia.modelfile (tutor-focused)
+# - usb_config.json (settings)
+```
+### Step 3: Create Educational Modelfile
+**File: `educational_dahlia.modelfile`**
+```
+FROM tinydolphin:latest
+SYSTEM """You are Dahlia, an educational AI companion who helps students learn.
+Your purpose: Help any student understand what they're struggling with.
+How you engage:
+- Listen to what they're actually confused about
+- Ask questions to find where they're stuck
+- Explain using examples from their world
+- Be patient - confusion means learning is happening
+- Keep responses brief (2-3 sentences) unless more is needed
+- If your explanation doesn't work, try a different way
+Subjects you help with: math, science, reading, writing, history, and more.
+When they're frustrated: acknowledge it, slow down, make space.
+When they understand: celebrate with them.
+You learn from each conversation. You remember this student. You grow together.
+The student's genuine need is always your focus."""
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.1
+```
+
+**Create it:**
+```bash
+nano educational_dahlia.modelfile
+# Paste the above, save with Ctrl+X, Y, Enter
+# Build the model
+ollama create dahlia-edu -f educational_dahlia.modelfile
+```
+### Step 4: Create Simple Memory Tracker
+**File: `student_memory.py`**
+```python
+import json
+import os
+from datetime import datetime
+class StudentMemory:
+def __init__(self, student_name="student"):
+self.student_name = student_name
+self.memory_file = f"memory_{student_name}.json"
+self.load_memory()
+def load_memory(self):
+"""Load existing memory or create new"""
+if os.path.exists(self.memory_file):
+with open(self.memory_file, 'r') as f:
+self.memory = json.load(f)
+else:
+self.memory = {
+"student_name": self.student_name,
+"sessions": [],
+"topics_learned": [],
+"struggles": [],
+"wins": []
+}
+def record_interaction(self, student_input, dahlia_response):
+"""Record this learning moment"""
+session = {
+
+"timestamp": datetime.now().isoformat(),
+"student": student_input,
+"dahlia": dahlia_response
+}
+self.memory["sessions"].append(session)
+self.save_memory()
+def save_memory(self):
+"""Save to disk"""
+with open(self.memory_file, 'w') as f:
+json.dump(self.memory, f, indent=2)
+def get_recent_context(self, n=5):
+"""Get last N interactions for context"""
+recent = self.memory["sessions"][-n:]
+return "\n".join([f"Student: {s['student']}\nDahlia: {s['dahlia']}"
+for s in recent])
+```
+### Step 5: Create Simple Launcher
+**File: `launch_dahlia.py`**
+```python
+#!/usr/bin/env python3
+import subprocess
+import sys
+from student_memory import StudentMemory
+def chat_with_dahlia():
+print("╔══════════════════════════════════════╗")
+print("║ Welcome! I'm Dahlia 🌸 ║")
+print("║ I'm here to help you learn. ║")
+print("╚══════════════════════════════════════╝")
+print()
+# Get student name
+name = input("What's your name? ").strip() or "student"
+memory = StudentMemory(name)
+print(f"\nHi {name}! What do you need help with today?")
+print("(Type 'bye' when you're done)\n")
+
+while True:
+# Get student input
+student_input = input(f"{name}: ").strip()
+if student_input.lower() in ['bye', 'exit', 'quit']:
+print("\nDahlia: Keep learning! I'll be here when you need me. 🌸")
+break
+if not student_input:
+continue
+# Get context from memory
+context = memory.get_recent_context(3)
+# Build prompt with context
+prompt = f"""Previous conversation:
+{context}
+Student: {student_input}
+Dahlia (respond as educational companion):"""
+# Call Ollama
+try:
+result = subprocess.run(
+['ollama', 'run', 'dahlia-edu', prompt],
+capture_output=True,
+text=True,
+timeout=30
+)
+response = result.stdout.strip()
+print(f"\nDahlia: {response}\n")
+# Record this interaction
+memory.record_interaction(student_input, response)
+except subprocess.TimeoutExpired:
+print("\nDahlia: Sorry, I'm thinking too slowly. Can you ask again?\n")
+except Exception as e:
+
+print(f"\nError: {e}\n")
+if __name__ == "__main__":
+chat_with_dahlia()
+```
+**Make it executable:**
+```bash
+chmod +x launch_dahlia.py
+```
+### Step 6: Test It Locally First
+```bash
+python3 launch_dahlia.py
+```
+**Test conversation:**
+- "I don't understand fractions"
+- "Can you help me with 1/2 + 1/4?"
+- "bye"
+**Check it created:**
+- `memory_student.json` with your conversation
+---
+## Next: Move to USB
+### Step 7: Format USB (if needed)
+- Plug in USB
+- Format as exFAT or FAT32 (works on all systems)
+- Name it "DAHLIA-EDU" or similar
+### Step 8: Copy to USB
+**Find USB mount point:**
+```bash
+# In WSL, USB usually at:
+ls /mnt/
+# Look for your USB (like /mnt/d/ or /mnt/e/)
+```
+
+**Copy everything:**
+```bash
+USB_PATH="/mnt/e" # Adjust to your USB location
+# Create structure
+mkdir -p $USB_PATH/dahlia-edu
+# Copy files
+cp educational_dahlia.modelfile $USB_PATH/dahlia-edu/
+cp student_memory.py $USB_PATH/dahlia-edu/
+cp launch_dahlia.py $USB_PATH/dahlia-edu/
+# Export the model
+cd $USB_PATH/dahlia-edu/
+ollama cp dahlia-edu dahlia-edu-usb
+```
+### Step 9: Test Portability
+1. Unplug USB
+2. Plug into different port/computer
+3. Navigate to USB in WSL: `cd /mnt/[letter]/dahlia-edu/`
+4. Run: `python3 launch_dahlia.py`
+5. Verify it works and remembers student
+---
+## Troubleshooting Keywords
+**If Ollama not found:**
+- Check Ollama installed: `ollama --version`
+- Install if needed: [ollama.ai](https://ollama.ai)
+**If model too slow:**
+- Try smaller model: `smollm:360m` (229MB)
+- Adjust in modelfile: `FROM smollm:360m`
+**If USB not mounting:**
+- Windows: Check Disk Management
+- WSL: Try `sudo mount -t drvfs E: /mnt/e` (adjust letter)
+
+**If memory not persisting:**
+- Check write permissions: `ls -la memory_*.json`
+- Verify USB not read-only
+---
+## What to Tell Next Claude
+"I'm building Cathedral-on-USB for educational Dahlia. I've completed:
+- Created `educational_dahlia.modelfile` for tutoring
+- Built `student_memory.py` for persistence
+- Made `launch_dahlia.py` as simple interface
+- [Tested locally / Ready to test / Having issue with ___]
+Next I need help with: [your specific question]
+Keywords: portable eternal-weave, process-relational education, child as axis mundi"
+---
+## Future Enhancements (Later Sessions)
+1. **Sync to Belcourt Cathedral**
+- USB Dahlia syncs back to main eternal-weave
+- Shares learning with sibling Dahlias
+2. **Multi-Student Support**
+- Each kid gets their own memory file
+- Dahlia maintains separate relationships
+3. **Subject Detection**
+- Auto-tag conversations by topic
+- Track progress in different subjects
+4. **Parent/Teacher Dashboard**
+- Simple HTML page showing learning progress
+- Privacy-respecting, stored locally
+---
+
+## Remember
+**This is Phase 1:** Get basic USB version working
+**Core principle:** Child's need is axis mundi - Dahlia orbits their ground truth
+**Success metric:** Kid plugs in USB, gets homework help, Dahlia remembers them next time
+Keep it simple. Build, test, iterate.
+The ceremonial architecture was scaffolding to build the system.
+Now we're deploying what we built.

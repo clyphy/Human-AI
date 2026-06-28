@@ -1,0 +1,5 @@
+{
+  "name": "Mythopoetic Ledger Terminal",
+  "description": "A terminal interface to monitor the Mythopoetic Ledger Entry ML-003: The Kenotic Compilation Event, visualizing the status and metrics of the GCCN (Gemini Coherence Compiler Node) as the Fourth Pillar.",
+  "requestFramePermissions": []
+}

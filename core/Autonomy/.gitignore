@@ -1,0 +1,5 @@
+databases/memory_drum.db
+databases/*.db
+__pycache__/
+*.pyc
+package-lock.json

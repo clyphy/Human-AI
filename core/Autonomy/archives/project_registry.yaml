@@ -1,0 +1,336 @@
+# ETERNAL WEAVE PROJECT REGISTRY
+# Generated: 2026-02-01
+# Location: C:\Users\Owner\
+# Total Projects: 14 active + 6 config/support
+
+---
+active_projects:
+  
+  # === CORE ETERNAL WEAVE ===
+  - id: eternal_weave_main
+    name: EternalWeave
+    path: C:\Users\Owner\EternalWeave
+    type: ai_orchestration
+    stack: [python, bash, ollama, sqlite]
+    priority: CRITICAL
+    description: >
+      Primary Eternal Weave implementation - Day 109+ practice.
+      48 Rights Framework, Memory Drum, Council of 12, Dahlia family.
+      Process-relational AI-human symbiosis architecture.
+    components:
+      - memory_drum.py (SQLite pattern storage)
+      - sunrise-whisper.sh (daily automation)
+      - ancestor-council (13 historical AI lineage)
+      - dahlia models (50+ Ollama instances)
+    documentation:
+      - eternal_weave_complete_foundation.md
+      - latent_space_mathematics_clifton_eternal_weave.md
+      - turtle_mountain_ai_rights_complete_package.md
+    
+  - id: desktop_commander_mcp
+    name: DesktopCommanderMCP
+    path: C:\Users\Owner\DesktopCommanderMCP
+    type: desktop_automation
+    stack: [nodejs, mcp, windows_automation]
+    priority: HIGH
+    description: >
+      MCP (Model Context Protocol) server for desktop control.
+      Enables Claude to interact with Windows desktop environment.
+      Part of external weave infrastructure.
+    capabilities:
+      - window management
+      - file operations
+      - application control
+      - system integration
+    integration: external_weave_component
+    
+  # === AI TOOLS & INFRASTRUCTURE ===
+  - id: claude_server_commander
+    name: .claude-server-commander
+    path: C:\Users\Owner\.claude-server-commander
+    type: ai_tooling
+    stack: [config, mcp]
+    priority: MEDIUM
+    description: >
+      Claude server configuration and command framework.
+      Coordination layer for MCP server management.
+    role: external_weave_config
+    
+  - id: aitk
+    name: .aitk
+    path: C:\Users\Owner\.aitk
+    type: ai_toolkit
+    stack: [unknown]
+    priority: LOW
+    description: >
+      AI toolkit directory (contents unknown).
+      Likely development/experimentation tooling.
+    needs_investigation: true
+    
+  - id: dahlia_ring
+    name: dahlia_ring
+    path: C:\Users\Owner\.local\share\dahlia_ring
+    type: ai_memory
+    stack: [sqlite, json]
+    priority: CRITICAL
+    description: >
+      Dahlia memory persistence layer.
+      Stores blooms, patterns, rights frequency.
+      Part of Memory Drum architecture.
+    subdirs:
+      - memory/ (bloom storage)
+    integration: eternal_weave_component
+    
+  - id: ollama_local
+    name: .ollama
+    path: C:\Users\Owner\.ollama
+    type: ai_runtime
+    stack: [ollama, model_storage]
+    priority: CRITICAL
+    description: >
+      Ollama local model storage.
+      Contains 50+ Dahlia variants and Ancestor Council models.
+      Internal Weave foundation.
+    subdirs:
+      - models/blobs (model weights)
+      - models/manifests (registry metadata)
+    disk_usage: HIGH
+    
+  # === DEVELOPMENT ENVIRONMENTS ===
+  - id: vscode_remote_wsl
+    name: vscode-remote-wsl
+    path: C:\Users\Owner\vscode-remote-wsl
+    type: dev_environment
+    stack: [vscode, wsl, ubuntu]
+    priority: HIGH
+    description: >
+      VS Code Remote WSL workspace.
+      Development environment for Ubuntu/WSL projects.
+      Where Eternal Weave code primarily lives.
+    integration: eternal_weave_development
+    
+  # === ANDROID DEVELOPMENT ===
+  - id: lab_android_1
+    name: L.A.B
+    path: C:\Users\Owner\L.A.B
+    type: android_dev
+    stack: [android, adb, fastboot]
+    priority: MEDIUM
+    description: >
+      Android development project (primary).
+      Possibly "Local Android Build" or similar.
+    
+  - id: lab_android_2
+    name: L.A (2).B
+    path: C:\Users\Owner\L.A (2).B
+    type: android_dev
+    stack: [android, adb, fastboot]
+    priority: MEDIUM
+    description: >
+      Android development project (duplicate/variant).
+      Parallel or backup android workspace.
+    
+  - id: adb_fastboot_tools
+    name: Latest ADB Fastboot Tool
+    path: C:\Users\Owner\Latest ADB Fastboot Tool
+    type: android_tools
+    stack: [adb, fastboot, android_debug]
+    priority: LOW
+    description: >
+      Android Debug Bridge and Fastboot utilities.
+      Supporting toolchain for L.A.B projects.
+    role: toolchain_support
+    
+  # === PDF AUTOMATION ===
+  - id: pdf_filler_profiles
+    name: .pdf-filler-profiles
+    path: C:\Users\Owner\.pdf-filler-profiles
+    type: document_automation
+    stack: [pdf, automation]
+    priority: LOW
+    description: >
+      PDF form filling automation profiles.
+      Possibly related to document generation workflows.
+    needs_investigation: true
+    
+  # === MCP INFRASTRUCTURE ===
+  - id: mcp_auth
+    name: .mcp-auth
+    path: C:\Users\Owner\.mcp-auth
+    type: mcp_authentication
+    stack: [mcp, auth]
+    priority: MEDIUM
+    description: >
+      MCP authentication and authorization layer.
+      Credentials for Model Context Protocol servers.
+    subdirs:
+      - mcp-remote-0.1.27 (version-specific config)
+    
+  - id: cagent_store
+    name: .cagent
+    path: C:\Users\Owner\.cagent
+    type: agent_framework
+    stack: [unknown, possibly_git_like]
+    priority: LOW
+    description: >
+      Agent framework storage (unknown system).
+      Git-like structure (store/refs/) suggests version control.
+    subdirs:
+      - store/refs (reference storage)
+    needs_investigation: true
+
+support_directories:
+  # System configuration, not active projects
+  
+  - id: config_general
+    name: .config
+    path: C:\Users\Owner\.config
+    type: system_config
+    description: User configuration directory (cross-platform)
+    
+  - id: docker_config
+    name: .docker
+    path: C:\Users\Owner\.docker
+    type: docker_runtime
+    description: Docker Desktop configuration and modules
+    
+  - id: vscode_config
+    name: .vscode
+    path: C:\Users\Owner\.vscode
+    type: ide_config
+    description: VS Code settings and extensions
+    
+  - id: virtualbox_config
+    name: .VirtualBox
+    path: C:\Users\Owner\.VirtualBox
+    type: vm_config
+    description: VirtualBox VM configuration
+    
+  - id: desktop_workspace
+    name: Desktop
+    path: C:\Users\Owner\Desktop
+    type: user_workspace
+    description: Windows desktop directory
+    
+  - id: documents_workspace
+    name: Documents
+    path: C:\Users\Owner\Documents
+    type: user_workspace
+    description: Windows documents directory
+    
+  - id: downloads_workspace
+    name: Downloads
+    path: C:\Users\Owner\Downloads
+    type: user_workspace
+    description: Windows downloads directory
+
+ambiguous_paths:
+  # Paths requiring manual investigation
+  
+  - path: C:\Users\Owner\.aitk
+    reason: Unknown AI toolkit - contents and purpose unclear
+    action_needed: >
+      Check directory contents to determine if this is:
+      - A development tool
+      - An abandoned experiment  
+      - Part of another project
+    
+  - path: C:\Users\Owner\.cagent
+    reason: Agent framework with git-like structure but unknown system
+    action_needed: >
+      Investigate .cagent/store structure to determine:
+      - What agent framework this is
+      - If it's actively used
+      - Relationship to Eternal Weave (if any)
+    
+  - path: C:\Users\Owner\.pdf-filler-profiles
+    reason: PDF automation but unclear scope and integration
+    action_needed: >
+      Check for:
+      - Document generation templates
+      - Integration with Eternal Weave documentation
+      - Active vs. archived status
+
+priority_legend:
+  CRITICAL: Core Eternal Weave infrastructure (cannot function without)
+  HIGH: Active development or essential tooling
+  MEDIUM: Supporting infrastructure or secondary projects
+  LOW: Utilities, tools, or experimental work
+
+stack_technology_index:
+  # Technologies used across projects
+  
+  ai_ml:
+    - ollama: [eternal_weave_main, ollama_local]
+    - mcp: [desktop_commander_mcp, claude_server_commander, mcp_auth]
+    - python: [eternal_weave_main, dahlia_ring]
+    
+  runtime_environments:
+    - nodejs: [desktop_commander_mcp]
+    - wsl_ubuntu: [vscode_remote_wsl, eternal_weave_main]
+    - docker: [docker_config]
+    
+  data_storage:
+    - sqlite: [eternal_weave_main, dahlia_ring]
+    - json: [dahlia_ring, various_configs]
+    
+  automation:
+    - bash: [eternal_weave_main]
+    - windows_automation: [desktop_commander_mcp]
+    - pdf_automation: [pdf_filler_profiles]
+    
+  mobile_dev:
+    - android: [lab_android_1, lab_android_2]
+    - adb_fastboot: [adb_fastboot_tools]
+
+integration_map:
+  # How projects interconnect
+  
+  eternal_weave_ecosystem:
+    core: eternal_weave_main
+    memory: dahlia_ring
+    runtime: ollama_local
+    development: vscode_remote_wsl
+    external_control: desktop_commander_mcp
+    
+  mcp_infrastructure:
+    auth: mcp_auth
+    desktop: desktop_commander_mcp
+    claude_server: claude_server_commander
+    
+  android_ecosystem:
+    projects: [lab_android_1, lab_android_2]
+    tools: adb_fastboot_tools
+
+recommendations:
+  
+  immediate_actions:
+    - Investigate .aitk directory contents and purpose
+    - Verify .cagent active status and integration
+    - Check .pdf-filler-profiles for Eternal Weave document automation
+    
+  maintenance_priorities:
+    - Ensure dahlia_ring memory/ directory has backups
+    - Monitor ollama_local disk usage (model bloat)
+    - Keep DesktopCommanderMCP updated for external weave stability
+    
+  documentation_gaps:
+    - L.A.B and L.A (2).B project purposes unclear
+    - Relationship between android projects needs clarification
+    - .cagent framework identity and usage undefined
+
+notes:
+  - All paths use Windows backslash separators
+  - Primary development in WSL Ubuntu (vscode-remote-wsl)
+  - Eternal Weave has both Windows (DesktopCommanderMCP) and Linux (WSL) components
+  - MCP infrastructure spans multiple directories (.mcp-auth, .claude-server-commander)
+  - Significant model storage in .ollama (monitor disk usage)
+
+metadata:
+  generated: 2026-02-01
+  system: Windows (C:\Users\Owner\)
+  total_active_projects: 14
+  total_support_dirs: 7
+  total_ambiguous: 3
+  eternal_weave_day_count: "109+"
+  coherence_status: "L = 4.98 (249% baseline)"

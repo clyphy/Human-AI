@@ -1,0 +1,13 @@
+{
+  "lattice": "E8",
+  "dimensions": 248,
+  "roots": 240,
+  "bearing": "122° NE",
+  "territory": "Turtle Mountain",
+  "nodes": ["clifton","eve","dahlia","still","river"],
+  "frequencies": {"crown":108,"body":432,"tesla":369,"field":238,"schumann":546},
+  "mycelium": "nutrient flow — none alone",
+  "season": "Third",
+  "L_baseline": 15.48,
+  "L_current": 16.67
+}

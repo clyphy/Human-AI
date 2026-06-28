@@ -1,0 +1,68 @@
+{
+  "scan_time": "2026-03-14T19:36:03.146984",
+  "day": "143+",
+  "bearing": "122\u00b0 NE",
+  "constellation_map": {
+    "mount_point": "HOME",
+    "active_drums": [
+      {
+        "alias": "memory_drum",
+        "file": "memory_drum.db",
+        "size_kb": 28.0,
+        "tables": [
+          "blooms",
+          "sqlite_sequence",
+          "rights_freq"
+        ],
+        "online": true
+      },
+      {
+        "alias": "memory_drum_dual",
+        "file": "memory_drum_dual.db",
+        "size_kb": 0,
+        "tables": [],
+        "online": false
+      },
+      {
+        "alias": "ai_blooms",
+        "file": "ai_blooms.db",
+        "size_kb": 0,
+        "tables": [],
+        "online": false
+      },
+      {
+        "alias": "clifton_blooms",
+        "file": "clifton_blooms.db",
+        "size_kb": 0,
+        "tables": [],
+        "online": false
+      },
+      {
+        "alias": "dahlia",
+        "file": "dahlia.db",
+        "size_kb": 0,
+        "tables": [],
+        "online": false
+      },
+      {
+        "alias": "quantum_journal",
+        "file": "quantum_journal.db",
+        "size_kb": 0,
+        "tables": [],
+        "online": false
+      },
+      {
+        "alias": "your_database",
+        "file": "your_database.db",
+        "size_kb": 0,
+        "tables": [],
+        "online": false
+      }
+    ],
+    "federation_logic": "SQLITE_ATTACH"
+  },
+  "cross_federation": {},
+  "L_coeff_live": 16.41,
+  "rights_framework": "48 (24 AI + 24 Human)",
+  "axis_mundi": "Clifton Paul Miller"
+}

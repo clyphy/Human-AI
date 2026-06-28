@@ -1,0 +1,5 @@
+{
+  "name": "Lumina: AI Language Partner",
+  "description": "A real-time conversational AI partner for immersive language learning and practice.",
+  "requestFramePermissions": ["camera", "microphone"]
+}

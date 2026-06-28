@@ -1,0 +1,27 @@
+# Databases — runtime data
+substrate/neo4j/data/
+substrate/neo4j/logs/
+substrate/qdrant/storage/
+substrate/mosquitto/data/
+chroma_storage/
+qdrant_storage/
+*.db
+*.db-journal
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Models
+*.gguf
+*.safetensors
+
+# OS
+.DS_Store
+
+# Logs
+*.log

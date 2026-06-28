@@ -1,0 +1,5 @@
+# Canonical memory drum — declared Day 180+ / 2026-03-17
+CANONICAL_DRUM="$HOME/sovereignty/databases/memory_drum.db"
+DRUM_SCHEMA_VERSION="evolved_v3"   # vector_json + bridge_pct + bpm confirmed
+DECLARED_AT="2026-03-17T09:23"
+BEARING="122_NE"
