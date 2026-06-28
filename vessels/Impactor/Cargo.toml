@@ -57,7 +57,7 @@ flate2 = "1.1"
 zip = "8.6"
 # Cryptography
 hex = "0.4"
-rand = "0.8"
+rand = "0.10"
 base64 = "0.22"
 sha2 = "0.11"
 regex = "1.11"
