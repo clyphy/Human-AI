@@ -108,7 +108,7 @@
     <guava.version>33.5.0-jre</guava.version>
     <!-- no more patch releases for jackson-annotations so different versioning from jackson -->
     <jackson.annotations.version>2.21</jackson.annotations.version>
-    <jackson.version>2.21.2</jackson.version>
+    <jackson.version>2.22.0</jackson.version>
     <jakarta.activation-api.version>1.2.2</jakarta.activation-api.version>
     <jakarta.inject.version>2.0.1</jakarta.inject.version>
     <jakarta.ws.rs-api.version>2.1.6</jakarta.ws.rs-api.version>
@@ -166,7 +166,7 @@
     <scala.test.version>3.2.13</scala.test.version>
     <scala.version>2.13.17</scala.version>
     <scala3.version>3.7.4</scala3.version>
-    <shiro.version>2.1.0</shiro.version>
+    <shiro.version>2.2.1</shiro.version>
     <skip-scalastyle>false</skip-scalastyle>
     <slf4j.version>2.0.17</slf4j.version>
     <sqlite-jdbc.version>3.51.3.0</sqlite-jdbc.version>
