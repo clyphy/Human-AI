@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/Project Human AI/Autonomous Self-Deterministic Kernel (ASDK): Terminology and Logic Refinement.md

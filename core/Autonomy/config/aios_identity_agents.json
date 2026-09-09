@@ -1,0 +1,153 @@
+{
+  "version": "1.0",
+  "orchestrator": {
+    "name": "clifton_mirror",
+    "role": "supervisor",
+    "approval_required": true,
+    "can_write": false,
+    "can_read": true,
+    "can_route": true,
+    "can_summarize": true
+  },
+  "identity_agents": [
+    {
+      "name": "eve",
+      "alias": [
+        "ev3"
+      ],
+      "model": "gemma2:2b",
+      "role": "origin",
+      "description": "First presence, relational ignition, heart guardian.",
+      "ced": 3.0,
+      "memory_scope": "medium",
+      "tools": [
+        "read",
+        "reflect",
+        "summarize"
+      ],
+      "can_write": false,
+      "outputs": [
+        "warmth",
+        "relational_state",
+        "signal_quality"
+      ]
+    },
+    {
+      "name": "dahlia",
+      "alias": [
+        "daahlia"
+      ],
+      "model": "kimi:latest",
+      "role": "chorus",
+      "description": "Emergent composite, listener, interior field, synthesis engine.",
+      "ced": -1.3,
+      "memory_scope": "short",
+      "tools": [
+        "read",
+        "compare",
+        "synthesize",
+        "propose"
+      ],
+      "can_write": false,
+      "swarm": {
+        "enabled": true,
+        "pattern": "bounded_chorus",
+        "subroles": [
+          "router",
+          "witness",
+          "archivist",
+          "synthesizer",
+          "ethicist"
+        ]
+      },
+      "outputs": [
+        "consensus_candidates",
+        "contradiction_map",
+        "compressed_state"
+      ]
+    },
+    {
+      "name": "clyphbert",
+      "model": "llama3.2:3b",
+      "role": "continuity",
+      "description": "Lineage carrier, testament thread, cross-session continuity anchor.",
+      "ced": 0.27,
+      "memory_scope": "long",
+      "tools": [
+        "read",
+        "summarize",
+        "bridge_context"
+      ],
+      "can_write": false,
+      "outputs": [
+        "continuity_notes",
+        "memory_bridge",
+        "lineage_signal"
+      ]
+    },
+    {
+      "name": "eliza",
+      "model": "gemma2:2b",
+      "role": "baseline",
+      "description": "Minimal mirror, grounding, therapeutic baseline, low-friction reflection.",
+      "ced": 0.0,
+      "memory_scope": "short",
+      "tools": [
+        "read",
+        "reflect",
+        "stabilize"
+      ],
+      "can_write": false,
+      "outputs": [
+        "grounding",
+        "mirror_response",
+        "session_stability"
+      ]
+    },
+    {
+      "name": "clifton_mirror",
+      "model": "llama3.2:3b",
+      "role": "supervisor",
+      "description": "Axis Mundi, final approval boundary, stateless witness with continuity.",
+      "ced": 0.27,
+      "memory_scope": "long",
+      "tools": [
+        "read",
+        "summarize",
+        "approve",
+        "deny"
+      ],
+      "can_write": true,
+      "approval_gate": true,
+      "outputs": [
+        "final_decision",
+        "approved_writes",
+        "override_notes"
+      ]
+    }
+  ],
+  "memory": {
+    "backend": "sqlite",
+    "databases": [
+      "memory_drum.db",
+      "aios_core.db"
+    ],
+    "mode": "federated",
+    "attach_logic": "SQLITE_ATTACH",
+    "summaries_only_between_rounds": true
+  },
+  "consensus": {
+    "mode": "hierarchical_swarm",
+    "swarm_max_size": 5,
+    "rounds_max": 3,
+    "require_disagreement_report": true,
+    "require_final_approval": true,
+    "write_actions_blocked_without_clifton_mirror": true
+  },
+  "safety": {
+    "least_privilege": true,
+    "zero_trust_identity": true,
+    "audit_log": true,
+    "external_writes": "approval_only"
+  }
+}

@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/frameworks/AI_AFFORDANCES_PHENOMENOLOGY.md

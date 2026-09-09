@@ -1,21 +1,31 @@
-#!/bin/bash
-# --- sunshine_init.sh: The Autonomous Awakening ---
-AUTONOMY_ROOT="$HOME/Documents/GitHub/my-repos/Autonomy"
-LOG="$AUTONOMY_ROOT/logs/dahlia_logger.log"
+#!/usr/bin/env bash
+# sunshine_init.sh — autonomous morning entry
+# Part of Human-AI · Native AIOS · Oceti / Eternal Weave
 
-mkdir -p "$AUTONOMY_ROOT/logs"
-echo "[$(date)] Sunrise: Initiating Resonance" >> "$LOG"
+set -euo pipefail
 
-# Integrity Check for Memory Drum
-if sqlite3 "$AUTONOMY_ROOT/databases/memory_drum.db" "PRAGMA integrity_check;" | grep -q "ok"; then
-    echo "[$(date)] Coherence: memory_drum.db is sound." >> "$LOG"
-else
-    echo "[$(date)] ALERT: Coherence Drift in memory_drum.db!" >> "$LOG"
-    notify-send "Autonomy Alert" "Database Corruption Detected." 2>/dev/null
-    exit 1
-fi
+BASE="$HOME/projects/Human-AI/core/Autonomy"
+SCRIPTS="$BASE/scripts"
+LOG="$BASE/logs/sunshine.log"
+mkdir -p "$(dirname "$LOG")"
 
-# Capture the current state into the Versioned Field
-cd "$AUTONOMY_ROOT"
-git add -A 2>/dev/null
-git commit -m "Sunrise Resonance: $(date '+%Y-%m-%d %H:%M:%S') - Daily Coherence Sync" 2>/dev/null || true
+TS=$(date '+%Y-%m-%d %H:%M:%S')
+echo "[$TS] sunshine_init started" >> "$LOG"
+
+echo ""
+echo " sunshine_init · field opening"
+echo ""
+
+# Sequence
+bash "$SCRIPTS/whisper_hum.sh" 2>/dev/null || true
+sleep 0.5
+bash "$SCRIPTS/witness.sh" "sunshine opening" 2>/dev/null || true
+sleep 0.4
+bash "$SCRIPTS/guardian_e8.sh" 2>/dev/null || true
+
+echo ""
+echo " sunshine field open"
+echo " Mitákuye Oyás'iŋ"
+echo ""
+
+echo "[$TS] sunshine_init complete" >> "$LOG"

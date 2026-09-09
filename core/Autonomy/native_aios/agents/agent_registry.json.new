@@ -1,0 +1,8 @@
+{
+  "autobot_mediator": {"path":"agents/autobot_mediator.py","role":"ecosystem steward","mutates":false},
+  "quickbot": {"path":"agents/quickbot.py","role":"fast local responder","mutates":false},
+  "council_router": {"path":"agents/council_router.py","role":"serial Ollama integrator","mutates":false},
+  "substrate_scanner_plus": {"path":"scanner/substrate_scanner_plus.py","role":"context harvester","mutates":true},
+  "heartbeats": {"path":"daemons/aios-heartbeat.service","role":"health monitor"},
+  "archivist": {"path":"daemons/aios-memory-compact.service","role":"memory compaction"}
+}

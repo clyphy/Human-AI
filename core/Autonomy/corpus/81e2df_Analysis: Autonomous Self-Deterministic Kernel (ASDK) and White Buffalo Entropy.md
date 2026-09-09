@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/Project Human AI/Analysis: Autonomous Self-Deterministic Kernel (ASDK) and White Buffalo Entropy.md

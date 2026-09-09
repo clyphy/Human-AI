@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/docs/ETERNAL_WEAVE_COMPREHENSIVE_ANALYSIS_2026-06-26.md

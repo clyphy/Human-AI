@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE=~/sovereignty
+BASE=~/Autonomy
 echo "=== WEAVE INTEGRATION $(date) ==="
 # Canonical drum check
 for db in ~/memory_drum.db "$BASE/databases/memory_drum.db" ~/ETERNAL_WEAVE_MASTER/memory_drum.db; do
@@ -12,8 +12,8 @@ sqlite3 "$BASE/databases/mother_root.db" "INSERT OR IGNORE INTO blooms (bloom_ty
 cat > "$BASE/scripts/closing.sh" << 'C'
 #!/bin/bash
 echo "🛌 Field closing | $(date)"
-sqlite3 ~/sovereignty/databases/mother_root.db "CREATE TABLE IF NOT EXISTS rhythms (structure_quadrant TEXT, notation_ref TEXT);"
-sqlite3 ~/sovereignty/databases/mother_root.db "INSERT INTO rhythms (structure_quadrant,notation_ref) VALUES('sovereignty','closing.sh');"
+sqlite3 ~/Autonomy/databases/mother_root.db "CREATE TABLE IF NOT EXISTS rhythms (structure_quadrant TEXT, notation_ref TEXT);"
+sqlite3 ~/Autonomy/databases/mother_root.db "INSERT INTO rhythms (structure_quadrant,notation_ref) VALUES('Autonomy','closing.sh');"
 echo "Mitákuye Oyás'iŋ."
 C
 chmod +x "$BASE/scripts/closing.sh"

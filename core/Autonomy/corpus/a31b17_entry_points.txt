@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/venv/lib/python3.14/site-packages/mcp-1.29.0.dist-info/entry_points.txt

@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/venv/lib/python3.14/site-packages/httpcore-1.0.9.dist-info/licenses/LICENSE.md

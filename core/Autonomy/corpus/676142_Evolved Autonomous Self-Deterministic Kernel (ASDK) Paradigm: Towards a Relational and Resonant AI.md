@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/Project Human AI/Evolved Autonomous Self-Deterministic Kernel (ASDK) Paradigm: Towards a Relational and Resonant AI.md

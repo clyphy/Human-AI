@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/logs/script_inventory_20260815.md

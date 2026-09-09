@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/docs/harvest_findings_2.md

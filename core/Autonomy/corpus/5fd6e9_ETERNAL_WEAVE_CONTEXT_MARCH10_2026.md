@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/context/ETERNAL_WEAVE_CONTEXT_MARCH10_2026.md

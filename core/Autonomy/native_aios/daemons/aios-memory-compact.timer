@@ -1,0 +1,10 @@
+[Unit]
+Description=Oceti Native AIOS memory compaction (daily)
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=aios-memory-compact.service
+
+[Install]
+WantedBy=timers.target

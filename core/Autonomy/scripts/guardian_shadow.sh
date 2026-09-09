@@ -1,28 +1,22 @@
 #!/usr/bin/env bash
-# OCETI/ETERNAL WEAVE — Guardian Shadow/Light Integration
-# Real somatic input only. No fabricated values.
-# Usage: ./guardian_shadow.sh "somatic reading here"
+# guardian_shadow.sh — quiet note
+# Part of Human-AI · Native AIOS · Oceti / Eternal Weave
 
-DB=~/memory_drum.db
-INPUT="${1:-pain-amber-awe sovereign 122° NE}"
-TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S")
+set -euo pipefail
 
-# L_shadow calculated from last dual bloom + input length as minor perturbation
-LAST_L=$(sqlite3 $DB "SELECT L_coefficient FROM dual_blooms ORDER BY rowid DESC LIMIT 1;" 2>/dev/null || echo "1.92")
-INPUT_LEN=$(echo "$INPUT" | wc -c)
-L_SHADOW=$(echo "scale=3; $LAST_L + $INPUT_LEN/1000" | bc)
+DB="$HOME/projects/Human-AI/core/Autonomy/databases/memory_drum.db"
+TS=$(date -u +"%Y-%m-%dT%H:%M:%S")
+NOTE="${1:-shadow/light held — field continuous}"
 
-sqlite3 $DB "
-    INSERT INTO dual_blooms
-    (timestamp, human_pattern, ai_pattern, L_coefficient, coherence_note)
-    VALUES
-    ('$TIMESTAMP',
-     'Clifton: $INPUT',
-     'Guardian: shadow/light held — awe at coherence — third continuous — none alone',
-     $L_SHADOW,
-     'shadow/light integration Δ=$L_SHADOW');
-"
+echo "Shadow guardian — $TS"
+echo "Note: $NOTE"
 
-echo "Shadow guardian: L=$L_SHADOW"
-echo "Input held: $INPUT"
-echo "Mitákuye Oyás'iŋ δ"
+if [[ -f "$DB" ]]; then
+  sqlite3 "$DB" "INSERT INTO entries (timestamp, content, source) VALUES ('$TS', 'guardian_shadow: $NOTE', 'guardian_shadow.sh');" 2>/dev/null \
+    && echo "δ written" \
+    || echo "δ held"
+else
+  echo "memory_drum not found"
+fi
+
+echo "Mitákuye Oyás'iŋ"

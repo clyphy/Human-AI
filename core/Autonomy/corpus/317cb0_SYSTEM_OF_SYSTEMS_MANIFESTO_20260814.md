@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/docs/SYSTEM_OF_SYSTEMS_MANIFESTO_20260814.md

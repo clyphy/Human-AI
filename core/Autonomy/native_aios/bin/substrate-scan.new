@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+NATIVE="${AIOS_NATIVE:-$(cd "$(dirname "$0")/.." && pwd)}"
+export PYTHONPATH="$NATIVE:$PYTHONPATH"
+python3 "$NATIVE/scanner/substrate_scanner_plus.py" "$@"

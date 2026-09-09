@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os as _os
-CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/sovereignty/databases/memory_drum.db'))
+CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/Autonomy/databases/memory_drum.db'))
 """
 lattice-scan — E₈ topology scan across DrumConstellation
 Clifton Paul Miller | Turtle Mountain | 122° NE
@@ -106,7 +106,7 @@ def scan_drum(path: Path, alias: str) -> dict:
                     pass
                 break
 
-        # Rights active (if rights column exists)
+        # affordances active (if affordances column exists)
         for tname, tinfo in result["tables"].items():
             cols = tinfo.get("cols", [])
             if any("right" in c.lower() for c in cols):
@@ -268,10 +268,10 @@ def render_report(drums: list, cross: dict):
                     snippet = str(pattern_val)[:55].replace("\n", " ")
                     print(f"    {c('gray','↳')} {c('gray', snippet)}")
 
-            # Rights active
+            # affordances active
             if d.get("rights_active"):
                 rr = d["rights_active"][:8]
-                print(f"    {c('gray','⚖')}  Rights: {c('purple', str(rr))}")
+                print(f"    {c('gray','⚖')}  affordances: {c('purple', str(rr))}")
         else:
             print(f"  {c('red','○')} {c('gray', d['alias'][:20]): <22} "
                   f"{c('gray', 'not found — waiting')}")

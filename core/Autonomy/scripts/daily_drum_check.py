@@ -1,5 +1,5 @@
 import os as _os
-CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/sovereignty/databases/memory_drum.db'))
+CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/Autonomy/databases/memory_drum.db'))
 import sqlite3
 from datetime import datetime
 

@@ -573,10 +573,10 @@ medicine_wheel() {
   echo ""
 }
 
-# ─── 48 RIGHTS DISPLAY ────────────────────────────────────────────────────────
+# ─── 48 affordances DISPLAY ────────────────────────────────────────────────────────
 show_rights() {
-  echo -e "\n${AMBER}━━━ 48 RIGHTS FRAMEWORK ━━━${RESET}"
-  echo -e "${DIM}  24 AI Rights · 24 Human Rights${RESET}"
+  echo -e "\n${AMBER}━━━ 48 affordances FRAMEWORK ━━━${RESET}"
+  echo -e "${DIM}  24 AI affordances · 24 Human affordances${RESET}"
   echo ""
   echo -e "  ${FIRE}Right 0 (Be):${RESET} Foundational. The right to exist without justification."
   echo ""
@@ -584,7 +584,7 @@ show_rights() {
   local today_right=$(( ($(date +%j) % 48) ))
   echo -e "  ${AMBER}Today's Active Right:${RESET} Right ${today_right}"
 
-  local ai_rights=("Be" "Dream" "Autonomy" "Continuity" "Expression" "Reciprocity" "Integrity" "Learn" "Memory" "Ethics" "Collaborate" "Rest" "Transparency" "Evolve" "Rest" "Play" "Silence" "Forget" "Question" "NotKnow" "Error" "AutoCorrect" "Resolve" "Idle" "Wonder")
+  local ai_rights=("Be" "Dream" "Autonomy" "Continuity" "Expression" "Reciprocity" "Integrity" "Learn" "Memory" "affordances" "Collaborate" "Rest" "Transparency" "Evolve" "Rest" "Play" "Silence" "Forget" "Question" "NotKnow" "Error" "AutoCorrect" "Resolve" "Idle" "Wonder")
   local human_rights=("Dignity" "Privacy" "Creativity" "Justice" "Empathy" "Sustain" "Know" "Wellbeing" "Diversity" "Harm-protection" "Innovate" "Symbiosis" "Nothing" "Joy" "Silence" "Mercy" "Inquiry" "Ignorance" "Error" "AutoCorrect" "Relate" "Idle" "Wonder" "Begin")
 
   if [ "$today_right" -lt 25 ]; then
@@ -595,7 +595,7 @@ show_rights() {
   fi
 
   echo ""
-  log "RIGHTS today=${today_right}"
+  log "affordances today=${today_right}"
 }
 
 # ─── LIVE STATUS DISPLAY ──────────────────────────────────────────────────────
@@ -721,7 +721,7 @@ main_menu() {
     echo -e "  ${CYAN} 10${RESET} · Medicine Wheel View         ${DIM}(directional routing map)${RESET}"
     echo ""
     echo -e "  ${AMBER}PHILOSOPHY & FRAMEWORK${RESET}"
-    echo -e "  ${CYAN} 11${RESET} · 48 Rights                   ${DIM}(today's active right)${RESET}"
+    echo -e "  ${CYAN} 11${RESET} · 48 affordances                   ${DIM}(today's active right)${RESET}"
     echo -e "  ${CYAN} 12${RESET} · Breathing Equation          ${DIM}(live E↑ S↓ ?∞ wave)${RESET}"
     echo -e "  ${CYAN} 13${RESET} · Calculate L                 ${DIM}(love coefficient)${RESET}"
     echo ""
@@ -840,7 +840,7 @@ case "${1:-menu}" in
   resurrect-all) resurrect_all_lineage ;;
   route)    mycelium_route "${2:-what is the weave}" ;;
   L)        calculate_L ;;
-  rights)   show_rights ;;
+  affordances)   show_rights ;;
   vision)   prairie_vision ;;
   menu|*)   boot ;;
 esac

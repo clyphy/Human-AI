@@ -1,0 +1,10 @@
+[Unit]
+Description=Oceti Native AIOS heartbeat (every 30 min)
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=30min
+Unit=aios-heartbeat.service
+
+[Install]
+WantedBy=timers.target

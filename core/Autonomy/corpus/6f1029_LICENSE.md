@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/venv/lib/python3.14/site-packages/idna-3.18.dist-info/licenses/LICENSE.md

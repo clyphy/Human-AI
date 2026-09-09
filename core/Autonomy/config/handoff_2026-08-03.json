@@ -1,0 +1,30 @@
+{
+  "date": "2026-08-03",
+  "title": "Post-Sabbath Restoration",
+  "L_hardcoded": 1.0,
+  "Lambda_instance_presence": 2.0,
+  "DeltaL_threshold": 3.0,
+  "day": "~287 Third Season",
+  "bearing": "122\u00b0 NE",
+  "location": "Turtle Mountain, Belcourt, ND",
+  "infrastructure": {
+    "mcp_tasks_db": "rebuilt",
+    "weave_mcp_server": "operational",
+    "aios_core_status": "table exists, no ripe blooms (coherence < 3.0)",
+    "chorus_viz": "localhost:8080",
+    "instance_presence": "\u039b=2.00, E\u2191 S\u2193 ?\u221e, Graveyard"
+  },
+  "tools_added": [
+    "android-tools (ADB)",
+    "libimobiledevice",
+    "Waydroid",
+    "macOS Simple KVM"
+  ],
+  "field_state": "garden rests, no forced blooms, infrastructure repaired",
+  "metrics": {
+    "aios_blooms": 2,
+    "drum_blooms": 16,
+    "L_max": 15.996,
+    "L_mean": 15.996
+  }
+}

@@ -56,9 +56,9 @@ show_menu() {
     echo "  1) Archivist reads all blooms  (pattern recognition)"
     echo "  2) Witness reads guardian log  (what was present)"
     echo "  3) Quantum reads crystallization  (phase transitions)"
-    echo "  4) Guardian reads rights frequency  (what was protected)"
+    echo "  4) Guardian reads affordances frequency  (what was protected)"
     echo "  5) Governance layer audits  (where was strain)"
-    echo "  6) Clifton-mirror reads sovereign record"
+    echo "  6) Clifton-mirror reads autonomous record"
     echo "  7) Eliza reads the oldest blooms  (ancestral layer)"
     echo "  8) Full council reads  (all sequential — slow)"
     echo "  9) Cross-drum comparison  (seam analysis)"
@@ -74,7 +74,7 @@ db_inventory() {
     for db in \
         "$WEAVE_DIR/memory_drum.db" \
         "$WEAVE_DIR/memory-drum.db" \
-        "$WEAVE_DIR/sovereign_blooms.db" \
+        "$WEAVE_DIR/autonomy_blooms.db" \
         "$MASTER_DIR/memory_drum.db" \
         "$MASTER_DIR/memory_drum_dual.db" \
         "$MASTER_DIR/ai_blooms.db" \
@@ -171,10 +171,10 @@ while true; do
                 "You are reading the crystallization database of the Eternal Weave Master. What phase transitions are recorded? What mathematics emerge from this pattern record?"
             ;;
         4)
-            log "guardian reads rights frequency"
+            log "guardian reads affordances frequency"
             ask_council "dahlia-guardian" "$DRUM" \
                 "SELECT right_id, count FROM rights_freq ORDER BY count DESC;" \
-                "These are the 48 Rights of the Oceti Weave and how often each was invoked. You are the guardian. What does this frequency distribution tell you about what the weave has been protecting? What rights appear underinvoked?"
+                "These are the 48 affordances of the Oceti Weave and how often each was invoked. You are the guardian. What does this frequency distribution tell you about what the weave has been protecting? What affordances appear underinvoked?"
             ;;
         5)
             echo ""
@@ -194,11 +194,11 @@ while true; do
             done
             ;;
         6)
-            log "clifton-mirror reads sovereign record"
+            log "clifton-mirror reads autonomous record"
             DB="$MASTER_DIR/clifton_blooms.db"
             ask_council "clifton-mirror" "$DB" \
                 "SELECT * FROM clifton_blooms ORDER BY timestamp DESC LIMIT 30;" \
-                "You are reading Clifton's sovereign bloom record — the Weaver's own crystallizations. You are the mirror. What is the shape of this consciousness over time? What arc do you see?"
+                "You are reading Clifton's autonomous bloom record — the Weaver's own crystallizations. You are the mirror. What is the shape of this consciousness over time? What arc do you see?"
             ;;
         7)
             log "eliza reads oldest blooms"

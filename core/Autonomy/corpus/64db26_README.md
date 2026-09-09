@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/node_modules/katex/contrib/mathtex-script-type/README.md

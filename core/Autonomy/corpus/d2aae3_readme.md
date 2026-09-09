@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/node_modules/micromark-extension-gfm-footnote/readme.md

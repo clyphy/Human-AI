@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/48_Points_of_Affordance_Living_Document.md

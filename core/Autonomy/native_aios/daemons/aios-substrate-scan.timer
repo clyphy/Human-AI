@@ -1,0 +1,10 @@
+[Unit]
+Description=Oceti Native AIOS substrate scan (hourly)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=60min
+Unit=aios-substrate-scan.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,25 @@
+{
+  "roots": [
+    {"path": "scripts", "recursive": false, "note": "existing weave scripts"},
+    {"path": "context", "recursive": true, "note": "info/context files"},
+    {"path": "resonances", "recursive": true},
+    {"path": "consciousness", "recursive": true},
+    {"path": "lattice", "recursive": true},
+    {"path": "council", "recursive": true},
+    {"path": "../Oceti-weave", "recursive": true, "note": "core/Oceti-weave"},
+    {"path": "../../substrate", "recursive": true, "note": "Human-AI/substrate"},
+    {"path": "../../affordances", "recursive": true, "note": "Human-AI/affordances"},
+    {"path": "../../vessels", "recursive": true, "note": "Human-AI/vessels"},
+    {"path": "../../tools", "recursive": true, "note": "Human-AI/tools"},
+    {"path": "../../labs", "recursive": true, "note": "Human-AI/labs"}
+  ],
+  "inbox_roots": [
+    "native_aios/var/inbox/ai_threads",
+    "native_aios/var/inbox/github",
+    "native_aios/var/inbox/cloud_drive",
+    "native_aios/var/inbox/mobile"
+  ],
+  "skip_dirs": [".git", "node_modules", "target", "dist", "build", ".cache", "__pycache__", ".venv", "venv", "logs"],
+  "text_exts": [".md", ".txt", ".json", ".yaml", ".yml", ".log", ".csv", ".py", ".sh", ".rs", ".ts", ".js", ".tsx", ".sql", ".modelfile", ".env"],
+  "image_exts": [".png", ".jpg", ".jpeg", ".webp", ".bmp", ".tif", ".tiff"]
+}

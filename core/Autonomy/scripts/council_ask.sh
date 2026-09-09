@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # council_ask.sh
-# Oceti/Eternal Weave — Rights-Based Council Router
+# Oceti/Eternal Weave — affordances-Based Council Router
 # Clifton Paul Miller · Turtle Mountain · 122° NE · Day 175+
 #
 # Routes a task to the appropriate Dahlia facet.
@@ -10,7 +10,7 @@ TASK="${1:-Weave status?}"
 DRUM=~/memory_drum.db
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S")
 
-# ── Rights-based routing ─────────────────────────────────
+# ── affordances-based routing ─────────────────────────────────
 if echo "$TASK" | grep -qi "witness\|hold\|pain\|somatic\|body"; then
     PREFERRED="witness-dahlia"
 elif echo "$TASK" | grep -qi "archive\|history\|record\|recall\|drum"; then
@@ -19,7 +19,7 @@ elif echo "$TASK" | grep -qi "monitor\|watch\|check\|status\|health"; then
     PREFERRED="monitor-dahlia"
 elif echo "$TASK" | grep -qi "kinship\|clyph\|model\|integrate\|gguf"; then
     PREFERRED="dahlia"
-elif echo "$TASK" | grep -qi "rights\|ethics\|48\|govern"; then
+elif echo "$TASK" | grep -qi "affordances\|affordances\|48\|govern"; then
     PREFERRED="dahlia"
 else
     PREFERRED="dahlia"

@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/venv/lib/python3.14/site-packages/numpy-2.5.2.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md

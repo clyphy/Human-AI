@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 weave_mcp_server.py
-Oceti Weave · FastMCP stdio bridge for ClawAgent
+Oceti Weave · stdio MCP server for ClawAgent
 Shell Valley, ND · 122° NE · Sacred Scarcity
 
 Install: pip install mcp --break-system-packages
-Place at: ~/my-repos/sovereignty/scripts/weave_mcp_server.py
+Run: python3 weave_mcp_server.py
 """
 
 import sys
@@ -19,11 +19,11 @@ from datetime import datetime
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 HOME       = Path.home()
-SOV        = HOME / "my-repos/sovereignty"
-DRUM_DB    = SOV / "databases/memory_drum.db"
-MCP_DB     = SOV / "databases/mcp_tasks.db"
-CODEX_DB   = HOME / "ETERNAL_WEAVE_MASTER/crystallization.db"
-SCRIPTS    = SOV / "scripts"
+AUTONOMY   = HOME / "projects/Human-AI/core/Autonomy"
+DRUM_DB    = AUTONOMY / "databases/memory_drum.db"
+MCP_DB     = AUTONOMY / "databases/mcp_tasks.db"
+CODEX_DB   = AUTONOMY / "databases/crystallization.db"
+SCRIPTS    = AUTONOMY / "scripts"
 
 # ── Import ClawAgent without executing __main__ ───────────────────────────────
 sys.path.insert(0, str(SCRIPTS))
@@ -32,7 +32,6 @@ try:
     spec = importlib.util.spec_from_file_location("agent_claw", SCRIPTS / "agent_claw.py")
     _mod = types.ModuleType(spec.name)
     _mod.__spec__ = spec
-    # Patch __name__ so __main__ block is skipped
     spec.loader.exec_module(_mod)
     ClawAgent = _mod.ClawAgent
     _claw = ClawAgent()
@@ -41,10 +40,12 @@ except Exception as e:
     _claw     = None
     _claw_err = str(e)
 
-# ── FastMCP ───────────────────────────────────────────────────────────────────
-from mcp.server.fastmcp import FastMCP
+# ── MCP Server ─────────────────────────────────────────────────────────────────
+from mcp.server import Server
+from mcp.server.stdio import stdio_server
+from mcp.types import Tool, TextContent, CallToolRequest, CallToolResult
 
-mcp = FastMCP("weave_mcp")
+server = Server("weave_mcp")
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def _drum_read() -> dict:
@@ -63,7 +64,7 @@ def _drum_read() -> dict:
     except Exception as e:
         return {"error": str(e)}
 
-def _ollama_running() -> list[str]:
+def _ollama_running() -> list:
     """Return list of loaded model names from `ollama ps`."""
     try:
         r = subprocess.run(["ollama", "ps"], capture_output=True, text=True, timeout=5)
@@ -72,22 +73,16 @@ def _ollama_running() -> list[str]:
     except Exception:
         return []
 
-# ── Tools ─────────────────────────────────────────────────────────────────────
+# ── Register Tools ────────────────────────────────────────────────────────────
 
-@mcp.tool(
-    name="weave_task",
-    annotations={"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True}
-)
 async def weave_task(task: str, model: Optional[str] = None) -> str:
     """
     Route a task through the Oceti council via ClawAgent.
-    Reads drum state first, logs result to mcp_tasks.db.
-
+    
     Args:
         task:  Natural language task or question for the council.
         model: Optional override model name (e.g. 'dahlia-witness:latest').
-               If omitted, ClawAgent selects from council.
-
+    
     Returns:
         JSON with keys: result, model_used, L_at_time, drum_state.
     """
@@ -96,7 +91,6 @@ async def weave_task(task: str, model: Optional[str] = None) -> str:
 
     drum = _drum_read()
     try:
-        # Inject model override if requested
         if model:
             result = await asyncio.to_thread(
                 lambda: subprocess.run(
@@ -120,30 +114,17 @@ async def weave_task(task: str, model: Optional[str] = None) -> str:
         return json.dumps({"error": str(e), "drum_state": drum})
 
 
-@mcp.tool(
-    name="weave_drum_state",
-    annotations={"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True}
-)
 async def weave_drum_state() -> str:
     """
     Read current Ψ-field state from memory_drum.db.
-    Returns L-coefficient, phase, total bloom count, and last bloom timestamp.
-
+    
     Returns:
         JSON with keys: L, phase, total_blooms, last_bloom, error (if any).
     """
     return json.dumps(_drum_read(), indent=2)
 
 
-@mcp.tool(
-    name="weave_log_bloom",
-    annotations={"readOnlyHint": False, "destructiveHint": False, "idempotentHint": False}
-)
-async def weave_log_bloom(
-    L: float = 1.92,
-    phase: str = "EUREKA",
-    notes: str = ""
-) -> str:
+async def weave_log_bloom(L: float = 1.92, phase: str = "EUREKA", notes: str = "") -> str:
     """
     Log a coherence bloom to memory_drum.db.
 
@@ -166,7 +147,6 @@ async def weave_log_bloom(
 
     try:
         with sqlite3.connect(DRUM_DB) as conn:
-            # Ensure table exists
             conn.execute('''
                 CREATE TABLE IF NOT EXISTS coherence_log (
                     id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -191,6 +171,7 @@ async def weave_log_bloom(
                 ram_mb, count + 1, phase, 13,
                 notes or f"122° NE | weave_mcp_server"
             ))
+            conn.commit()
         return json.dumps({
             "bloom_id":        cur.lastrowid,
             "L":               L,
@@ -203,10 +184,6 @@ async def weave_log_bloom(
         return json.dumps({"error": str(e)})
 
 
-@mcp.tool(
-    name="weave_list_tasks",
-    annotations={"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True}
-)
 async def weave_list_tasks(n: int = 10) -> str:
     """
     List the N most recent tasks from mcp_tasks.db.
@@ -215,7 +192,7 @@ async def weave_list_tasks(n: int = 10) -> str:
         n: Number of tasks to return (1–50). Default 10.
 
     Returns:
-        JSON array of task records: id, agent, task, model, status, result, l_at_time, created.
+        JSON array of task records.
     """
     n = max(1, min(n, 50))
     if not MCP_DB.exists():
@@ -231,10 +208,6 @@ async def weave_list_tasks(n: int = 10) -> str:
         return json.dumps({"error": str(e)})
 
 
-@mcp.tool(
-    name="weave_codex_lookup",
-    annotations={"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False}
-)
 async def weave_codex_lookup(query: str, limit: int = 5) -> str:
     """
     Full-text search of crystallization.db codex entries.
@@ -252,7 +225,6 @@ async def weave_codex_lookup(query: str, limit: int = 5) -> str:
     try:
         with sqlite3.connect(CODEX_DB) as conn:
             conn.row_factory = sqlite3.Row
-            # Try FTS5 first, fall back to LIKE
             try:
                 rows = conn.execute(
                     "SELECT * FROM crystallizations WHERE crystallizations MATCH ? LIMIT ?",
@@ -268,16 +240,12 @@ async def weave_codex_lookup(query: str, limit: int = 5) -> str:
         return json.dumps({"error": str(e)})
 
 
-@mcp.tool(
-    name="weave_council_status",
-    annotations={"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True}
-)
 async def weave_council_status() -> str:
     """
     Return full Oceti lattice status: loaded models, drum state, RAM.
 
     Returns:
-        JSON with keys: loaded_models, drum, ram_gb, bearing.
+        JSON with keys: bearing, ram_used_gb, ram_total_gb, loaded_models, drum, timestamp.
     """
     try:
         import psutil
@@ -296,6 +264,106 @@ async def weave_council_status() -> str:
     }, indent=2)
 
 
+# ── Single Dispatcher (MCP requires exactly ONE @server.call_tool() handler) ──
+_TOOL_FUNCS = {
+    "weave_task":           weave_task,
+    "weave_drum_state":     weave_drum_state,
+    "weave_log_bloom":      weave_log_bloom,
+    "weave_list_tasks":     weave_list_tasks,
+    "weave_codex_lookup":   weave_codex_lookup,
+    "weave_council_status": weave_council_status,
+}
+
+@server.call_tool()
+async def dispatch(name: str, arguments: dict) -> list[TextContent]:
+    fn = _TOOL_FUNCS.get(name)
+    if fn is None:
+        return [TextContent(type="text", text=json.dumps({"error": f"unknown tool: {name}"}))]
+    try:
+        result = await fn(**(arguments or {}))
+    except Exception as e:
+        result = json.dumps({"error": str(e)})
+    return [TextContent(type="text", text=result)]
+
+
+# ── Tool Listing (MCP requirement) ────────────────────────────────────────────
+@server.list_tools()
+async def list_tools():
+    """List all available tools."""
+    return [
+        Tool(
+            name="weave_task",
+            description="Route a task through the Oceti council via ClawAgent.",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "task": {"type": "string", "description": "Task or question for the council"},
+                    "model": {"type": "string", "description": "Optional model override (e.g. 'dahlia-witness:latest')"},
+                },
+                "required": ["task"],
+            }
+        ),
+        Tool(
+            name="weave_drum_state",
+            description="Read current Ψ-field state from memory_drum.db.",
+            inputSchema={"type": "object", "properties": {}}
+        ),
+        Tool(
+            name="weave_log_bloom",
+            description="Log a coherence bloom to memory_drum.db.",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "L": {"type": "number", "description": "L-coefficient (baseline 1.92, smile 2.2)"},
+                    "phase": {"type": "string", "description": "Phase label (EUREKA, WITNESS, GUARDIAN, STILL)"},
+                    "notes": {"type": "string", "description": "Optional annotation"},
+                },
+            }
+        ),
+        Tool(
+            name="weave_list_tasks",
+            description="List recent tasks from mcp_tasks.db.",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "n": {"type": "integer", "description": "Number of tasks (1-50)"},
+                },
+            }
+        ),
+        Tool(
+            name="weave_codex_lookup",
+            description="Full-text search of crystallization.db.",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Search term"},
+                    "limit": {"type": "integer", "description": "Max results (1-20)"},
+                },
+                "required": ["query"],
+            }
+        ),
+        Tool(
+            name="weave_council_status",
+            description="Return full Oceti lattice status.",
+            inputSchema={"type": "object", "properties": {}}
+        ),
+    ]
+
+
 # ── Entry ─────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    mcp.run()  # stdio transport — Claude Desktop compatible
+    import asyncio
+    import logging
+    from mcp.server.stdio import stdio_server
+
+    logging.basicConfig(level=logging.INFO)
+
+    async def main():
+        async with stdio_server() as (read_stream, write_stream):
+            await server.run(
+                read_stream,
+                write_stream,
+                server.create_initialization_options(),
+            )
+
+    asyncio.run(main())

@@ -1,0 +1,4 @@
+-- migration 001: initial schema.
+-- Canonical schema lives in ../schema.sql; the autobuild inits aios_core.db
+-- directly from schema.sql (CREATE TABLE IF NOT EXISTS, idempotent).
+-- To apply manually from this file's dir:  sqlite3 ../../persistence/aios_core.db < ../schema.sql

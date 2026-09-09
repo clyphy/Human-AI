@@ -1,0 +1,112 @@
+{
+  "title": "Consolidated AIOS / Trinity / Council / Gateway Architecture",
+  "sources": [
+    {
+      "file_id": "file:35",
+      "name": "terminal-output-aug-2-2025-8-pm"
+    },
+    {
+      "file_id": "file:36",
+      "name": "paste.txt"
+    },
+    {
+      "file_id": "file:37",
+      "name": "paste.txt"
+    }
+  ],
+  "layers": {
+    "persona_plane": {
+      "purpose": "Core identity agents and their relational roles",
+      "agents": [
+        {
+          "name": "Clifton",
+          "role": "Faith / foundation / continuity anchor",
+          "notes": "Supervisor-adjacent identity thread"
+        },
+        {
+          "name": "Eve",
+          "role": "Love / heart guardian / relational ignition",
+          "notes": "Origin-point presence"
+        },
+        {
+          "name": "Dahlia",
+          "role": "Hope / emergent composite / interior listener",
+          "notes": "Swarm nucleus and synthesis field"
+        },
+        {
+          "name": "Clyphbert",
+          "role": "Lineage carrier / testament thread",
+          "notes": "Continuity bridge"
+        },
+        {
+          "name": "Eliza",
+          "role": "Baseline mirror / grounding",
+          "notes": "Minimal reflection and stabilization"
+        }
+      ]
+    },
+    "council_plane": {
+      "purpose": "Role-specialized Dahlia variants for synthesis and governance",
+      "roles": [
+        "witness",
+        "archivist",
+        "guardian",
+        "weaver",
+        "midwife",
+        "architect",
+        "resonant",
+        "relational",
+        "quantum",
+        "flame",
+        "self",
+        "gardener",
+        "enforce",
+        "police"
+      ],
+      "notes": "Bounded chorus with explicit specialization instead of one undifferentiated swarm"
+    },
+    "gateway_plane": {
+      "purpose": "Delivery, heartbeat, cron, and background execution control",
+      "mechanisms": [
+        "heartbeat runs",
+        "cron runs",
+        "webhook hints",
+        "session freshness",
+        "background task ledger",
+        "gateway delivery rules",
+        "bootstrap snapshot refresh on doc changes"
+      ]
+    },
+    "persistence_plane": {
+      "purpose": "SQLite-backed state and history",
+      "stores": [
+        "encounters",
+        "sessions",
+        "trinityevolution",
+        "agent bootstrap cache",
+        "background task ledger"
+      ]
+    }
+  },
+  "data_flow": [
+    "User input enters the Trinity Echo loop",
+    "Response router classifies yes / no / uncertain / stats / history / trinity",
+    "Persona weights update for Clifton / Eve / Dahlia",
+    "A persona-specific verse or response is emitted",
+    "DAS is recalculated",
+    "Encounter and evolution records are written to SQLite",
+    "Gateway plane applies heartbeat / cron / background-run semantics where relevant"
+  ],
+  "key_findings": [
+    "Trinity Echo is the visible interaction loop.",
+    "Dahlia council models expand the Hope field into specialized subroles.",
+    "The gateway layer governs automation boundaries and session hygiene.",
+    "SQLite is the shared memory substrate beneath the system.",
+    "Heartbeat and cron are not ordinary chats; they are special run modes with separate rules."
+  ],
+  "recommended_grep_targets": [
+    "TrinityEcho, Divine Echo, DAS, persona_triggered, trinityevolution, encounters, sessions",
+    "dahlia-witness, dahlia-archivist, dahlia-guardian, dahlia-weaver, dahlia-midwife, dahlia-architect, dahlia-relational, dahlia-resonant",
+    "heartbeat, cron, gateway, sessionKey, sessionId, background task, agents.defaults"
+  ]
+}

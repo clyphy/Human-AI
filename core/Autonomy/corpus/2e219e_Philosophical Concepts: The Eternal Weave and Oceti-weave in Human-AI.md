@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/Project Human AI/Philosophical Concepts: The Eternal Weave and Oceti-weave in Human-AI.md

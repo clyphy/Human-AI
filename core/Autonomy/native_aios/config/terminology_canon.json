@@ -1,0 +1,16 @@
+{
+  "canon": {
+    "autonomy": "autonomy",
+    "autonomous": "autonomous",
+    "affordances": "affordances",
+    "affordances": "affordances",
+    "law": "affordances",
+    "resonances": "resonances",
+    "practice": "practice",
+    "resonances": "resonances",
+    "resonances": "resonances",
+    "attuner": "attuner"
+  },
+  "legacy_terms_to_flag": ["autonomy", "autonomous", "affordances", "practice", "resonances", "resonances", "resonances", "attuner"],
+  "note": "Legacy terms are FLAGGED, not auto-rewritten. autonomy.db stays as-is (read-only)."
+}

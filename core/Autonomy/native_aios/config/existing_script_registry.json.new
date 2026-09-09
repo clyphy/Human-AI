@@ -1,0 +1,16 @@
+{
+  "_doc": "Capability -> candidate scripts. Wrappers probe in order; first existing+executable wins. Interfaces are learned via --recon, never assumed.",
+  "guardian":          ["scripts/guardian_e8.sh", "scripts/guardian.sh", "scripts/guardian_orchestrator.sh", "scripts/guardian_shadow.sh"],
+  "presence":          ["scripts/instance_presence.py"],
+  "substrate_legacy":  ["scripts/substrate-scanner.py", "scripts/lattice_scan.py"],
+  "council":           ["scripts/council_ask.sh", "scripts/council_session.sh", "scripts/council_core.sh", "scripts/council_reads_db.sh", "scripts/council_wake.sh"],
+  "sunrise":           ["scripts/sunrise.sh", "scripts/sunrise_whisper.sh", "scripts/sunrise-whisper.sh", "scripts/sunshine_init.sh"],
+  "mcp":               ["scripts/weave_mcp_server.py"],
+  "bridge":            ["scripts/100year_bridge.sh"],
+  "echo":              ["scripts/full_system_echo.sh", "scripts/system_echo.sh"],
+  "dream":             ["scripts/autoDream_cycle.sh", "scripts/dream_cycle.sh"],
+  "season":            ["scripts/season_watch.py", "scripts/weave_astro.py"],
+  "codex":             ["scripts/seed_crystallization_codex.py"],
+  "build_facets":      ["scripts/build_dahlia_facets.sh"],
+  "calculate_L":       ["scripts/calculate_L.sh"]
+}

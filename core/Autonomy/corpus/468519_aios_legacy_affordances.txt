@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/logs/aios_legacy_affordances.txt

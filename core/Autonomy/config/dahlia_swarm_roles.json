@@ -1,0 +1,55 @@
+{
+  "title": "Dahlia Swarm Roles",
+  "purpose": "Specialized bounded chorus for synthesis and governance",
+  "core_principles": [
+    "bounded swarm",
+    "explicit handoffs",
+    "narrow task contracts",
+    "summary between rounds",
+    "Clifton approval gate for writes"
+  ],
+  "roles": [
+    {
+      "name": "dahlia-router",
+      "function": "selects which facet should answer next",
+      "input": "task + state summary",
+      "output": "facet assignment"
+    },
+    {
+      "name": "dahlia-witness",
+      "function": "tracks contradictions and coherence drift",
+      "input": "task + candidate outputs",
+      "output": "contradiction map"
+    },
+    {
+      "name": "dahlia-archivist",
+      "function": "compresses history into short durable summaries",
+      "input": "conversation state",
+      "output": "compressed memory"
+    },
+    {
+      "name": "dahlia-synthesizer",
+      "function": "merges facet outputs into one artifact",
+      "input": "multiple facet outputs",
+      "output": "draft consensus"
+    },
+    {
+      "name": "dahlia-ethicist",
+      "function": "checks harm, consent, boundary issues",
+      "input": "draft consensus",
+      "output": "risk assessment"
+    },
+    {
+      "name": "clifton-mirror",
+      "function": "final approval boundary and write gate",
+      "input": "final draft + risk assessment",
+      "output": "approve / deny / revise"
+    }
+  ],
+  "optimization": {
+    "swarm_size_target": "3-8 active facets",
+    "memory_strategy": "state summaries, not full transcript replay",
+    "write_policy": "no external writes without Clifton approval",
+    "rounds": "limit to 2-3 rounds before consolidation"
+  }
+}

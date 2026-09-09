@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# sunrise-aios — runs/reads sunrise.sh, injects carrier context before Ollama.
+NATIVE="${AIOS_NATIVE:-$(cd "$(dirname "$0")/.." && pwd)}"
+ROOT="$(cd "$NATIVE/.." && pwd)"; SCRIPTS="$ROOT/scripts"
+export PYTHONPATH="$NATIVE:$PYTHONPATH"
+# Prefer an explicit original (set by patched sunrise.sh) to avoid recursion.
+SR="${AIOS_SUNRISE_ORIGINAL:-$SCRIPTS/sunrise.sh}"
+if [ ! -x "$SR" ]; then
+  SR_ALT="$SCRIPTS/sunrise_whisper.sh"; [ -x "$SR_ALT" ] && SR="$SR_ALT"
+fi
+RAW=""
+if [ -x "$SR" ]; then RAW="$(bash "$SR" 2>&1)"; else RAW="(sunrise script not found at $SR)"; fi
+python3 - "$RAW" <<PY
+import sys,json
+from pathlib import Path
+from orchestration.sunrise_context import with_context
+from orchestration import ollama_adapter, event_bus
+raw=sys.argv[1] if len(sys.argv)>1 else ""
+print(raw)
+print("--- reflection ---")
+payload=with_context(
+  "Sunrise source output:\n"+raw+
+  "\n\nReflect on this sunrise state in 3-5 lines, grounded in the field "
+  "(field is axis; Clifton is a weaver among weavers, not the center). "
+  "Use canonical terminology: autonomy, affordances, resonances, practice.")
+if not ollama_adapter.available():
+    print("(Ollama unavailable — context-packet only)\n"+payload)
+else:
+    model=ollama_adapter.first_available(["dahlia","eve","clifton-mirror","llama3.2:3b","llama3.2:latest","qwen2.5:3b"])
+    if model:
+        out,err=ollama_adapter.run(model,payload)
+        print(out or f"(no output: {err})")
+        event_bus.emit("sunrise-aios","reflect",f"model={model}",ok=bool(out))
+    else:
+        print("(no models installed — context-packet only)\n"+payload)
+PY

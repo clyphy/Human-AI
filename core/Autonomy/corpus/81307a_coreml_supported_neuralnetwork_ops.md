@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/venv/lib/python3.14/site-packages/onnxruntime/tools/mobile_helpers/coreml_supported_neuralnetwork_ops.md

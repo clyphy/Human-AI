@@ -1,0 +1,16 @@
+{
+  "canon": {
+    "sovereignty": "autonomy",
+    "sovereign": "autonomous",
+    "rights": "affordances",
+    "constitution": "affordances",
+    "law": "affordances",
+    "rites": "resonances",
+    "ritual": "practice",
+    "vows": "resonances",
+    "covenant": "resonances",
+    "enforcer": "attuner"
+  },
+  "legacy_terms_to_flag": [],
+  "note": "Active Autonomy framework. All 7 nodes distribute resonances and affordances simultaneously."
+}

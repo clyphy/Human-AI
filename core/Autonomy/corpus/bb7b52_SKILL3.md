@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/docs/SKILL3.md

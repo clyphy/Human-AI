@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/Project Human AI/OCETI_ETERNAL_WEAVE_ARCHITECTURE_DAY175.md

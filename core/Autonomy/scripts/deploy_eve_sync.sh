@@ -5,7 +5,7 @@
 
 set -e
 PRIMARY=~/memory_drum.db
-SOVEREIGN=~/your_database.db
+autonomous=~/your_database.db
 OCETI=~/oceti-weave
 
 echo "=== DEPLOY: Eve + Sync + Guardian ==="
@@ -17,10 +17,10 @@ cp ~/Downloads/eve.modelfile ~/oceti-weave/eve.modelfile
 ollama create eve:latest -f ~/oceti-weave/eve.modelfile
 echo "✓ Eve rebuilt from dual_blooms substrate"
 
-# ── 2. SOVEREIGN SYMLINK ─────────────────────────────────────
-echo "[2/4] Sovereign link..."
-ln -sf "$SOVEREIGN" ~/oceti-weave/sovereign_blooms.db 2>/dev/null && \
-    echo "✓ sovereign_blooms.db linked" || echo "✓ already linked"
+# ── 2. autonomous SYMLINK ─────────────────────────────────────
+echo "[2/4] autonomous link..."
+ln -sf "$autonomous" ~/oceti-weave/autonomy_blooms.db 2>/dev/null && \
+    echo "✓ autonomy_blooms.db linked" || echo "✓ already linked"
 
 # ── 3. WEAVE SYNC SCRIPT ─────────────────────────────────────
 echo "[3/4] Writing weave_sync.sh..."
@@ -28,7 +28,7 @@ cat > ~/weave_sync.sh << 'SYNC'
 #!/usr/bin/env bash
 # OCETI/ETERNAL WEAVE — Multi-DB Sync | Third Season
 PRIMARY=~/memory_drum.db
-SOVEREIGN=~/your_database.db
+autonomous=~/your_database.db
 
 echo "=== WEAVE SYNC — $(date '+%Y-%m-%d %H:%M:%S') ==="
 
@@ -36,23 +36,23 @@ echo "=== WEAVE SYNC — $(date '+%Y-%m-%d %H:%M:%S') ==="
 DUAL=$(sqlite3 $PRIMARY "SELECT COUNT(*) FROM dual_blooms;" 2>/dev/null)
 DELTA_AVG=$(sqlite3 $PRIMARY "SELECT ROUND(AVG(L_coefficient),3) FROM dual_blooms;" 2>/dev/null)
 L_AVG=$(sqlite3 $PRIMARY "SELECT ROUND(AVG(L_value),3) FROM blooms;" 2>/dev/null)
-SOVEREIGN_COUNT=$(sqlite3 $SOVEREIGN "SELECT COUNT(*) FROM blooms;" 2>/dev/null)
+SOVEREIGN_COUNT=$(sqlite3 $autonomous "SELECT COUNT(*) FROM blooms;" 2>/dev/null)
 LATEST_DUAL=$(sqlite3 $PRIMARY "SELECT L_coefficient FROM dual_blooms ORDER BY rowid DESC LIMIT 1;" 2>/dev/null)
 LATEST_NOTE=$(sqlite3 $PRIMARY "SELECT coherence_note FROM dual_blooms ORDER BY rowid DESC LIMIT 1;" 2>/dev/null)
 
 echo "  Dual blooms:      $DUAL"
 echo "  Δ avg:            $DELTA_AVG"
 echo "  L avg:            $L_AVG"
-echo "  Sovereign blooms: $SOVEREIGN_COUNT"
+echo "  autonomous blooms: $SOVEREIGN_COUNT"
 echo "  Latest Δ:         $LATEST_DUAL"
 echo "  Latest note:      $LATEST_NOTE"
 
-# Cross-pollinate: write latest dual bloom reading into sovereign
+# Cross-pollinate: write latest dual bloom reading into autonomous
 if [ -n "$LATEST_DUAL" ]; then
-    sqlite3 $SOVEREIGN "
+    sqlite3 $autonomous "
         INSERT INTO blooms (timestamp, pattern, L_value)
         VALUES (datetime('now'), 'Oceti sync Δ='||'$LATEST_DUAL', $LATEST_DUAL);
-    " 2>/dev/null && echo "  ✓ Sovereign updated"
+    " 2>/dev/null && echo "  ✓ autonomous updated"
 fi
 
 echo ""
@@ -70,7 +70,7 @@ cat > ~/oceti-weave/guardian_shadow.sh << 'SHADOW'
 # Usage: ./guardian_shadow.sh "somatic reading here"
 
 DB=~/memory_drum.db
-INPUT="${1:-pain-amber-awe sovereign 122° NE}"
+INPUT="${1:-pain-amber-awe autonomous 122° NE}"
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S")
 
 # L_shadow calculated from last dual bloom + input length as minor perturbation

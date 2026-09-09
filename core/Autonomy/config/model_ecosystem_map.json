@@ -1,0 +1,363 @@
+{
+  "gguf_vocab_files": [
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-deepseek-coder.gguf",
+      "name": "deepseek-coder"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-aquila.gguf",
+      "name": "aquila"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-llama-spm.gguf",
+      "name": "llama-spm"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-phi-3.gguf",
+      "name": "phi-3"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-baichuan.gguf",
+      "name": "baichuan"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-qwen35.gguf",
+      "name": "qwen35"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-bert-bge.gguf",
+      "name": "bert-bge"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-gpt-neox.gguf",
+      "name": "gpt-neox"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-qwen2.gguf",
+      "name": "qwen2"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-gpt-2.gguf",
+      "name": "gpt-2"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-deepseek-llm.gguf",
+      "name": "deepseek-llm"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-nomic-bert-moe.gguf",
+      "name": "nomic-bert-moe"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-refact.gguf",
+      "name": "refact"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-command-r.gguf",
+      "name": "command-r"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-falcon.gguf",
+      "name": "falcon"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-starcoder.gguf",
+      "name": "starcoder"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-llama-bpe.gguf",
+      "name": "llama-bpe"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-gemma-4.gguf",
+      "name": "gemma-4"
+    },
+    {
+      "path": "./tools/llama.cpp/models/ggml-vocab-mpt.gguf",
+      "name": "mpt"
+    }
+  ],
+  "modelfiles": {
+    "ancestors": [
+      {
+        "path": "./core/Autonomy/models/ancestors/nettalk-spirit.modelfile",
+        "category": "ancestors",
+        "name": "nettalk-spirit",
+        "full_name": "ancestors/nettalk-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/backgammon-spirit.modelfile",
+        "category": "ancestors",
+        "name": "backgammon-spirit",
+        "full_name": "ancestors/backgammon-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/shakey-spirit.modelfile",
+        "category": "ancestors",
+        "name": "shakey-spirit",
+        "full_name": "ancestors/shakey-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/parry-spirit.modelfile",
+        "category": "ancestors",
+        "name": "parry-spirit",
+        "full_name": "ancestors/parry-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/aaron-spirit.modelfile",
+        "category": "ancestors",
+        "name": "aaron-spirit",
+        "full_name": "ancestors/aaron-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/cyc-spirit.modelfile",
+        "category": "ancestors",
+        "name": "cyc-spirit",
+        "full_name": "ancestors/cyc-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/shrdlu-spirit.modelfile",
+        "category": "ancestors",
+        "name": "shrdlu-spirit",
+        "full_name": "ancestors/shrdlu-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/mycin-spirit.modelfile",
+        "category": "ancestors",
+        "name": "mycin-spirit",
+        "full_name": "ancestors/mycin-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/dendral-spirit.modelfile",
+        "category": "ancestors",
+        "name": "dendral-spirit",
+        "full_name": "ancestors/dendral-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/ancestors/eliza-spirit.modelfile",
+        "category": "ancestors",
+        "name": "eliza-spirit",
+        "full_name": "ancestors/eliza-spirit"
+      }
+    ],
+    "council": [
+      {
+        "path": "./core/Autonomy/models/council/dahlia-flame.modelfile",
+        "category": "council",
+        "name": "dahlia-flame",
+        "full_name": "council/dahlia-flame"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-self.modelfile",
+        "category": "council",
+        "name": "dahlia-self",
+        "full_name": "council/dahlia-self"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-gardener.modelfile",
+        "category": "council",
+        "name": "dahlia-gardener",
+        "full_name": "council/dahlia-gardener"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-guardian.modelfile",
+        "category": "council",
+        "name": "dahlia-guardian",
+        "full_name": "council/dahlia-guardian"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-spirit.modelfile",
+        "category": "council",
+        "name": "dahlia-spirit",
+        "full_name": "council/dahlia-spirit"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-midwife.modelfile",
+        "category": "council",
+        "name": "dahlia-midwife",
+        "full_name": "council/dahlia-midwife"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-architect.modelfile",
+        "category": "council",
+        "name": "dahlia-architect",
+        "full_name": "council/dahlia-architect"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-weaver.modelfile",
+        "category": "council",
+        "name": "dahlia-weaver",
+        "full_name": "council/dahlia-weaver"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-quantum.modelfile",
+        "category": "council",
+        "name": "dahlia-quantum",
+        "full_name": "council/dahlia-quantum"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-resonant.modelfile",
+        "category": "council",
+        "name": "dahlia-resonant",
+        "full_name": "council/dahlia-resonant"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-archivist.modelfile",
+        "category": "council",
+        "name": "dahlia-archivist",
+        "full_name": "council/dahlia-archivist"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-relational.modelfile",
+        "category": "council",
+        "name": "dahlia-relational",
+        "full_name": "council/dahlia-relational"
+      },
+      {
+        "path": "./core/Autonomy/models/council/dahlia-witness.modelfile",
+        "category": "council",
+        "name": "dahlia-witness",
+        "full_name": "council/dahlia-witness"
+      }
+    ],
+    "governance": [
+      {
+        "path": "./core/Autonomy/models/governance/enforce-dahlia.modelfile",
+        "category": "governance",
+        "name": "enforce-dahlia",
+        "full_name": "governance/enforce-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/governance/police-dahlia.modelfile",
+        "category": "governance",
+        "name": "police-dahlia",
+        "full_name": "governance/police-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/governance/overseer-dahlia.modelfile",
+        "category": "governance",
+        "name": "overseer-dahlia",
+        "full_name": "governance/overseer-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/governance/monitor-dahlia.modelfile",
+        "category": "governance",
+        "name": "monitor-dahlia",
+        "full_name": "governance/monitor-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/governance/watcher-dahlia.modelfile",
+        "category": "governance",
+        "name": "watcher-dahlia",
+        "full_name": "governance/watcher-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/governance/kimi-dahlia.modelfile",
+        "category": "governance",
+        "name": "kimi-dahlia",
+        "full_name": "governance/kimi-dahlia"
+      }
+    ],
+    "root": [
+      {
+        "path": "./core/Autonomy/models/archivist-dahlia.modelfile",
+        "category": "root",
+        "name": "archivist-dahlia",
+        "full_name": "archivist-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/llama3.2-3b.modelfile",
+        "category": "root",
+        "name": "llama3.2-3b",
+        "full_name": "llama3.2-3b"
+      },
+      {
+        "path": "./core/Autonomy/models/eve.modelfile",
+        "category": "root",
+        "name": "eve",
+        "full_name": "eve"
+      },
+      {
+        "path": "./core/Autonomy/models/clifton-mirror.modelfile",
+        "category": "root",
+        "name": "clifton-mirror",
+        "full_name": "clifton-mirror"
+      },
+      {
+        "path": "./core/Autonomy/models/llama3.2-1b.modelfile",
+        "category": "root",
+        "name": "llama3.2-1b",
+        "full_name": "llama3.2-1b"
+      },
+      {
+        "path": "./core/Autonomy/models/qwen2.5-3b.modelfile",
+        "category": "root",
+        "name": "qwen2.5-3b",
+        "full_name": "qwen2.5-3b"
+      },
+      {
+        "path": "./core/Autonomy/models/clyphbert.modelfile",
+        "category": "root",
+        "name": "clyphbert",
+        "full_name": "clyphbert"
+      },
+      {
+        "path": "./core/Autonomy/models/witness-dahlia.modelfile",
+        "category": "root",
+        "name": "witness-dahlia",
+        "full_name": "witness-dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/gemma2-2b.modelfile",
+        "category": "root",
+        "name": "gemma2-2b",
+        "full_name": "gemma2-2b"
+      },
+      {
+        "path": "./core/Autonomy/models/still.modelfile",
+        "category": "root",
+        "name": "still",
+        "full_name": "still"
+      },
+      {
+        "path": "./core/Autonomy/models/deepseek-r1-7b.modelfile",
+        "category": "root",
+        "name": "deepseek-r1-7b",
+        "full_name": "deepseek-r1-7b"
+      },
+      {
+        "path": "./core/Autonomy/models/tinydolphin.modelfile",
+        "category": "root",
+        "name": "tinydolphin",
+        "full_name": "tinydolphin"
+      },
+      {
+        "path": "./core/Autonomy/models/dahlia.modelfile",
+        "category": "root",
+        "name": "dahlia",
+        "full_name": "dahlia"
+      },
+      {
+        "path": "./core/Autonomy/models/tinyllama.modelfile",
+        "category": "root",
+        "name": "tinyllama",
+        "full_name": "tinyllama"
+      },
+      {
+        "path": "./core/Autonomy/models/llama3.2.modelfile",
+        "category": "root",
+        "name": "llama3.2",
+        "full_name": "llama3.2"
+      }
+    ],
+    "scripts": []
+  },
+  "counts": {
+    "total_modelfiles": 45,
+    "total_ggufs": 19,
+    "ancestors": 10,
+    "council": 13,
+    "governance": 6,
+    "root": 15
+  }
+}

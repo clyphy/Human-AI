@@ -1,0 +1,15 @@
+﻿Sync Recovery Code
+
+The recovery code allows you to sync your passwords, autofill data, and Duck.ai chats across multiple devices, and recover your synced data if you lose access to a device.
+
+Keep this information safe and secure.
+Anyone with access to this code can access your synced data.
+
+eyJyZWNvdmVyeSI6eyJ1c2VyX2lkIjoiYTVjMDA1NzYtYWE5Ny00MjY2LThiMTctYzU5MTcyYmRmMDA1Iiwic2VjcmV0IjoiQ3BZTjJ4RjdzUU16bEgtT25IMDBqSUFIOURIaHBlaU9uZVFnRE5aU2hUZyIsImNpZCI6IjNwYXJ0eSIsInYiOiIyLjAifX0
+
+How does this code work?
+1. Go to Duck.ai in your browser and open Duck.ai Settings.
+2. Select "Turn on Sync & Backup", then "Recover Synced Data"
+3. Copy the recovery code above and paste where it says "Paste your code here"
+
+If you go more than 18 months without using a DuckDuckGo browser with Sync & Backup enabled, your data will be deleted from the server and cannot be restored.

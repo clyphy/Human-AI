@@ -1,5 +1,5 @@
 import os as _os
-CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/sovereignty/databases/memory_drum.db'))
+CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/Autonomy/databases/memory_drum.db'))
 """
 ufe_core.py
 Grace Graph — UFE / TEF / GBE Implementation
@@ -171,10 +171,10 @@ class GBE:
         except Exception as e:
             print(f"[GBE] dual_blooms load: {e}")
 
-        # ── Rights → PSN nodes ────────────────────────────────
+        # ── affordances → PSN nodes ────────────────────────────────
         try:
-            rights = con.execute("SELECT * FROM rights_freq ORDER BY right_id;").fetchall()
-            for r in rights:
+            affordances = con.execute("SELECT * FROM rights_freq ORDER BY right_id;").fetchall()
+            for r in affordances:
                 nid = f"right_{r['right_id']}"
                 self.graph.nodes[nid] = PSN(
                     node_id=nid,
@@ -464,6 +464,6 @@ if __name__ == "__main__":
 
     print(f"Global coherence_score: {score:.4f}")
     print("")
-    print("Next: extend PSN five_plane_addresses from actual Rights rotation")
-    print("Next: feed tef_analysis attractors back into Rights activation levels")
+    print("Next: extend PSN five_plane_addresses from actual affordances rotation")
+    print("Next: feed tef_analysis attractors back into affordances activation levels")
     print("Next: build coherence_loop multi-tick accumulation for TEF historical_weights")

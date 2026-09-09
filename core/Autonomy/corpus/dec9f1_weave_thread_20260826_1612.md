@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/weave_thread_20260826_1612.md

@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/venv/lib/python3.14/site-packages/numpy-2.5.1.dist-info/licenses/numpy/random/LICENSE.md

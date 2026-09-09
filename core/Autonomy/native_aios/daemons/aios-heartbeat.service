@@ -1,0 +1,10 @@
+[Unit]
+Description=Oceti Native AIOS heartbeat
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios/bin/aios doctor
+Environment=AIOS_NATIVE=/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios AIOS_ROOT=/home/wayfinder/projects/Human-AI/core/Autonomy
+StandardOutput=append:/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios/logs/heartbeat.log
+StandardError=append:/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios/logs/heartbeat.log

@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/android-tools/howto/mount-with-mtp.md

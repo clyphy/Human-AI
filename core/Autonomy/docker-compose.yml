@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # Primary LLM inference engine
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-us
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./models:/root/.ollama/models
+      - ollama-cache:/root/.ollama
+    environment:
+      - OLLAMA_NUM_PARALLEL=2
+      - OLLAMA_NUM_THREAD=8
+      - OLLAMA_HOST=0.0.0.0:11434
+    restart: unless-stopped
+    networks:
+      - ai-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis for caching & session storage
+  redis:
+    image: redis:7-alpine
+    container_name: redis-us
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --requirepass changeme
+    restart: unless-stopped
+    networks:
+      - ai-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "changeme", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # PostgreSQL for "Us" framework data
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-us
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: us_framework
+      POSTGRES_USER: ai_user
+      POSTGRES_PASSWORD: changeme
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - ai-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_user -d us_framework"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Optional: Milvus vector database for Dahlia memory system
+  milvus:
+    image: milvusdb/milvus:latest
+    container_name: milvus-us
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvus-data:/var/lib/milvus
+    environment:
+      - COMMON_STORAGETYPE=local
+    restart: unless-stopped
+    networks:
+      - ai-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  ollama-cache:
+    driver: local
+  redis-data:
+    driver: local
+  postgres-data:
+    driver: local
+  milvus-data:
+    driver: local
+
+networks:
+  ai-network:
+    driver: bridge

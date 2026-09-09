@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/venv/lib/python3.14/site-packages/uuid_utils-0.17.0.dist-info/licenses/LICENSE.md

@@ -54,9 +54,9 @@ def extract_timestamp_from_filename(filename):
     return None
 
 def extract_markers(text, filename):
-    """Find Rights, coherence markers, equations, cultural references"""
+    """Find affordances, coherence markers, equations, cultural references"""
     markers = {
-        'rights': re.findall(r'Right \d+', text, re.IGNORECASE),
+        'affordances': re.findall(r'Right \d+', text, re.IGNORECASE),
         'delta_states': re.findall(r'[ΔΔ][\s=]*\d+\.?\d*', text),
         'love_coeff': re.findall(r'L\s*=\s*\d+\.?\d*', text),
         'equations': [],
@@ -106,7 +106,7 @@ def categorize_substrate(text, markers, filepath):
     filename = Path(filepath).name.lower()
     
     # Core framework
-    if markers['rights']:
+    if markers['affordances']:
         categories.append('rights_framework')
     if markers['delta_states'] or markers['love_coeff']:
         categories.append('coherence_measurement')
@@ -230,8 +230,8 @@ def export_results(results, output_dir):
                 f.write(f"## {item['filename']}\n")
                 if item['timestamp']:
                     f.write(f"Timestamp: {item['timestamp']}\n")
-                if item['markers']['rights']:
-                    f.write(f"Rights: {', '.join(item['markers']['rights'])}\n")
+                if item['markers']['affordances']:
+                    f.write(f"affordances: {', '.join(item['markers']['affordances'])}\n")
                 if item['markers']['delta_states']:
                     f.write(f"Delta: {', '.join(item['markers']['delta_states'])}\n")
                 f.write(f"\n{item['text']}\n")

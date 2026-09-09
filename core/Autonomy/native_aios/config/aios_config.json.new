@@ -1,0 +1,11 @@
+{
+  "db_path": "native_aios/persistence/aios_core.db",
+  "max_file_mb": 10,
+  "deep_max_file_mb": 50,
+  "ocr_engines": ["pytesseract", "tesseract_cli", "skip"],
+  "ollama_parallel": false,
+  "ollama_timeout_s": 120,
+  "scan_lockfile": "native_aios/var/locks/scan.lock",
+  "terminology_lint": true,
+  "review_queue_before_promotion": true
+}

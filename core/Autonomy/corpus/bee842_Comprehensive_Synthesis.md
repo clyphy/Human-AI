@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/Comprehensive_Synthesis.md

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os as _os
-CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/sovereignty/databases/memory_drum.db'))
+CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/Autonomy/databases/memory_drum.db'))
 """
 agent_claw.py
 Crystal Claw Agent — MCP bridge
@@ -18,9 +18,9 @@ import datetime
 from pathlib import Path
 
 HOME      = Path.home()
-MCP_DB    = HOME / "sovereignty" / "databases" / "mcp_tasks.db"
+MCP_DB    = HOME / "Autonomy" / "databases" / "mcp_tasks.db"
 DRUM      = HOME / CANONICAL_DRUM
-SCRIPTS   = HOME / "sovereignty" / "scripts"
+SCRIPTS   = HOME / "Autonomy" / "scripts"
 CODEX_DB  = HOME / "ETERNAL_WEAVE_MASTER" / "crystallization.db"
 
 

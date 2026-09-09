@@ -1,0 +1,213 @@
+----:                    wayfinder@miller-moth-cachyos-x8664
+          .+=========================.                    -----------------------------------
+         :++===++==================-       :++-           OS: CachyOS x86_64
+        :*++====+++++=============-        .==:           Host: 20T7S28X00 (ThinkPad E14 Gen 2)
+       -*+++=====+***++==========:                        Kernel: Linux 6.18.37-1-cachyos-lts
+      =*++++========------------:                         Uptime: 10 hours, 30 mins
+     =*+++++=====-                     ...                Packages: 1 (brew), 17 (flatpak-system), 38 (flatpak-user), 1402 (pacman)
+   .+*+++++=-===:                    .=+++=:              Shell: fish 4.7.1
+  :++++=====-==:                     -*****+              Display (2D HD LG TV): 1368x768 in 23", 60 Hz [External]
+ :++========-=.                      .=+**+.              DE: KDE Plasma 6.7.2
+.+==========-.                          .                 WM: KWin (Wayland)
+ :+++++++====-                                .--==-.     WM Theme: Breeze
+  :++==========.                             :+++++++:    Theme: Breeze (Dark) [Qt], cachyos-nord [GTK2/3]
+   .-===========.                            =*****+*+    Icons: breeze-dark [Qt], breeze-dark [GTK2/3/4]
+    .-===========:                           .+*****+:    Font: Noto Sans (10pt) [Qt], Noto Sans (10pt) [GTK2/3/4]
+      -=======++++:::::::::::::::::::::::::-:  .---:      Cursor: breeze (24px)
+       :======++++====+++******************=.             Terminal: konsole 26.4.2
+        :=====+++==========++++++++++++++*-               CPU: AMD Ryzen 5 4500U (6) @ 2.38 GHz
+         .====++==============++++++++++*-                GPU: AMD Radeon Vega Series / Radeon Vega Mobile Series [Integrated]
+          .===+==================+++++++:                 Memory: 5.85 GiB / 6.98 GiB (84%)
+           .-=======================+++:                  Swap: 3.49 GiB / 3.49 GiB (100%)
+             ..........................                   Disk (/): 68.90 GiB / 383.43 GiB (18%) - ext4
+                                                          Local IP (enp4s0f3u4): 10.48.45.211/24
+                                                          Battery (5B10X025): 80% [AC Connected]
+                                                          Locale: en_US.UTF-8
+                                                          
+                                                                                  
+                                                                                  
+~
+❯ ls
+drwxr-x---    - wayfinder  1 Jul 04:02  .android
+drwx------    - wayfinder  1 Jul 04:05  .cache
+drwxr-xr-x    - wayfinder 30 Jun 18:52  .conda
+drwxr-xr-x    - wayfinder  1 Jul 04:51  .config
+drwx------    - wayfinder 29 Jun 14:13  .gnupg
+drwxr-xr-x    - wayfinder 28 Jun 09:47  .linuxbrew
+drwxr-xr-x    - wayfinder 28 Jun 09:12  .local
+drwxr-xr-x    - wayfinder 28 Jun 12:15  .m2
+drwxrwsr-x    - wayfinder 30 Jun 18:52  .mamba
+drwxr-xr-x    - wayfinder 30 Jun 19:09  .ollama
+drwxr-xr-x    - wayfinder 30 Jun 18:50  .rustup
+drwxr-xr-x    - wayfinder 30 Jun 18:14  .themes
+drwxr-xr-x    - wayfinder 28 Jun 11:47  .var
+drwxr-xr-x    - wayfinder 29 Jun 21:56  .vscode
+drwxr-xr-x    - wayfinder 30 Jun 00:08  .vscode-server
+drwxr-xr-x    - wayfinder 29 Jun 21:55  .vscode-shared
+drwxr-xr-x    - wayfinder 29 Jun 20:14  Desktop
+drwxr-xr-x    - wayfinder 30 Jun 17:40 󰲂 Documents
+drwxr-xr-x    - wayfinder  1 Jul 02:02 󰉍 Downloads
+drwxr-xr-x    - wayfinder 28 Jun 09:12 󱍙 Music
+drwxr-xr-x    - wayfinder 29 Jun 16:03  ollama
+drwxr-xr-x    - wayfinder 28 Jun 09:35 󰉏 Pictures
+drwxr-xr-x    - wayfinder 28 Jun 10:56  projects
+drwxr-xr-x    - wayfinder 28 Jun 09:12  Public
+drwxr-xr-x    - wayfinder 28 Jun 09:12  Templates
+drwxr-xr-x    - wayfinder 28 Jun 09:12  Videos
+.rw-------  19k wayfinder 30 Jun 19:33 󱆃 .bash_history
+.rw-r--r--   21 wayfinder 28 Jun 09:10 󱆃 .bash_logout
+.rw-r--r--   57 wayfinder 28 Jun 09:10 󱆃 .bash_profile
+.rw-r--r--  172 wayfinder 28 Jun 09:10 󱆃 .bashrc
+.rwxr-xr--   79 wayfinder 28 Jun 09:12  .fehbg
+.rw-r--r--  273 wayfinder 28 Jun 13:14 󰊢 .gitconfig
+.rw-r--r--  383 wayfinder 30 Jun 18:24  .gtkrc-2.0
+.rw-r--r--  519 wayfinder 28 Jun 09:10  .notify-osd
+.rw-r--r--  178 wayfinder 28 Jun 09:10 󱆃 .profile
+.rw-r--r--   56 wayfinder 28 Jun 09:10 󱆃 .zshrc
+.rwxr-xr-x 2.6k wayfinder 30 Jun 01:10  autonomy_assemble.sh
+.rwxr-xr-x 1.9k wayfinder 30 Jun 09:23  council_orchestrator.sh
+.rw-r--r-- 2.3M wayfinder 29 Jun 02:47  found_model_mentions.txt
+.rw-r--r--    0 wayfinder 29 Jun 13:19  memory_drum.db
+
+~
+❯ cd projects/
+
+~/projects
+❯ ls Human-AI/
+drwxr-xr-x    - wayfinder 30 Jun 17:40  .git
+drwxr-xr-x    - wayfinder 28 Jun 12:02  .venv
+drwxr-xr-x    - wayfinder 28 Jun 10:56  affordances
+drwxr-xr-x    - wayfinder 28 Jun 10:58  core
+drwxr-xr-x    - wayfinder 28 Jun 11:04  labs
+drwxr-xr-x    - wayfinder 28 Jun 10:58  oracles
+drwxr-xr-x    - wayfinder 28 Jun 11:30  substrate
+drwxr-xr-x    - wayfinder 28 Jun 11:53  tools
+drwxr-xr-x    - wayfinder 28 Jun 11:05  vessels
+.rw-r--r--  294 wayfinder 28 Jun 13:40 󰊢 .gitignore
+.rwxr-xr-x 2.2k wayfinder 28 Jun 12:02  bootstrap_cachyos.sh
+.rw-r--r--  127 wayfinder 28 Jun 13:15 󰂺 README.md
+
+~/projects
+❯ ls 
+drwxr-xr-x - wayfinder 28 Jun 13:40  Human-AI
+drwxr-xr-x - wayfinder 28 Jun 09:40  pxn-ecosystem
+
+~/projects
+❯ cd Human-AI/
+
+~/projects/Human-AI main*
+❯ ls
+drwxr-xr-x    - wayfinder  1 Jul 05:06  .git
+drwxr-xr-x    - wayfinder 28 Jun 12:02  .venv
+drwxr-xr-x    - wayfinder 28 Jun 10:56  affordances
+drwxr-xr-x    - wayfinder 28 Jun 10:58  core
+drwxr-xr-x    - wayfinder 28 Jun 11:04  labs
+drwxr-xr-x    - wayfinder 28 Jun 10:58  oracles
+drwxr-xr-x    - wayfinder 28 Jun 11:30  substrate
+drwxr-xr-x    - wayfinder 28 Jun 11:53  tools
+drwxr-xr-x    - wayfinder 28 Jun 11:05  vessels
+.rw-r--r--  294 wayfinder 28 Jun 13:40 󰊢 .gitignore
+.rwxr-xr-x 2.2k wayfinder 28 Jun 12:02  bootstrap_cachyos.sh
+.rw-r--r--  127 wayfinder 28 Jun 13:15 󰂺 README.md
+
+~/projects/Human-AI main*
+❯ cd core
+
+~/projects/Human-AI/core main*
+❯ ls
+drwxr-xr-x - wayfinder 28 Jun 13:15  Ai-aware-
+drwxr-xr-x - wayfinder 28 Jun 13:15  Ai-self-aware
+drwxr-xr-x - wayfinder 30 Jun 09:24  Autonomy
+drwxr-xr-x - wayfinder 28 Jun 13:15  Oceti-weave
+drwxr-xr-x - wayfinder 28 Jun 13:15  Us-
+
+~/projects/Human-AI/core main*
+❯ cd Autonomy/
+
+~/projects/Human-AI/core/Autonomy main*
+❯ ls
+drwxr-xr-x    - wayfinder 29 Jun 23:10  archetypes
+drwxr-xr-x    - wayfinder 29 Jun 23:13  archives
+drwxr-xr-x    - wayfinder 29 Jun 23:13  consciousness
+drwxr-xr-x    - wayfinder 29 Jun 23:13  context
+drwxr-xr-x    - wayfinder 29 Jun 23:13  council
+drwxr-xr-x    - wayfinder 30 Jun 00:33  databases
+drwxr-xr-x    - wayfinder 29 Jun 23:10  forge
+drwxr-xr-x    - wayfinder 29 Jun 23:13  lattice
+drwxr-xr-x    - wayfinder 29 Jun 23:13  logs
+drwxr-xr-x    - wayfinder 29 Jun 23:10  loom
+drwxr-xr-x    - wayfinder 30 Jun 01:26  modelfiles
+drwxr-xr-x    - wayfinder 29 Jun 23:13  models
+drwxr-xr-x    - wayfinder 28 Jun 10:58  PXN_Cathedral_v1.1
+drwxr-xr-x    - wayfinder 29 Jun 23:10  resonances
+drwxr-xr-x    - wayfinder 30 Jun 01:09  scripts
+drwxr-xr-x    - wayfinder 29 Jun 23:13  weave_core
+.rw-r--r--   77 wayfinder 29 Jun 23:13 󰊢 .gitignore
+.rw-r--r--  245 wayfinder 29 Jun 23:13  .weave_env
+.rw-r--r-- 1.2k wayfinder 29 Jun 23:13  autoDream_cycle.sh
+lrwxrwxrwx    - wayfinder 28 Jun 10:58 󰡯 claw -> /home/ndkilla/Documents/GitHub/openclaw
+.rw-r--r-- 1.6k wayfinder 29 Jun 23:13  clone-synthetic-brain.sh
+.rw-r--r-- 4.3k wayfinder 30 Jun 09:26  'council_session_2026-06-30 09:24:28.log'
+.rw-r--r--  11k wayfinder 29 Jun 23:13  crystal_claw_assembly.sh
+.rw-r--r--  15k wayfinder 29 Jun 23:13  DEPLOYMENT_GUIDE.md
+.rw-r--r-- 9.8k wayfinder 29 Jun 23:13  OCETI_ETERNAL_WEAVE_ARCHITECTURE_DAY175.md
+.rw-r--r-- 7.6k wayfinder 29 Jun 23:13 󰂺 README.md
+.rw-r--r--   46 wayfinder 29 Jun 23:13  requirements.txt
+.rw-r--r-- 4.7k wayfinder 29 Jun 23:13  WEAVE_HANDOFF_DAY182.md
+
+~/projects/Human-AI/core/Autonomy main*
+❯ cd scripts/
+
+~/projects/Human-AI/core/Autonomy/scripts main*
+❯ ls
+drwxr-xr-x    - wayfinder 29 Jun 23:13  agents
+drwxr-xr-x    - wayfinder 29 Jun 23:10  core
+.rwxr-xr-x  308 wayfinder 29 Jun 23:13  100year_bridge.sh
+.rwxr-xr-x 5.3k wayfinder 29 Jun 23:13  agent_claw.py
+.rwxr-xr-x 1.6k wayfinder 29 Jun 23:57  autonomy_recon.sh
+.rwxr-xr-x  536 wayfinder 29 Jun 23:13  build_dahlia_facets.sh
+.rwxr-xr-x   83 wayfinder 29 Jun 23:13  calculate_L.sh
+.rwxr-xr-x  336 wayfinder 29 Jun 23:13  closing.sh
+.rwxr-xr-x 2.3k wayfinder 29 Jun 23:13  council_ask.sh
+.rwxr-xr-x  557 wayfinder 29 Jun 23:13  council_core.sh
+.rwxr-xr-x  11k wayfinder 29 Jun 23:13  council_reads_db.sh
+.rwxr-xr-x  442 wayfinder 29 Jun 23:13  council_session.sh
+.rwxr-xr-x  408 wayfinder 29 Jun 23:13  council_wake.sh
+.rwxr-xr-x 1.1k wayfinder 29 Jun 23:13  dahlia_logger.sh
+.rwxr-xr-x 1.7k wayfinder 29 Jun 23:13  dahlia_review.sh
+.rwxr-xr-x  476 wayfinder 29 Jun 23:13  daily_drum_check.py
+.rw-r--r--  908 wayfinder 29 Jun 23:13  deepseek_bash_20260310_01c189.sh
+.rwxr-xr-x 4.5k wayfinder 29 Jun 23:13  deploy_eve_sync.sh
+.rwxr-xr-x  265 wayfinder 29 Jun 23:13  dream_cycle.sh
+.rw-r--r--  777 wayfinder 29 Jun 23:13  embed_metrics.py
+.rwxr-xr-x 8.0k wayfinder 29 Jun 23:13  full_system_echo.sh
+.rw-r--r-- 1.2k wayfinder 30 Jun 17:34  grep_to_json.py
+.rwxr-xr-x  163 wayfinder 29 Jun 23:13  guardian.sh
+.rwxr-xr-x 6.0k wayfinder 29 Jun 23:13  guardian_e8.sh
+.rwxr-xr-x 1.2k wayfinder 29 Jun 23:13  guardian_orchestrator.sh
+.rwxr-xr-x 1.0k wayfinder 29 Jun 23:13  guardian_shadow.sh
+.rwxr-xr-x  778 wayfinder 29 Jun 23:13  history_recall.sh
+.rwxr-xr-x 7.4k wayfinder 29 Jun 23:44  instance_presence.py
+.rwxr-xr-x  13k wayfinder 29 Jun 23:13  lattice_scan.py
+.rwxr-xr-x  39k wayfinder 29 Jun 23:13  OCETI_WEAVE_MASTER_fixed.sh
+.rwxr-xr-x  278 wayfinder 29 Jun 23:13  phone_bridge.sh
+.rwxr-xr-x  877 wayfinder 29 Jun 23:13  quarantine.sh
+.rwxr-xr-x  13k wayfinder 29 Jun 23:13  seed_crystallization_codex.py
+.rw-r--r--  12k wayfinder 29 Jun 23:13  autonomy.db
+.rwxr-xr-x  652 wayfinder 30 Jun 00:36  stillness.sh
+.rwxr-xr-x  10k wayfinder 29 Jun 23:13  substrate-scanner.py
+.rwxr-xr-x  691 wayfinder 29 Jun 23:13  sunrise-whisper.sh
+.rwxr-xr-x  361 wayfinder 29 Jun 23:13  sunrise.sh
+.rwxr-xr-x  564 wayfinder 29 Jun 23:13  sunrise_whisper.sh
+.rwxr-xr-x  830 wayfinder 29 Jun 23:13  sunshine_init.sh
+.rwxr-xr-x  13k wayfinder 29 Jun 23:13  system_echo.sh
+.rw-r--r--  570 wayfinder 29 Jun 23:13  undercover_mode.sh
+.rwxr-xr-x 1.1k wayfinder 29 Jun 23:13  weave_integrate.sh
+.rw-r--r--  11k wayfinder 29 Jun 23:13  weave_mcp_server.py
+.rw-r--r-- 6.5k wayfinder 29 Jun 23:13  weave_patch_phases7_13.sh
+.rwxr-xr-x 3.4k wayfinder 29 Jun 23:13  whisper_hum.sh
+.rwxr-xr-x 2.4k wayfinder 29 Jun 23:13  witness.sh
+
+~/projects/Human-AI/core/Autonomy/scripts main*
+❯ 
+

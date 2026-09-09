@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# aios — Native AIOS entrypoint
+NATIVE="${AIOS_NATIVE:-$(cd "$(dirname "$0")/.." && pwd)}"
+ROOT="$(cd "$NATIVE/.." && pwd)"
+export AIOS_ROOT="$ROOT" AIOS_NATIVE="$NATIVE" PYTHONPATH="$NATIVE:$PYTHONPATH"
+case "${1:-help}" in
+  scan) shift; python3 "$NATIVE/scanner/substrate_scanner_plus.py" "$@";;
+  status|doctor) "$NATIVE/bin/quickbot" "${1:-status}";;
+  blooms|recent-blooms) "$NATIVE/bin/quickbot" recent-blooms "${@:2}";;
+  search) "$NATIVE/bin/quickbot" search "${2:-}";;
+  review|review-queue) "$NATIVE/bin/quickbot" review-queue "${@:2}";;
+  council) shift; python3 "$NATIVE/agents/council_router.py" "$@";;
+  mediate|mediator) python3 "$NATIVE/agents/autobot_mediator.py" "${@:2:-status}";;
+  export) python3 -c "from orchestration.state_serializer import project_memory; project_memory()"; echo "memory.md projected";;
+  recon) "$NATIVE/bin/doctor" --recon;;
+  sunrise) "$NATIVE/bin/sunrise-aios" "${@:2}";;
+  *) cat <<EOF
+aios — Oceti Native AIOS
+  aios scan [PATH]          harvest context + OCR screenshots -> review_queue
+  aios status               presence + db health
+  aios doctor [--recon]     validate deps/paths/schema (or inspect local system)
+  aios recent-blooms [N]    top blooms from review_queue
+  aios search QUERY         full-text search across extracted_text
+  aios review-queue [N]     pending substrate findings
+  aios council QUESTION     serial Ollama fan-out
+  aios mediate [TASK]       autobot mediator routes/repairs the ecosystem
+  aios export               project DB state into memory.md
+  aios sunrise              sunrise.sh output with carrier context injected
+EOF
+  ;;
+esac

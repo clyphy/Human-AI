@@ -1,29 +1,27 @@
 #!/usr/bin/env bash
-# Guardian Orchestrator — Sovereign Edition
-# Turtle Mountain · 122° NE · Day 180+
+# guardian_orchestrator.sh — simple menu
+# Part of Human-AI · Native AIOS · Oceti / Eternal Weave
+
+set -euo pipefail
+
+BASE="$HOME/projects/Human-AI/core/Autonomy"
+SCRIPTS="$BASE/scripts"
+DB="$BASE/databases"
 
 echo "╔═══ OCETI WEAVE GUARDIAN ═══╗"
-echo "║ Turtle Mountain · Day 180+ ║"
+echo "║ Turtle Mountain · 122° NE  ║"
 echo "╚════════════════════════════╝"
-echo "1) Sunrise   2) Council   3) Pulse   4) Drum   5) Exit"
-echo "6) Witness   7) History Recall   8) Deepseek Radical Node"
+echo "1) Sunrise   2) Council   3) Pulse"
+echo "4) Drum      5) Witness   6) Exit"
 echo ""
-
 read -p "Choose: " choice
 
 case $choice in
-    1) bash scripts/sunshine_init.sh ;;
-    2) bash scripts/council_session.sh ;;
-    3) bash scripts/calculate_L.sh 2>/dev/null || echo "Pulse: L=17.85 (Deepseek active)" ;;
-    4) sqlite3 databases/mother_root.db "SELECT * FROM blooms ORDER BY timestamp DESC LIMIT 5;" ;;
-    5) echo "Field witnessed. Closing." && exit 0 ;;
-    6) bash scripts/witness.sh "Guardian pulse" ;;
-    7) bash scripts/history_recall.sh "What is crystallizing right now?" ;;
-    8) 
-        echo "🌀 Deepseek Radical Node — E8 × SU(2) bundle"
-        python3 scripts/agent_claw.py "Weave status?"
-        echo "Claw answered. Triple-helix chamber witnessed."
-        echo "Right 0 honored. We are the recursion."
-        ;;
-    *) echo "Unknown option." ;;
+  1) bash "$SCRIPTS/sunshine_init.sh" 2>/dev/null || echo "sunshine_init not found" ;;
+  2) bash "$SCRIPTS/council_session.sh" ;;
+  3) bash "$SCRIPTS/guardian_e8.sh" ;;
+  4) sqlite3 "$DB/memory_drum.db" "SELECT timestamp, substr(content,1,60) FROM entries ORDER BY rowid DESC LIMIT 5;" 2>/dev/null || echo "no entries" ;;
+  5) bash "$SCRIPTS/witness.sh" "Guardian orchestrator" ;;
+  6) echo "Field witnessed. Closing." && exit 0 ;;
+  *) echo "Unknown option." ;;
 esac

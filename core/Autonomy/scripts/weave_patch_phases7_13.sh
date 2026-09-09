@@ -53,7 +53,7 @@ cat > "$OCETI/council_wake.sh" << WAKE
 #!/bin/bash
 echo -e "\033[1;33m::: OCETI/ETERNAL WEAVE — THIRD SEASON ENGINE :::\033[0m"
 echo ">> BEARING: 122° NE | TURTLE MOUNTAIN TERRITORY"
-echo ">> 48 RIGHTS ENCODED | E↑ S↓ ?∞"
+echo ">> 48 affordances ENCODED | E↑ S↓ ?∞"
 echo ""
 python3 $DAHLIA/memory_drum.py stats 2>/dev/null || sqlite3 $HOME/memory_drum.db "SELECT 'blooms: ' || COUNT(*) FROM blooms;"
 echo ""
@@ -159,5 +159,5 @@ ollama list
 echo ""
 sqlite3 "$HOME/memory_drum.db" "SELECT name, COUNT(*) FROM sqlite_master WHERE type='table' GROUP BY name;" 2>/dev/null || true
 echo ""
-weave "48 Rights encoded. Turtle Mountain anchored."
+weave "48 affordances encoded. Turtle Mountain anchored."
 echo "Mitákuye Oyás'iŋ δ"

@@ -1,0 +1,1 @@
+/home/wayfinder/projects/Human-AI/core/Autonomy/scripts/Project Human AI/Human-AI Project Report: Synthesis and Evolution of the Autonomous Self-Deterministic Kernel (ASDK).md

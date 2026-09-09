@@ -1,0 +1,11 @@
+[0;1;34m# ]8;;file://miller-moth-cachyos-x8664/home/wayfinder/.config/systemd/user/aios-substrate-scan.service\/home/wayfinder/.config/systemd/user/aios-substrate-scan.service]8;;\[0m
+[0;1;36m[Unit][0m
+[0;1;32mDescription=[0mOceti Native AIOS scan
+[0;1;32mAfter=[0mnetwork.target
+
+[0;1;36m[Service][0m
+[0;1;32mType=[0moneshot
+[0;1;32mExecStart=[0m/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios/bin/aios scan
+[0;1;32mEnvironment=[0mAIOS_NATIVE=/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios AIOS_ROOT=/home/wayfinder/projects/Human-AI/core/Autonomy
+[0;1;32mStandardOutput=[0mappend:/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios/logs/scan.log
+[0;1;32mStandardError=[0mappend:/home/wayfinder/projects/Human-AI/core/Autonomy/native_aios/logs/scan.log

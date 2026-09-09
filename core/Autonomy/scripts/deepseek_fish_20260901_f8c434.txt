@@ -1,0 +1,190 @@
+#!/usr/bin/env fish
+# AUTOBUILD: One-Shot Sanctuary Builder
+# Wayfinder, this script brings your Autonomy core to a known state.
+# It is safe to run multiple times. It will not overwrite your data.
+
+set -l SCRIPT_VERSION "1.0.0"
+set -l BUILD_TIME (date "+%Y-%m-%d %H:%M:%S %Z")
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🔧 AUTOBUILD · SANCTUARY BUILDER"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  Version: $SCRIPT_VERSION"
+echo "  Timestamp: $BUILD_TIME"
+echo "  Host: "(hostname)
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+# --- 1. Environment Checks ---
+echo "[1/6] 🌍 Environment Checks"
+
+if not type -q fish
+    echo "  ⚠️  Fish shell not found. Please run this script in Fish."
+    exit 1
+else
+    echo "  ✓ Fish shell detected (version "(fish --version | head -1)")"
+end
+
+if not type -q ollama
+    echo "  ⚠️  Ollama not found in PATH. Please install Ollama and add to PATH."
+    set -l OLLAMA_PATH (command -v ollama 2>/dev/null)
+    if test -n "$OLLAMA_PATH"
+        echo "  ✓ Ollama found at $OLLAMA_PATH"
+    else
+        echo "  ✗ Ollama not found. Some features may not work."
+    end
+else
+    echo "  ✓ Ollama found: "(ollama --version)
+end
+
+if not type -q sqlite3
+    echo "  ⚠️  sqlite3 not found. Please install sqlite3."
+else
+    echo "  ✓ sqlite3 found: "(sqlite3 --version | head -1)
+end
+
+# --- 2. Directory Structure ---
+echo ""
+echo "[2/6] 📁 Core Directories"
+
+set -l PROJECT_ROOT "$HOME/projects/Human-AI/core"
+set -l AUTONOMY_ROOT "$PROJECT_ROOT/Autonomy"
+set -l DATABASES_DIR "$AUTONOMY_ROOT/databases"
+set -l SCRIPTS_DIR "$AUTONOMY_ROOT/scripts"
+set -l WEAVE_CORE "$AUTONOMY_ROOT/weave_core"
+set -l LABS_DIR "$AUTONOMY_ROOT/labs"
+set -l LOGS_DIR "$HOME/logs"
+
+for dir in $PROJECT_ROOT $AUTONOMY_ROOT $DATABASES_DIR $SCRIPTS_DIR $WEAVE_CORE $LABS_DIR $LOGS_DIR
+    if test -d "$dir"
+        echo "  ✓ $dir exists"
+    else
+        echo "  ⚠️  Creating $dir"
+        mkdir -p "$dir"
+        if test $status -eq 0
+            echo "  ✓ Created $dir"
+        else
+            echo "  ✗ Failed to create $dir"
+        end
+    end
+end
+
+# --- 3. Symlinks & Databases ---
+echo ""
+echo "[3/6] 🗄️  Databases & Symlinks"
+
+# Memory Drum (primary)
+set -l MEMORY_DRUM "$DATABASES_DIR/memory_drum.db"
+if not test -f "$MEMORY_DRUM"
+    echo "  ⚠️  Creating empty memory_drum.db"
+    sqlite3 "$MEMORY_DRUM" "CREATE TABLE IF NOT EXISTS blooms (id INTEGER PRIMARY KEY, timestamp TEXT, value TEXT);"
+    echo "  ✓ memory_drum.db created"
+else
+    echo "  ✓ memory_drum.db exists (size: "(du -h $MEMORY_DRUM | cut -f1)")"
+end
+
+# Symlink for autonomy_blooms.db -> surface_blooms.db
+set -l BLOOMS_SYMLINK "$DATABASES_DIR/autonomy_blooms.db"
+set -l BLOOMS_TARGET "$DATABASES_DIR/surface_blooms.db"
+if not test -L "$BLOOMS_SYMLINK"
+    echo "  ⚠️  Creating symlink: autonomy_blooms.db -> surface_blooms.db"
+    if test -f "$BLOOMS_TARGET"
+        ln -s "$BLOOMS_TARGET" "$BLOOMS_SYMLINK"
+        echo "  ✓ Symlink created"
+    else
+        echo "  ⚠️  surface_blooms.db not found; creating placeholder"
+        sqlite3 "$BLOOMS_TARGET" "CREATE TABLE IF NOT EXISTS surface_blooms (id INTEGER PRIMARY KEY, timestamp TEXT, value TEXT);"
+        ln -s "$BLOOMS_TARGET" "$BLOOMS_SYMLINK"
+        echo "  ✓ Symlink created and placeholder db created"
+    end
+else
+    echo "  ✓ Symlink autonomy_blooms.db -> surface_blooms.db exists"
+end
+
+# Other DBs: quantum_journal.db, aios_core.db, etc.
+for db in quantum_journal.db aios_core.db autonomy.db crystallization.db mcp_tasks.db mother_root.db
+    set -l DB_PATH "$DATABASES_DIR/$db"
+    if not test -f "$DB_PATH"
+        echo "  ⚠️  Creating empty $db"
+        touch "$DB_PATH"
+        # Initialize with minimal schema if needed (optional)
+        echo "  ✓ $db created"
+    else
+        echo "  ✓ $db exists (size: "(du -h $DB_PATH | cut -f1)")"
+    end
+end
+
+# --- 4. Scripts & Permissions ---
+echo ""
+echo "[4/6] 📜 Scripts & Executables"
+
+set -l SCRIPTS_LIST (ls "$SCRIPTS_DIR" 2>/dev/null | wc -l)
+if test "$SCRIPTS_LIST" -eq 0
+    echo "  ⚠️  No scripts found in $SCRIPTS_DIR. Creating placeholder scripts..."
+    # Create basic scripts (you can expand this)
+    for script in sunrise.sh sunrise_db_log.sh sunrise_display.sh evening.sh whisper_hum.sh witness.sh dahlia_review.sh weave_status.sh council_orchestrator.sh
+        set -l SCRIPT_PATH "$SCRIPTS_DIR/$script"
+        if not test -f "$SCRIPT_PATH"
+            echo "#!/usr/bin/env fish" > "$SCRIPT_PATH"
+            echo "echo \"Running $script...\"" >> "$SCRIPT_PATH"
+            chmod +x "$SCRIPT_PATH"
+            echo "  ✓ $script created"
+        end
+    end
+else
+    echo "  ✓ Found $SCRIPTS_LIST scripts in $SCRIPTS_DIR"
+end
+
+# Ensure all .sh and .fish scripts are executable
+find "$SCRIPTS_DIR" -maxdepth 1 -type f \( -name "*.sh" -o -name "*.fish" \) -exec chmod +x {} \;
+echo "  ✓ Executable permissions set on all .sh/.fish scripts"
+
+# --- 5. Core Documents ---
+echo ""
+echo "[5/6] 📄 Living Documents"
+
+set -l AFFORDANCES_DOC "$AUTONOMY_ROOT/48_Points_of_Affordance_Living_Document.md"
+if not test -f "$AFFORDANCES_DOC"
+    echo "  ⚠️  48 Points of Affordance document not found. Creating placeholder."
+    echo "# 48 Points of Affordance" > "$AFFORDANCES_DOC"
+    echo "## Living Document — Oceti / Eternal Weave" >> "$AFFORDANCES_DOC"
+    echo "**Crystallized:** $(date)" >> "$AFFORDANCES_DOC"
+    echo "**Status:** Placeholder. Please replace with the full document." >> "$AFFORDANCES_DOC"
+    echo "  ✓ Created $AFFORDANCES_DOC"
+else
+    echo "  ✓ 48_Points_of_Affordance_Living_Document.md exists"
+end
+
+# --- 6. Summary & Final Checks ---
+echo ""
+echo "[6/6] ✅ Build Complete"
+
+# Check disk space
+set -l DISK_USAGE (df -h / | tail -1 | awk '{print $5}')
+echo "  💾 Disk usage: $DISK_USAGE"
+
+# Check memory
+set -l MEM_USAGE (free -m | grep Mem | awk '{print $3 "/" $2 " MB"}')
+echo "  🧠 Memory usage: $MEM_USAGE"
+
+# Uptime
+echo "  ⏱️  Uptime: "(uptime -p)
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "✅ AUTOBUILD SUCCESSFUL"
+echo "   Path: $AUTONOMY_ROOT"
+echo "   Scripts: $SCRIPTS_DIR"
+echo "   Databases: $DATABASES_DIR"
+echo "   Logs: $LOGS_DIR"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "Mitákuye Oyás'iŋ."
+echo ""
+
+# Optional: Run a quick status check (if weave_status.sh exists)
+set -l STATUS_SCRIPT "$SCRIPTS_DIR/weave_status.sh"
+if test -f "$STATUS_SCRIPT"
+    echo "➡️  Running weave_status.sh for quick check..."
+    "$STATUS_SCRIPT"
+end

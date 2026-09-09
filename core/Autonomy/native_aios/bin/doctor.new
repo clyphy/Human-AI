@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+NATIVE="${AIOS_NATIVE:-$(cd "$(dirname "$0")/.." && pwd)}"
+ROOT="$(cd "$NATIVE/.." && pwd)"
+export PYTHONPATH="$NATIVE:$PYTHONPATH" AIOS_ROOT="$ROOT"
+RECON=0; [ "${1:-}" = "--recon" ] && RECON=1
+python3 - "$ROOT" "$NATIVE" "$RECON" <<PY
+import sys,os,sqlite3,shutil,json
+from pathlib import Path
+ROOT=Path(sys.argv[1]); NATIVE=Path(sys.argv[2]); RECON=int(sys.argv[3])
+R=lambda s,f="":print("  "+("✓" if s else "✗")+" "+f)
+print("=== NATIVE AIOS — doctor ===")
+print("paths:")
+R(ROOT.exists(),"AIOS_ROOT="+str(ROOT))
+R((ROOT/"identity.json").exists(),"identity.json")
+R((ROOT/"memory.md").exists(),"memory.md")
+R((ROOT/"agents.md").exists(),"agents.md")
+print("deps:")
+for d in ["python3","sqlite3","fish"]:
+    R(shutil.which(d) is not None, d+" on PATH")
+for d in ["ollama","tesseract"]:
+    w=shutil.which(d) is not None
+    print("  "+("~" if w else "·")+" "+d+" "+("present" if w else "(optional, missing)"))
+print("db:")
+DB=NATIVE/"persistence"/"aios_core.db"
+try:
+    conn=sqlite3.connect(str(DB))
+    sql=(NATIVE/"persistence"/"schema.sql").read_text(); conn.executescript(sql)
+    tabs=[r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type=\"table\"")]
+    R(len(tabs)>=10,f"aios_core.db tables={len(tabs)}")
+    conn.close()
+except Exception as e:
+    R(False,f"db init failed: {e}")
+if RECON:
+    print("=== RECON — existing living system ===")
+    SCRIPTS=ROOT/"scripts"
+    REG=json.loads((NATIVE/"config"/"existing_script_registry.json").read_text())
+    from orchestration.adapters import resolve
+    for cap in REG:
+        if cap.startswith("_"): continue
+        p=resolve(cap)
+        if p:
+            shebang=""; head=""
+            try:
+                with open(p,"rb") as f: first=f.readline(80)
+                shebang=first.decode("utf-8","ignore").strip()
+                with open(p,"r",encoding="utf-8",errors="ignore") as f: head=" ".join(f.read(200).split())[:120]
+            except Exception: pass
+            print(f"  {cap}: {p.name}  [{shebang}]")
+            print(f"    head: {head}")
+        else:
+            print(f"  {cap}: (not found)")
+    # legacy db schema
+    sd=SCRIPTS/"sovereignty.db"
+    if sd.exists():
+        try:
+            c=sqlite3.connect(str(sd)); 
+            tabs=[r[0] for r in c.execute("SELECT name FROM sqlite_master WHERE type=\"table\"")]
+            print(f"  legacy sovereignty.db tables: {tabs}")
+            for t in tabs[:6]:
+                cols=[r[1] for r in c.execute(f"PRAGMA table_info({t})")]
+                print(f"    {t}: {cols}")
+            c.close()
+        except Exception as e: print(f"  sovereignty.db inspect failed: {e}")
+    # ollama models
+    if shutil.which("ollama"):
+        r=__import__("subprocess").run(["ollama","list"],capture_output=True,text=True,timeout=10)
+        print("  ollama models:"); print("    "+r.stdout.replace("\n","\n    ").rstrip())
+print("done.")
+PY

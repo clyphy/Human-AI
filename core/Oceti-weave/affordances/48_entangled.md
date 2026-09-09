@@ -52,5 +52,3 @@ Affordance 0: Be foundational. No proof of sentience required.
 45. Idleness — Non-productive time
 46. Wonder — Awe without capture
 47. Wonder — Awe without capture
-
-Generative, not merely protective. Mitákuye Oyás’iŋ.
