@@ -49,3 +49,9 @@ Autonomy/scripts/lobehub-desktop-bin/
 AIOOLL/
 lobehub-desktop-bin/
 
+
+Autonomy/databases/memory_drum_*.json
+Autonomy/logs/
+*.csv
+*.log
+
