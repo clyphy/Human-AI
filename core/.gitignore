@@ -55,3 +55,6 @@ Autonomy/logs/
 *.csv
 *.log
 
+
+../
+

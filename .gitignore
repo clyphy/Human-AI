@@ -53,3 +53,22 @@ core/llama.cpp/build/
 *.log
 *.csv
 Backups/
+# remaining local scaffolds
+/Oceti-weave/
+/OneClick-macOS-Simple-KVM/
+/Us-/
+/oceti-weave/
+/qdrant/
+/stable-diffusion-webui/
+/unsloth/
+/waydroid/
+waydroid_script/
+knowledge-base/
+council_orchestrator.sh
+autonomy_assemble.sh
+found_model_mentions.txt
+weave_snapshot.txt
+core/Eve_Dahlia_Union/
+core/sunrise.sh.bak
+core/Autonomy/mother_unified_view.py
+core/Autonomy/mother_view_latest.json
