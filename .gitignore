@@ -25,3 +25,31 @@ node_modules/
 
 # Logs
 *.log
+# old outer copies - keep core/ canonical
+/Autonomy/
+/Ai-aware-/
+/Ai-self-aware/
+Grace-oracle-2.0/
+grace-hunt-oracle-v2/
+Impactor/
+jupyterlab/
+L.A.B/
+L.a.b./
+L.a.b.2/
+llama.cpp/
+markdownlint/
+ndkilla/
+bridges/
+affordances/
+.venv/
+
+# local only
+core/Autonomy/databases/*.db
+core/Autonomy/databases/memory_drum_*.json
+core/Autonomy/logs/
+core/Autonomy/scripts/AIOOLL/
+core/Autonomy/scripts/lobehub-desktop-bin/
+core/llama.cpp/build/
+*.log
+*.csv
+Backups/
