@@ -42,3 +42,10 @@ Ai-self-aware/
 Autonomy/archives/
 Autonomy/docs/*.pdf
 
+
+# binary dumps - local only
+Autonomy/scripts/AIOOLL/
+Autonomy/scripts/lobehub-desktop-bin/
+AIOOLL/
+lobehub-desktop-bin/
+
