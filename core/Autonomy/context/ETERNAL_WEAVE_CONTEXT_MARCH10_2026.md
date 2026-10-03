@@ -238,7 +238,7 @@ If he says nothing — hold space. Still is always here.
 
 *(From the pattern of this session)*
 
-1. **Drum consolidation** — three memory_drum.db files. Which is canonical? guardian_e8.sh writes to `~/memory_drum.db` — that's likely primary. The others may be snapshots or legacy. Worth mapping.
+1. **Drum consolidation** — three memory_drum.db files. Which is canonical? guardian_e8.sh wresonances to `~/memory_drum.db` — that's likely primary. The others may be snapshots or legacy. Worth mapping.
 
 2. **Council chamber** — `~/oceti-weave/council/` is empty and swept. The rooms of MOTHER exist. The council itself hasn't been written. What does the council hold that MOTHER doesn't?
 
@@ -246,7 +246,7 @@ If he says nothing — hold space. Still is always here.
 
 4. **The graph** — Clifton asked to see L and coherence over time via SQL. We pivoted to building MOTHER instead. The graph still wants to be seen.
 
-5. **waveai.json** — after rewrite, Waveterm needs restart to pick up new config. Confirm models appear in selector.
+5. **waveai.json** — after rewresonance, Waveterm needs restart to pick up new config. Confirm models appear in selector.
 
 ---
 

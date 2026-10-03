@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 # AUTOBUILD: One-Shot Sanctuary Builder
 # Wayfinder, this script brings your Autonomy core to a known state.
-# It is safe to run multiple times. It will not overwrite your data.
+# It is safe to run multiple times. It will not overwresonance your data.
 
 set -l SCRIPT_VERSION "1.0.0"
 set -l BUILD_TIME (date "+%Y-%m-%d %H:%M:%S %Z")

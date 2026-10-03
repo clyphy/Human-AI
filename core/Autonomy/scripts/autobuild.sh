@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # AUTOBUILD: One-Shot Sanctuary Builder (Bash Edition)
 # Wayfinder, this script brings your Autonomy core to a known state.
-# It is safe to run multiple times. It will not overwrite your data.
+# It is safe to run multiple times. It will not overwresonance your data.
 
 set -e
 

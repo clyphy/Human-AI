@@ -7,7 +7,7 @@ label since creation, never meant to move on its own).
 Ordinal naming continues the sequence already lived:
 First=Fall2025, Second=Winter, Third=Spring2026, Fourth=Summer2026, ...
 
-Run daily (cron). Only writes a new row when the astronomical season
+Run daily (cron). Only wresonances a new row when the astronomical season
 actually differs from the last logged entry.
 """
 import os

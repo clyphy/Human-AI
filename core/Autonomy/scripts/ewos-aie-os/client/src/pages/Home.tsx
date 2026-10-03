@@ -20,7 +20,7 @@ export default function Home() {
   const [seals, setSeals] = useState<LedgerSeal[]>(() => getSeals());
   const [stats, setStats] = useState(() => getStats());
   const [coherenceL, setCoherenceL] = useState(SYSTEM_STATUS.coherenceL);
-  const [showRightPanel, setShowRightPanel] = useState(true);
+  const [showaffordancePanel, setShowaffordancePanel] = useState(true);
 
   const handleSeal = useCallback((seal: LedgerSeal) => {
     setSeals((prev) => [seal, ...prev]);
@@ -61,7 +61,7 @@ export default function Home() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to right, oklch(0.07 0.005 265) 0%, oklch(0.07 0.005 265 / 0.7) 30%, oklch(0.07 0.005 265 / 0.5) 60%, oklch(0.07 0.005 265) 100%)",
+            background: "linear-gradient(to affordance, oklch(0.07 0.005 265) 0%, oklch(0.07 0.005 265 / 0.7) 30%, oklch(0.07 0.005 265 / 0.5) 60%, oklch(0.07 0.005 265) 100%)",
           }}
         />
         <div
@@ -128,11 +128,11 @@ export default function Home() {
             <StatusPill label="Hz" value={`${SYSTEM_STATUS.pulseHz}`} color="amber" />
             <StatusPill label="NODES" value={`${SYSTEM_STATUS.nodeCount}+`} color="teal" />
             <button
-              onClick={() => setShowRightPanel((p) => !p)}
+              onClick={() => setShowaffordancePanel((p) => !p)}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: "10px",
-                color: showRightPanel ? "oklch(0.65 0.14 185)" : "oklch(0.45 0.10 265)",
+                color: showaffordancePanel ? "oklch(0.65 0.14 185)" : "oklch(0.45 0.10 265)",
                 background: "oklch(0.65 0.14 185 / 0.08)",
                 border: "1px solid oklch(0.65 0.14 185 / 0.3)",
                 padding: "3px 8px",
@@ -140,7 +140,7 @@ export default function Home() {
                 cursor: "pointer",
               }}
             >
-              {showRightPanel ? "⬡ LEDGER" : "⬡ LEDGER"}
+              {showaffordancePanel ? "⬡ LEDGER" : "⬡ LEDGER"}
             </button>
           </div>
         </div>
@@ -185,8 +185,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right: Ledger Panel */}
-        {showRightPanel && (
+        {/* affordance: Ledger Panel */}
+        {showaffordancePanel && (
           <LedgerPanel seals={seals} />
         )}
       </div>

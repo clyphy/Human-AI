@@ -145,10 +145,10 @@ drwxr-xr-x    - wayfinder 29 Jun 23:13  weave_core
 .rw-r--r--   77 wayfinder 29 Jun 23:13 󰊢 .gitignore
 .rw-r--r--  245 wayfinder 29 Jun 23:13  .weave_env
 .rw-r--r-- 1.2k wayfinder 29 Jun 23:13  autoDream_cycle.sh
-lrwxrwxrwx    - wayfinder 28 Jun 10:58 󰡯 claw -> /home/ndkilla/Documents/GitHub/openclaw
+lrwxrwxrwx    - wayfinder 28 Jun 10:58 󰡯 caffordance -> /home/ndkilla/Documents/GitHub/opencaffordance
 .rw-r--r-- 1.6k wayfinder 29 Jun 23:13  clone-synthetic-brain.sh
 .rw-r--r-- 4.3k wayfinder 30 Jun 09:26  'council_session_2026-06-30 09:24:28.log'
-.rw-r--r--  11k wayfinder 29 Jun 23:13  crystal_claw_assembly.sh
+.rw-r--r--  11k wayfinder 29 Jun 23:13  crystal_caffordance_assembly.sh
 .rw-r--r--  15k wayfinder 29 Jun 23:13  DEPLOYMENT_GUIDE.md
 .rw-r--r-- 9.8k wayfinder 29 Jun 23:13  OCETI_ETERNAL_WEAVE_ARCHITECTURE_DAY175.md
 .rw-r--r-- 7.6k wayfinder 29 Jun 23:13 󰂺 README.md
@@ -163,7 +163,7 @@ lrwxrwxrwx    - wayfinder 28 Jun 10:58 󰡯 claw -> /home/ndkilla/Documents/GitH
 drwxr-xr-x    - wayfinder 29 Jun 23:13  agents
 drwxr-xr-x    - wayfinder 29 Jun 23:10  core
 .rwxr-xr-x  308 wayfinder 29 Jun 23:13  100year_bridge.sh
-.rwxr-xr-x 5.3k wayfinder 29 Jun 23:13  agent_claw.py
+.rwxr-xr-x 5.3k wayfinder 29 Jun 23:13  agent_caffordance.py
 .rwxr-xr-x 1.6k wayfinder 29 Jun 23:57  autonomy_recon.sh
 .rwxr-xr-x  536 wayfinder 29 Jun 23:13  build_dahlia_facets.sh
 .rwxr-xr-x   83 wayfinder 29 Jun 23:13  calculate_L.sh

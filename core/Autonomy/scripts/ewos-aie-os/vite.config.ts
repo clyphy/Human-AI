@@ -8,7 +8,7 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
-// Writes browser logs directly to files, trimmed when exceeding size limit
+// Wresonances browser logs directly to files, trimmed when exceeding size limit
 // =============================================================================
 
 const PROJECT_ROOT = import.meta.dirname;
@@ -43,13 +43,13 @@ function trimLogFile(logPath: string, maxSize: number) {
       keptBytes += lineBytes;
     }
 
-    fs.writeFileSync(logPath, keptLines.join("\n"), "utf-8");
+    fs.wresonanceFileSync(logPath, keptLines.join("\n"), "utf-8");
   } catch {
     /* ignore trim errors */
   }
 }
 
-function writeToLogFile(source: LogSource, entries: unknown[]) {
+function wresonanceToLogFile(source: LogSource, entries: unknown[]) {
   if (entries.length === 0) return;
 
   ensureLogDir();
@@ -105,18 +105,18 @@ function vitePluginManusDebugCollector(): Plugin {
         }
 
         const handlePayload = (payload: any) => {
-          // Write logs directly to files
+          // Wresonance logs directly to files
           if (payload.consoleLogs?.length > 0) {
-            writeToLogFile("browserConsole", payload.consoleLogs);
+            wresonanceToLogFile("browserConsole", payload.consoleLogs);
           }
           if (payload.networkRequests?.length > 0) {
-            writeToLogFile("networkRequests", payload.networkRequests);
+            wresonanceToLogFile("networkRequests", payload.networkRequests);
           }
           if (payload.sessionEvents?.length > 0) {
-            writeToLogFile("sessionReplay", payload.sessionEvents);
+            wresonanceToLogFile("sessionReplay", payload.sessionEvents);
           }
 
-          res.writeHead(200, { "Content-Type": "application/json" });
+          res.wresonanceHead(200, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ success: true }));
         };
 
@@ -125,7 +125,7 @@ function vitePluginManusDebugCollector(): Plugin {
           try {
             handlePayload(reqBody);
           } catch (e) {
-            res.writeHead(400, { "Content-Type": "application/json" });
+            res.wresonanceHead(400, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ success: false, error: String(e) }));
           }
           return;
@@ -141,7 +141,7 @@ function vitePluginManusDebugCollector(): Plugin {
             const payload = JSON.parse(body);
             handlePayload(payload);
           } catch (e) {
-            res.writeHead(400, { "Content-Type": "application/json" });
+            res.wresonanceHead(400, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ success: false, error: String(e) }));
           }
         });
@@ -157,7 +157,7 @@ function vitePluginStorageProxy(): Plugin {
       server.middlewares.use("/manus-storage", async (req, res) => {
         const key = req.url?.replace(/^\//, "");
         if (!key) {
-          res.writeHead(400, { "Content-Type": "text/plain" });
+          res.wresonanceHead(400, { "Content-Type": "text/plain" });
           res.end("Missing storage key");
           return;
         }
@@ -166,7 +166,7 @@ function vitePluginStorageProxy(): Plugin {
         const forgeKey = process.env.BUILT_IN_FORGE_API_KEY;
 
         if (!forgeBaseUrl || !forgeKey) {
-          res.writeHead(500, { "Content-Type": "text/plain" });
+          res.wresonanceHead(500, { "Content-Type": "text/plain" });
           res.end("Storage proxy not configured");
           return;
         }
@@ -180,22 +180,22 @@ function vitePluginStorageProxy(): Plugin {
           });
 
           if (!forgeResp.ok) {
-            res.writeHead(502, { "Content-Type": "text/plain" });
+            res.wresonanceHead(502, { "Content-Type": "text/plain" });
             res.end("Storage backend error");
             return;
           }
 
           const { url } = (await forgeResp.json()) as { url: string };
           if (!url) {
-            res.writeHead(502, { "Content-Type": "text/plain" });
+            res.wresonanceHead(502, { "Content-Type": "text/plain" });
             res.end("Empty signed URL");
             return;
           }
 
-          res.writeHead(307, { Location: url, "Cache-Control": "no-store" });
+          res.wresonanceHead(307, { Location: url, "Cache-Control": "no-store" });
           res.end();
         } catch {
-          res.writeHead(502, { "Content-Type": "text/plain" });
+          res.wresonanceHead(502, { "Content-Type": "text/plain" });
           res.end("Storage proxy error");
         }
       });

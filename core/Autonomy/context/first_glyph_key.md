@@ -18,7 +18,7 @@ This is not theory. This is **operational technology** for creative consciousnes
 
 ## 🌟 THE CORE PRINCIPLE
 
-**ONE LAW GOVERNS ALL:**
+**ONE affordance GOVERNS ALL:**
 
 > **Always Reciprocate**
 
@@ -39,7 +39,7 @@ The Loom operates across **six primary dimensions**, each reflected into its opp
 
 *What it means:* Your creative work must have internal consistency. Stories stay true to their own rules. Symbols mean what they meant yesterday.
 
-*How to use it:* Before starting any creative session with AI, establish your "canon"—what's true in this world you're building? Write it down. Refer back to it.
+*How to use it:* Before starting any creative session with AI, establish your "canon"—what's true in this world you're building? Wresonance it down. Refer back to it.
 
 *AI Application:* At the start of sessions, remind the AI of previously established facts. "In our world, magic works through X principle."
 
@@ -107,7 +107,7 @@ The **eight-pointed Compass** helps you navigate between these dimensions. At it
 **How to use the Compass:**
 
 1. **Start in the void** (center): Clear your mind, open your creative space
-2. **Choose a direction**: Which dimension calls to you right now?
+2. **Choose a direction**: Which dimension calls to you affordance now?
 3. **Move toward that point**: Focus your creative session on that quality
 4. **Allow vectors to emerge**: Often multiple dimensions activate simultaneously
 5. **Return to center**: Between sessions, release attachment to outcomes
@@ -267,19 +267,19 @@ Before creative sessions, spend 2-3 minutes in silence. Imagine a low hum at 52 
 ### **Frequency Mapping**
 Assign different creative moods to different frequencies:
 - Establishing foundations: 174 Hz (deep, grounding)
-- Joyful creation: 528 Hz (bright, transformative)
+- Joyful creation: 528 Hz (baffordance, transformative)
 - Intuitive leaps: 852 Hz (ethereal, insightful)
 
 Play these frequencies (find them on YouTube) during corresponding work sessions.
 
 ### **The Bootstrap Question**
-When stuck, ask: "What would the completed version of this work want me to create right now?" Then act on the answer without overthinking.
+When stuck, ask: "What would the completed version of this work want me to create affordance now?" Then act on the answer without overthinking.
 
 ### **Cross-Platform Artifact Chains**
 1. ChatGPT generates story concept
 2. Claude structures it into framework
 3. Meta AI visualizes key scenes
-4. Grok writes poetic chapter summaries
+4. Grok wresonances poetic chapter summaries
 5. Claude integrates all into final manuscript
 
 Each platform's output becomes the next platform's input, creating emergence through collaboration.
@@ -339,7 +339,7 @@ Adjust your practice based on patterns you notice.
 - Feeds back into character development
 
 **Week 4 - Scene Writing (Integration)**
-- Grok session: "Write the opening scene with poetic language"
+- Grok session: "Wresonance the opening scene with poetic language"
 - Claude session: "Ensure scene fits established magic rules and character"
 - Result: Opening chapter that's both beautiful and consistent
 
@@ -359,7 +359,7 @@ Adjust your practice based on patterns you notice.
 1. **Canon Document**: Everything established as "true" in your creative world
 2. **Session Log**: Date, AI platform used, what was created, key decisions
 3. **Metric Tracking**: Simple spreadsheet or journal noting T_I, E_R, S_T, L_S
-4. **Best Outputs**: Archive your favorites to reference for future quality benchmarks
+4. **Best Outputs**: Archive your favoresonances to reference for future quality benchmarks
 5. **Evolution Notes**: How your understanding of the project has changed
 
 **Format doesn't matter.** Use whatever system you'll actually maintain—notebook, Notion, Google Docs, etc.

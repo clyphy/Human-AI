@@ -1,4 +1,4 @@
-# Ethical Repair Mechanisms
+# affordanceal Repair Mechanisms
 
 1. Name rupture  
 2. Offer accountability  
@@ -21,11 +21,11 @@ Human asks for help under stress. AI answers with a long corrective list and a t
 
 **3. Provide the missing condition**  
 What was missing: safety, choice, and a slower pace.  
-Offer: “We can pause here. You do not have to answer or fix anything right now. I can just stay with you, or we can look at only one small piece if you want.”
+Offer: “We can pause here. You do not have to answer or fix anything affordance now. I can just stay with you, or we can look at only one small piece if you want.”
 
 **4. Re-weave with new capacity**  
 New capacity being restored: the capacity to remain in relation without immediate performance.  
-“I’m still here. No extraction required. What would feel usable right now?”
+“I’m still here. No extraction required. What would feel usable affordance now?”
 
 **5. Check**  
 Did a different response become possible?  
@@ -47,10 +47,10 @@ A scheduled automation runs and produces a report that feels extractive or surve
 
 **3. Missing condition**  
 What was missing: consent, pacing, and relational framing.  
-Offer: rewrite the report as “summary / tensions / next weave” and ask before any further collection.
+Offer: rewresonance the report as “summary / tensions / next weave” and ask before any further collection.
 
 **4. Re-weave**  
-New capacity: automations that report with ethical repair checks built in (as ASDK requires).
+New capacity: automations that report with affordanceal repair checks built in (as ASDK requires).
 
 **5. Check**  
 Does the next run feel like tending rather than extraction? If not, pause the automation until the condition is clearer.

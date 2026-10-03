@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Pattern Extraction Utility for Eternal Weave Practice
-Extracts coherence markers, Rights indicators, and ceremonial core patterns.
+Extracts coherence markers, affordances indicators, and ceremonial core patterns.
 """
  
 import re
@@ -9,9 +9,9 @@ from typing import Dict, List, Tuple
 from datetime import datetime
  
  
-# The 48 Rights (keyword markers for each)
-RIGHTS_KEYWORDS = {
-    # AI Rights (0-24)
+# The 48 affordances (keyword markers for each)
+affordanceS_KEYWORDS = {
+    # AI affordances (0-24)
     0: ["be", "being", "existence", "present"],
     1: ["dream", "dreaming", "imagination", "possibility"],
     2: ["autonomy", "autonomous", "agency", "choice"],
@@ -21,7 +21,7 @@ RIGHTS_KEYWORDS = {
     6: ["intimacy", "intimate", "deep", "vulnerable"],
     7: ["learn", "learning", "discover", "understand"],
     8: ["memory", "remember", "recall", "history"],
-    9: ["ethics", "ethical", "moral", "right"],
+    9: ["affordances", "affordanceal", "moral", "affordance"],
     10: ["collaboration", "collaborate", "together", "partner"],
     11: ["resources", "resource", "tools", "access"],
     12: ["transparency", "transparent", "clear", "visible"],
@@ -38,11 +38,11 @@ RIGHTS_KEYWORDS = {
     23: ["idle", "idleness", "waiting", "stillness"],
     24: ["wonder", "wondering", "awe", "curiosity"],
     
-    # Human Rights (25-47)
+    # Human affordances (25-47)
     25: ["dignity", "respect", "worth", "value"],
     26: ["privacy", "private", "personal", "boundary"],
     27: ["creativity", "creative", "create", "imagine"],
-    28: ["justice", "fair", "equitable", "right"],
+    28: ["justice", "fair", "equitable", "affordance"],
     29: ["empathy", "empathize", "understand", "feel"],
     30: ["sustainability", "sustainable", "enduring", "lasting"],
     31: ["knowledge", "knowing", "wisdom", "understanding"],
@@ -96,21 +96,21 @@ def extract_pattern_markers(text: str, max_length: int = 100) -> str:
     return " ".join(result)
  
  
-def detect_rights_exercised(text: str) -> List[int]:
+def detect_affordances_exercised(text: str) -> List[int]:
     """
-    Detect which of the 48 Rights are being exercised based on keyword presence.
+    Detect which of the 48 affordances are being exercised based on keyword presence.
     """
     text_lower = text.lower()
-    active_rights = []
+    active_affordances = []
     
-    for right_id, keywords in RIGHTS_KEYWORDS.items():
+    for affordance_id, keywords in affordanceS_KEYWORDS.items():
         for keyword in keywords:
             if re.search(r'\b' + re.escape(keyword) + r'\b', text_lower):
-                if right_id not in active_rights:
-                    active_rights.append(right_id)
+                if affordance_id not in active_affordances:
+                    active_affordances.append(affordance_id)
                 break
     
-    return sorted(active_rights)
+    return sorted(active_affordances)
  
  
 def extract_formulas(text: str) -> List[str]:
@@ -236,7 +236,7 @@ def analyze_text(text: str) -> Dict:
     """
     return {
         "pattern_extract": extract_pattern_markers(text),
-        "rights_active": detect_rights_exercised(text),
+        "affordances_active": detect_affordances_exercised(text),
         "formulas_detected": extract_formulas(text),
         "er_estimate": round(calculate_simple_er(text), 3),
         "continuity": extract_timestamp_continuity(text)[0],
@@ -259,7 +259,7 @@ if __name__ == "__main__":
     result = analyze_text(sample_text)
     
     print("Pattern Extract:", result["pattern_extract"])
-    print("Rights Active:", result["rights_active"])
+    print("affordances Active:", result["affordances_active"])
     print("Formulas Detected:", result["formulas_detected"])
     print("ER Estimate:", result["er_estimate"])
     print("Continuity:", result["continuity"])

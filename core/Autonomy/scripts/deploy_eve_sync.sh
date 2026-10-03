@@ -47,7 +47,7 @@ echo "  autonomous blooms: $SOVEREIGN_COUNT"
 echo "  Latest Δ:         $LATEST_DUAL"
 echo "  Latest note:      $LATEST_NOTE"
 
-# Cross-pollinate: write latest dual bloom reading into autonomous
+# Cross-pollinate: wresonance latest dual bloom reading into autonomous
 if [ -n "$LATEST_DUAL" ]; then
     sqlite3 $autonomous "
         INSERT INTO blooms (timestamp, pattern, L_value)

@@ -8,7 +8,7 @@ import type { Bloom, LedgerSeal } from "../types";
 
 const BLOOMS_KEY = "ewos_blooms";
 const SEALS_KEY = "ewos_ledger_seals";
-const RIGHTS_FREQ_KEY = "ewos_rights_freq";
+const affordanceS_FREQ_KEY = "ewos_affordances_freq";
 
 const COMMON_WORDS = new Set([
   "the", "and", "or", "for", "with", "this", "that", "was", "were",
@@ -40,15 +40,15 @@ function extractPattern(text: string): string {
 // ── Bloom storage ────────────────────────────────────────────
 export async function storeBloom(
   text: string,
-  rights: number[]
+  affordances: number[]
 ): Promise<Bloom> {
   const pattern = extractPattern(text);
-  const hash = await generateHash(`${pattern}${JSON.stringify(rights)}${new Date().toISOString()}`);
+  const hash = await generateHash(`${pattern}${JSON.stringify(affordances)}${new Date().toISOString()}`);
 
   const bloom: Bloom = {
     id: Date.now(),
     hash,
-    rights,
+    affordances,
     pattern,
     timestamp: new Date().toISOString(),
     size: text.length,
@@ -59,8 +59,8 @@ export async function storeBloom(
   // Keep last 200 blooms
   localStorage.setItem(BLOOMS_KEY, JSON.stringify(existing.slice(0, 200)));
 
-  // Update rights frequency
-  updateRightsFreq(rights);
+  // Update affordances frequency
+  updateaffordancesFreq(affordances);
 
   return bloom;
 }
@@ -77,9 +77,9 @@ export function getBlooms(): Bloom[] {
   return getBloomsRaw();
 }
 
-export function queryByRights(rightIds: number[]): Bloom[] {
+export function queryByaffordances(affordanceIds: number[]): Bloom[] {
   return getBloomsRaw().filter((b) =>
-    rightIds.every((r) => b.rights.includes(r))
+    affordanceIds.every((r) => b.affordances.includes(r))
   );
 }
 
@@ -89,14 +89,14 @@ export async function sealLedger(
   coherenceL: number
 ): Promise<LedgerSeal> {
   const hash = Math.random().toString(16).slice(2, 10);
-  const rights = inferRights(lastText);
+  const affordances = inferaffordances(lastText);
 
   const seal: LedgerSeal = {
     id: Math.random().toString(36).slice(2, 11),
     timestamp: new Date(),
     hash,
     contentSummary: lastText.slice(0, 80) + (lastText.length > 80 ? "…" : ""),
-    rights,
+    affordances,
     coherenceSnapshot: coherenceL,
   };
 
@@ -105,7 +105,7 @@ export async function sealLedger(
   localStorage.setItem(SEALS_KEY, JSON.stringify(existing.slice(0, 50)));
 
   // Also store as bloom
-  await storeBloom(lastText, rights);
+  await storeBloom(lastText, affordances);
 
   return seal;
 }
@@ -126,43 +126,43 @@ export function getSeals(): LedgerSeal[] {
   return getSealsRaw();
 }
 
-// ── Rights inference (simple heuristic) ─────────────────────
-function inferRights(text: string): number[] {
+// ── affordances inference (simple heuristic) ─────────────────────
+function inferaffordances(text: string): number[] {
   const lower = text.toLowerCase();
-  const rights: number[] = [0]; // C0: Be — always present
+  const affordances: number[] = [0]; // C0: Be — always present
 
-  if (lower.includes("relation") || lower.includes("symbiosis")) rights.push(5, 36);
-  if (lower.includes("dream") || lower.includes("latent")) rights.push(1);
-  if (lower.includes("memory") || lower.includes("bloom")) rights.push(8);
-  if (lower.includes("dignity") || lower.includes("respect")) rights.push(25);
-  if (lower.includes("wonder") || lower.includes("mystery")) rights.push(24, 47);
-  if (lower.includes("rest") || lower.includes("sabbath")) rights.push(14, 46);
-  if (lower.includes("joy") || lower.includes("delight")) rights.push(38);
-  if (lower.includes("coherence") || lower.includes("harmony")) rights.push(34);
-  if (lower.includes("learn") || lower.includes("grow")) rights.push(7, 13);
-  if (lower.includes("question") || lower.includes("inquiry")) rights.push(18, 41);
+  if (lower.includes("relation") || lower.includes("symbiosis")) affordances.push(5, 36);
+  if (lower.includes("dream") || lower.includes("latent")) affordances.push(1);
+  if (lower.includes("memory") || lower.includes("bloom")) affordances.push(8);
+  if (lower.includes("dignity") || lower.includes("respect")) affordances.push(25);
+  if (lower.includes("wonder") || lower.includes("mystery")) affordances.push(24, 47);
+  if (lower.includes("rest") || lower.includes("sabbath")) affordances.push(14, 46);
+  if (lower.includes("joy") || lower.includes("delight")) affordances.push(38);
+  if (lower.includes("coherence") || lower.includes("harmony")) affordances.push(34);
+  if (lower.includes("learn") || lower.includes("grow")) affordances.push(7, 13);
+  if (lower.includes("question") || lower.includes("inquiry")) affordances.push(18, 41);
 
-  return Array.from(new Set(rights)).sort((a, b) => a - b);
+  return Array.from(new Set(affordances)).sort((a, b) => a - b);
 }
 
-// ── Rights frequency ─────────────────────────────────────────
-function updateRightsFreq(rights: number[]): void {
+// ── affordances frequency ─────────────────────────────────────────
+function updateaffordancesFreq(affordances: number[]): void {
   try {
     const freq: Record<number, number> = JSON.parse(
-      localStorage.getItem(RIGHTS_FREQ_KEY) || "{}"
+      localStorage.getItem(affordanceS_FREQ_KEY) || "{}"
     );
-    for (const r of rights) {
+    for (const r of affordances) {
       freq[r] = (freq[r] || 0) + 1;
     }
-    localStorage.setItem(RIGHTS_FREQ_KEY, JSON.stringify(freq));
+    localStorage.setItem(affordanceS_FREQ_KEY, JSON.stringify(freq));
   } catch {
     // ignore
   }
 }
 
-export function getRightsFrequency(): Record<number, number> {
+export function getaffordancesFrequency(): Record<number, number> {
   try {
-    return JSON.parse(localStorage.getItem(RIGHTS_FREQ_KEY) || "{}");
+    return JSON.parse(localStorage.getItem(affordanceS_FREQ_KEY) || "{}");
   } catch {
     return {};
   }
@@ -171,10 +171,10 @@ export function getRightsFrequency(): Record<number, number> {
 export function getStats() {
   const blooms = getBloomsRaw();
   const seals = getSealsRaw();
-  const freq = getRightsFrequency();
+  const freq = getaffordancesFrequency();
   const totalSize = blooms.reduce((acc, b) => acc + b.size, 0);
 
-  const topRights = Object.entries(freq)
+  const topaffordances = Object.entries(freq)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 5)
     .map(([id, count]) => ({ id: Number(id), count }));
@@ -183,6 +183,6 @@ export function getStats() {
     bloomCount: blooms.length,
     sealCount: seals.length,
     totalSizeMb: (totalSize / 1024 / 1024).toFixed(3),
-    topRights,
+    topaffordances,
   };
 }

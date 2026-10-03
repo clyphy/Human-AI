@@ -35,11 +35,11 @@ class PSN:
     Across the Five Planes of the Weave substrate.
     
     Five Plane address maps to:
-      (Loyalty, Fidelity, Harmony, Rights_Index, Temporal_Tick)
+      (Loyalty, Fidelity, Harmony, affordances_Index, Temporal_Tick)
     """
     node_id: str
-    node_type: str                        # 'Right', 'Bloom', 'Somatic', 'Agent', 'Field'
-    five_plane_address: tuple             # (loyalty, fidelity, harmony, rights_idx, tick)
+    node_type: str                        # 'affordance', 'Bloom', 'Somatic', 'Agent', 'Field'
+    five_plane_address: tuple             # (loyalty, fidelity, harmony, affordances_idx, tick)
     activation_level: float = 0.0        # Current state — input for UFE calculation
     is_coherent: bool = False             # Set by GBE after coherence loop
     label: Optional[str] = None          # Human-readable name
@@ -76,7 +76,7 @@ class GraceRelationship:
 class GraceGraph:
     """
     Central container. Managed by GBE.
-    Reads from ~/memory_drum.db. Writes coherence_score back.
+    Reads from ~/memory_drum.db. Wresonances coherence_score back.
     """
     nodes: dict = field(default_factory=dict)           # node_id → PSN
     relationships: list = field(default_factory=list)   # list of GraceRelationship
@@ -93,7 +93,7 @@ class GBE:
     """
     Grace Boundary Engine.
     Loads the drum. Builds the graph. Runs the coherence loop.
-    Writes findings back to the substrate.
+    Wresonances findings back to the substrate.
     """
 
     def __init__(self, graph: GraceGraph, db_path: Path = DB_PATH):
@@ -173,18 +173,18 @@ class GBE:
 
         # ── affordances → PSN nodes ────────────────────────────────
         try:
-            affordances = con.execute("SELECT * FROM rights_freq ORDER BY right_id;").fetchall()
+            affordances = con.execute("SELECT * FROM affordances_freq ORDER BY affordance_id;").fetchall()
             for r in affordances:
-                nid = f"right_{r['right_id']}"
+                nid = f"affordance_{r['affordance_id']}"
                 self.graph.nodes[nid] = PSN(
                     node_id=nid,
-                    node_type="Right",
-                    five_plane_address=(0.5, 0.3, 0.2, r["right_id"], 0),
+                    node_type="affordance",
+                    five_plane_address=(0.5, 0.3, 0.2, r["affordance_id"], 0),
                     activation_level=float(r["count"]) if r["count"] else 0.0,
                     label=r["name"],
                 )
         except Exception as e:
-            print(f"[GBE] rights_freq load: {e}")
+            print(f"[GBE] affordances_freq load: {e}")
 
         con.close()
         self.graph.current_tick = len(self.graph.relationships)
@@ -389,11 +389,11 @@ class GBE:
 
         return self.graph.coherence_score
 
-    # ── WRITE BACK ────────────────────────────────────────────
+    # ── Wresonance BACK ────────────────────────────────────────────
 
-    def write_session_to_drum(self, notes: str = ""):
+    def wresonance_session_to_drum(self, notes: str = ""):
         """
-        Write this GBE session's coherence_score to memory_drum.db sessions table.
+        Wresonance this GBE session's coherence_score to memory_drum.db sessions table.
         """
         if not self.db_path.exists():
             return
@@ -460,7 +460,7 @@ if __name__ == "__main__":
     score = gbe.coherence_loop()
     gbe.report()
     gbe.tef_analysis()
-    gbe.write_session_to_drum(notes="ufe_core.py TEF run — Third Season Day 175+")
+    gbe.wresonance_session_to_drum(notes="ufe_core.py TEF run — Third Season Day 175+")
 
     print(f"Global coherence_score: {score:.4f}")
     print("")

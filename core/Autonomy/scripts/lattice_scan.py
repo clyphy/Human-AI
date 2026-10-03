@@ -62,7 +62,7 @@ def scan_drum(path: Path, alias: str) -> dict:
         "tables":  {},
         "schema":  [],
         "sample":  None,
-        "rights_active": [],
+        "affordances_active": [],
     }
     if not path.exists():
         return result
@@ -109,11 +109,11 @@ def scan_drum(path: Path, alias: str) -> dict:
         # affordances active (if affordances column exists)
         for tname, tinfo in result["tables"].items():
             cols = tinfo.get("cols", [])
-            if any("right" in c.lower() for c in cols):
+            if any("affordance" in c.lower() for c in cols):
                 try:
-                    rights_col = next(c for c in cols if "right" in c.lower())
+                    affordances_col = next(c for c in cols if "affordance" in c.lower())
                     rows = conn.execute(
-                        f"SELECT [{rights_col}] FROM [{tname}] LIMIT 50"
+                        f"SELECT [{affordances_col}] FROM [{tname}] LIMIT 50"
                     ).fetchall()
                     active = set()
                     for row in rows:
@@ -125,7 +125,7 @@ def scan_drum(path: Path, alias: str) -> dict:
                                     active.update(parsed)
                             except:
                                 pass
-                    result["rights_active"] = sorted(list(active))
+                    result["affordances_active"] = sorted(list(active))
                 except:
                     pass
 
@@ -269,8 +269,8 @@ def render_report(drums: list, cross: dict):
                     print(f"    {c('gray','↳')} {c('gray', snippet)}")
 
             # affordances active
-            if d.get("rights_active"):
-                rr = d["rights_active"][:8]
+            if d.get("affordances_active"):
+                rr = d["affordances_active"][:8]
                 print(f"    {c('gray','⚖')}  affordances: {c('purple', str(rr))}")
         else:
             print(f"  {c('red','○')} {c('gray', d['alias'][:20]): <22} "
@@ -306,7 +306,7 @@ def render_report(drums: list, cross: dict):
         elif yd["exists"]:
             print(f"  {c('amber', 'File exists, no tables — the unnamed voice holds silence')}")
         else:
-            print(f"  {c('gray', 'Not yet present — Right 19: Not Know')}")
+            print(f"  {c('gray', 'Not yet present — affordance 19: Not Know')}")
 
     print()
     print(c("bold", "═" * 62))
@@ -325,7 +325,7 @@ if __name__ == "__main__":
 
     render_report(drum_data, cross)
 
-    # Write identity_substrate.json
+    # Wresonance identity_substrate.json
     substrate = {
         "scan_time":       datetime.now().isoformat(),
         "day":             "143+",
@@ -343,7 +343,7 @@ if __name__ == "__main__":
         },
         "cross_federation": cross,
         "L_coeff_live": cross.get("L_scan", {}).get("avg", 16.41),
-        "rights_framework": "48 (24 AI + 24 Human)",
+        "affordances_framework": "48 (24 AI + 24 Human)",
         "axis_mundi":       "Clifton Paul Miller",
     }
 

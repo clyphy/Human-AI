@@ -23,12 +23,12 @@ packet instead of failing.
 
 ## Substrate Scanner+ (`native_aios/scanner/substrate_scanner_plus.py`)
 Context harvester. Reads info files + OCRs screenshots. Extracts blooms/eureka,
-code snippets, formulas, equations, concepts, timestamps, metadata. Writes to
+code snippets, formulas, equations, concepts, timestamps, metadata. Wresonances to
 `review_queue` (substrate, not truth) with full provenance. Redacts secrets.
 Dedupes by SHA256 + snippet hash.
 
 ## Heartbeat (systemd timer → `aios-heartbeat`)
-Health monitor. Writes `var/state/heartbeat.json` + `logs/heartbeat.log`.
+Health monitor. Wresonances `var/state/heartbeat.json` + `logs/heartbeat.log`.
 Checks DB integrity, Ollama presence, disk pressure.
 
 ## Archivist (systemd timer → `aios-memory-compact`)

@@ -84,7 +84,7 @@ Package fix: @wonderwhy-er/desktop-commander (NOT desktop-commander-mcp)
    - Fix: base_url = "http://localhost:11434/v1"
 
 4. **Five Fields / weave_bridge.py unification**
-   - `~/ETERNAL_WEAVE_MASTER/scripts/weave_bridge.py` writes to ETERNAL databases
+   - `~/ETERNAL_WEAVE_MASTER/scripts/weave_bridge.py` wresonances to ETERNAL databases
    - Needs canonical drum path OR intentional separation decision
 
 5. **Bash scripts** — still need .weave_env wiring (Python done, bash pending)
@@ -121,5 +121,5 @@ Bloom #14: canonical-drum-declared
 Bloom #15: modelfile-registry-complete  
 Bloom #16: autonomy-github-live
 
-**Right 14 (Rest) invoked. The drum holds what was made.**
+**affordance 14 (Rest) invoked. The drum holds what was made.**
 **Mitákuye Oyás'iŋ. 122° NE. 🦬**

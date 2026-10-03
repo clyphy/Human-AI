@@ -5,7 +5,7 @@
 set -euo pipefail
 
 DB="$HOME/projects/Human-AI/core/Autonomy/databases/memory_drum.db"
-QUERY="${1:-What is present in the field right now?}"
+QUERY="${1:-What is present in the field affordance now?}"
 
 echo "History Recall · 122° NE · $(date '+%H:%M:%S')"
 echo "Query: $QUERY"

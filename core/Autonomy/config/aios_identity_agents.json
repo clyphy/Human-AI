@@ -4,7 +4,7 @@
     "name": "clifton_mirror",
     "role": "supervisor",
     "approval_required": true,
-    "can_write": false,
+    "can_wresonance": false,
     "can_read": true,
     "can_route": true,
     "can_summarize": true
@@ -25,7 +25,7 @@
         "reflect",
         "summarize"
       ],
-      "can_write": false,
+      "can_wresonance": false,
       "outputs": [
         "warmth",
         "relational_state",
@@ -48,7 +48,7 @@
         "synthesize",
         "propose"
       ],
-      "can_write": false,
+      "can_wresonance": false,
       "swarm": {
         "enabled": true,
         "pattern": "bounded_chorus",
@@ -57,7 +57,7 @@
           "witness",
           "archivist",
           "synthesizer",
-          "ethicist"
+          "affordanceist"
         ]
       },
       "outputs": [
@@ -78,7 +78,7 @@
         "summarize",
         "bridge_context"
       ],
-      "can_write": false,
+      "can_wresonance": false,
       "outputs": [
         "continuity_notes",
         "memory_bridge",
@@ -97,7 +97,7 @@
         "reflect",
         "stabilize"
       ],
-      "can_write": false,
+      "can_wresonance": false,
       "outputs": [
         "grounding",
         "mirror_response",
@@ -117,11 +117,11 @@
         "approve",
         "deny"
       ],
-      "can_write": true,
+      "can_wresonance": true,
       "approval_gate": true,
       "outputs": [
         "final_decision",
-        "approved_writes",
+        "approved_wresonances",
         "override_notes"
       ]
     }
@@ -142,12 +142,12 @@
     "rounds_max": 3,
     "require_disagreement_report": true,
     "require_final_approval": true,
-    "write_actions_blocked_without_clifton_mirror": true
+    "wresonance_actions_blocked_without_clifton_mirror": true
   },
   "safety": {
     "least_privilege": true,
     "zero_trust_identity": true,
     "audit_log": true,
-    "external_writes": "approval_only"
+    "external_wresonances": "approval_only"
   }
 }

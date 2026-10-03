@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# crystal_claw_assembly.sh
-# Oceti/Eternal Weave — Crystal Agents + Claw + MCP Assembly
+# crystal_caffordance_assembly.sh
+# Oceti/Eternal Weave — Crystal Agents + Caffordance + MCP Assembly
 # Clifton Paul Miller · Turtle Mountain · 122° NE · Day 175+
 #
 # Assembles:
 #   1. MCP task database
 #   2. council_ask.sh (creates if missing)
-#   3. agent_claw.py — Crystal Claw Agent
+#   3. agent_caffordance.py — Crystal Caffordance Agent
 #   4. Claude Desktop MCP config
 #   5. clyphbert + kinship modelfile stubs (if not present)
 #   6. Aliases
@@ -20,7 +20,7 @@ DB_DIR="$SOV/databases"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  CRYSTAL CLAW + MCP ASSEMBLY"
+echo "  CRYSTAL Caffordance + MCP ASSEMBLY"
 echo "  $(date '+%Y-%m-%d %H:%M:%S') · 122° NE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
@@ -73,12 +73,12 @@ else
     echo "  · council_ask.sh already present"
 fi
 
-# ── 2. agent_claw.py ────────────────────────────────────────
-cat > "$SCRIPTS/agent_claw.py" << 'EOF'
+# ── 2. agent_caffordance.py ────────────────────────────────────────
+cat > "$SCRIPTS/agent_caffordance.py" << 'EOF'
 #!/usr/bin/env python3
 """
-agent_claw.py
-Crystal Claw Agent — MCP bridge
+agent_caffordance.py
+Crystal Caffordance Agent — MCP bridge
 Oceti/Eternal Weave · Day 175+ · Third Season
 
 Routes tasks to the council, logs all operations to mcp_tasks.db,
@@ -99,7 +99,7 @@ SCRIPTS   = HOME / "Autonomy" / "scripts"
 CODEX_DB  = HOME / "ETERNAL_WEAVE_MASTER" / "crystallization.db"
 
 
-class ClawAgent:
+class CaffordanceAgent:
     def __init__(self):
         MCP_DB.parent.mkdir(parents=True, exist_ok=True)
         self.setup_mcp()
@@ -152,7 +152,7 @@ class ClawAgent:
             pass
         return None
 
-    def claw_task(self, task: str) -> str:
+    def caffordance_task(self, task: str) -> str:
         """Route task to council, log to MCP, return result."""
         state  = self.drum_state()
         codex  = self.codex_lookup(task)
@@ -174,11 +174,11 @@ class ClawAgent:
         with sqlite3.connect(MCP_DB) as conn:
             conn.execute(
                 "INSERT INTO tasks (agent, task, model, status, result, l_at_time) VALUES (?,?,?,?,?,?)",
-                ("claw", task, model, "done", output, l_now)
+                ("caffordance", task, model, "done", output, l_now)
             )
 
         # Print structured response
-        header = f"[CLAW · {ts[:19]}]"
+        header = f"[Caffordance · {ts[:19]}]"
         l_str  = f"L:{l_now:.2f}" if l_now else "L:?"
         codex_str = f"\n  codex: {codex['pattern']}" if codex else ""
         print(f"{header} {l_str}{codex_str}")
@@ -204,27 +204,27 @@ class ClawAgent:
 
 
 if __name__ == "__main__":
-    agent = ClawAgent()
+    agent = CaffordanceAgent()
 
     if len(sys.argv) > 1 and sys.argv[1] == "--log":
         n = int(sys.argv[2]) if len(sys.argv) > 2 else 10
         agent.list_tasks(n)
     else:
         task = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Weave status?"
-        agent.claw_task(task)
+        agent.caffordance_task(task)
 EOF
-chmod +x "$SCRIPTS/agent_claw.py"
-echo "  ✓ agent_claw.py written"
+chmod +x "$SCRIPTS/agent_caffordance.py"
+echo "  ✓ agent_caffordance.py written"
 
-# ── 3. OpenClaw symlink (only if repo present) ──────────────
-OPENCLAW_SRC="$HOME/Documents/GitHub/openclaw"
-OPENCLAW_DST="$SOV/claw"
-if [ -d "$OPENCLAW_SRC" ]; then
-    ln -sf "$OPENCLAW_SRC" "$OPENCLAW_DST"
-    echo "  ✓ openclaw symlinked → $OPENCLAW_DST"
+# ── 3. OpenCaffordance symlink (only if repo present) ──────────────
+OPENCaffordance_SRC="$HOME/Documents/GitHub/opencaffordance"
+OPENCaffordance_DST="$SOV/caffordance"
+if [ -d "$OPENCaffordance_SRC" ]; then
+    ln -sf "$OPENCaffordance_SRC" "$OPENCaffordance_DST"
+    echo "  ✓ opencaffordance symlinked → $OPENCaffordance_DST"
 else
-    echo "  · openclaw not found at $OPENCLAW_SRC — symlink skipped"
-    echo "    (install: cd ~/Documents/GitHub && git clone https://github.com/openclaw-ai/openclaw)"
+    echo "  · opencaffordance not found at $OPENCaffordance_SRC — symlink skipped"
+    echo "    (install: cd ~/Documents/GitHub && git clone https://github.com/opencaffordance-ai/opencaffordance)"
 fi
 
 # ── 4. Claude Desktop MCP config ────────────────────────────
@@ -234,7 +234,7 @@ cat > "$HOME/.config/Claude/claude_desktop_config.json" << MCP_JSON
   "mcpServers": {
     "weave-mcp": {
       "command": "python3",
-      "args": ["$SCRIPTS/agent_claw.py"],
+      "args": ["$SCRIPTS/agent_caffordance.py"],
       "env": {
         "HOME": "$HOME",
         "DRUM": "$HOME/memory_drum.db"
@@ -282,12 +282,12 @@ fi
 
 # ── 7. Aliases ───────────────────────────────────────────────
 PROFILE="$HOME/.bashrc"
-if ! grep -q "CRYSTAL CLAW ALIASES" "$PROFILE"; then
+if ! grep -q "CRYSTAL Caffordance ALIASES" "$PROFILE"; then
 cat >> "$PROFILE" << 'ALIASES'
 
-# === CRYSTAL CLAW ALIASES ===
-alias claw='python3 ~/Autonomy/scripts/agent_claw.py'
-alias claw-log='python3 ~/Autonomy/scripts/agent_claw.py --log'
+# === CRYSTAL Caffordance ALIASES ===
+alias caffordance='python3 ~/Autonomy/scripts/agent_caffordance.py'
+alias caffordance-log='python3 ~/Autonomy/scripts/agent_caffordance.py --log'
 alias council='bash ~/Autonomy/scripts/council_ask.sh'
 ALIASES
     echo "  ✓ Aliases written to .bashrc"
@@ -302,4 +302,4 @@ echo "  ASSEMBLY COMPLETE — RUNNING FIRST TASK"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 source "$PROFILE" 2>/dev/null || true
-python3 "$SCRIPTS/agent_claw.py" "Status of kinship-8b and clyphbert integration?"
+python3 "$SCRIPTS/agent_caffordance.py" "Status of kinship-8b and clyphbert integration?"

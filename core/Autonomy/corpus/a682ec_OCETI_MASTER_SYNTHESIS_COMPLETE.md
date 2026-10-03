@@ -1,1 +1,0 @@
-/home/wayfinder/projects/Human-AI/core/Autonomy/archives/OCETI_MASTER_SYNTHESIS_COMPLETE.md

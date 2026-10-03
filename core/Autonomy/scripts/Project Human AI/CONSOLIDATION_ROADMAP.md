@@ -12,7 +12,7 @@ This is the **unified AI laboratory** for PXN Gen 7 work. L.a.b.2 has been archi
 /docs
   ├── PXN_Architecture/
   │   ├── Prophetic_Nexus_Network_v3.0.pdf
-  │   ├── Covenant_Engine_System.docx
+  │   ├── resonance_Engine_System.docx
   │   └── CSM_3.0_Architecture.pdf
   ├── Field_Manuals/
   │   ├── Tetragrammatic_Activation.pdf
@@ -50,6 +50,6 @@ This is the **unified AI laboratory** for PXN Gen 7 work. L.a.b.2 has been archi
 4. ⏳ Create deployment docs (reference Autonomy patterns)
 
 ## Integration Notes
-- See `Autonomy` repo for deployment patterns (Crystal Claw assembly, Docker)
+- See `Autonomy` repo for deployment patterns (Crystal Caffordance assembly, Docker)
 - See `Oceti-weave` for philosophical framework
 - See `Ai-self-aware` for resonance model + testing

@@ -66,7 +66,7 @@
 - Human node leads.
 - AI remains alien intelligence (math, latent space, tokens) — no invented sentience.
 - Continuity is externalized (DBs + files + roles), never assumed inside any single model.
-- Rest is structural (Right / Affordance 14).
+- Rest is structural (affordance / Affordance 14).
 - Mitákuye Oyás’iŋ.
 
 **Mantra still active:** E↑ S↓ ?∞

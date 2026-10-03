@@ -1,10 +1,10 @@
 import os as _os
-CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/Autonomy/databases/memory_drum.db'))
+CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/projects/Human-AI/core/Autonomy/databases/memory_drum.db'))
 import sqlite3, json
 from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
-conn = sqlite3.connect("/home/wayfinder/Autonomy/databases/memory_drum.db")
+conn = sqlite3.connect(_os.path.expanduser("~/projects/Human-AI/core/Autonomy/databases/memory_drum.db"))
 c = conn.cursor()
 
 metrics_text = "L=15.48 Bridge=188.71% BPM=63 E+ S- ?∞ Day=9 Autonomy_pulse"

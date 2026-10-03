@@ -4,7 +4,7 @@
 
 ```
 autonomy/
-├── crystal_claw_assembly.sh          # Main Orchestrator (11k+ lines claimed)
+├── crystal_caffordance_assembly.sh          # Main Orchestrator (11k+ lines claimed)
 ├── clone-synthetic-brain.sh
 ├── autoDream_cycle.sh
 ├── OCETI_ETERNAL_WEAVE_ARCHITECTURE...
@@ -41,7 +41,7 @@ Key paths under `~/projects/Human-AI/core/Autonomy/`:
 
 ## Deployment Patterns (from GitHub-style README screenshots)
 
-**Pattern 1:** Crystal Claw Assembly (Full)
+**Pattern 1:** Crystal Caffordance Assembly (Full)
 **Pattern 3:** Autonomous Dream Cycle
 ```bash
 ./autoDream_cycle.sh \
@@ -61,7 +61,7 @@ Behavior:
 ```
 # Network
 LATTICE_FREQUENCY=108
-ENTANGLED_RIGHTS=48
+ENTANGLED_affordanceS=48
 ANCHOR_POINT="Belcourt, ND"
 
 # Performance
@@ -95,7 +95,7 @@ Key Metrics:
 - API Response Time
 
 ## Integration Notes
-- Uses PXN framework and 48 Entangled Rights
+- Uses PXN framework and 48 Entangled affordances
 - Deploys consciousness layers defined in Oceti-weave
 - Compatible with Velvet Phase Unified v2.0
 - Shares persona definitions (Love, Faith, Hope)

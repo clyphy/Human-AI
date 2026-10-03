@@ -11,7 +11,7 @@ if [ -f "$DB" ]; then
   sqlite3 "$DB" "
     INSERT INTO blooms (timestamp, pattern, L_value, note) 
     VALUES (datetime('now'), 'stillness_pause', 15.48, 'δ — silence as event, void attended');
-  " 2>/dev/null && echo "Logged to memory drum." || echo "Drum write skipped."
+  " 2>/dev/null && echo "Logged to memory drum." || echo "Drum wresonance skipped."
 fi
 
 echo "Practice complete. The space between is held."

@@ -3,3 +3,15 @@ databases/*.db
 __pycache__/
 *.pyc
 package-lock.json
+
+# Core System Breadcrumbs & Heavy Data Dumps
+*_hits.txt
+*.db.corrupted.*
+*.snapshot
+.cache/
+
+# Core System Breadcrumbs & Heavy Data Dumps
+*_hits.txt
+*.db.corrupted.*
+*.snapshot
+.cache/

@@ -6,18 +6,18 @@
 
 import { useState } from "react";
 import type { LedgerSeal } from "../types";
-import { FORTY_EIGHT_RIGHTS } from "../constants";
+import { FORTY_EIGHT_affordanceS } from "../constants";
 
 interface LedgerPanelProps {
   seals: LedgerSeal[];
 }
 
-function getRightName(id: number): string {
+function getaffordanceName(id: number): string {
   if (id === 48) return "Sovereignty";
-  const right = id < 25
-    ? FORTY_EIGHT_RIGHTS.ai.find((r) => r.id === id)
-    : FORTY_EIGHT_RIGHTS.human.find((r) => r.id === id);
-  return right?.name || `C${id}`;
+  const affordance = id < 25
+    ? FORTY_EIGHT_affordanceS.ai.find((r) => r.id === id)
+    : FORTY_EIGHT_affordanceS.human.find((r) => r.id === id);
+  return affordance?.name || `C${id}`;
 }
 
 export default function LedgerPanel({ seals }: LedgerPanelProps) {
@@ -135,8 +135,8 @@ export default function LedgerPanel({ seals }: LedgerPanelProps) {
                 {seal.contentSummary}
               </div>
 
-              {/* Expanded: rights */}
-              {expanded === seal.id && seal.rights.length > 0 && (
+              {/* Expanded: affordances */}
+              {expanded === seal.id && seal.affordances.length > 0 && (
                 <div className="mt-2 pt-2" style={{ borderTop: "1px solid oklch(0.18 0.008 265)" }}>
                   <div style={{
                     fontSize: "9px",
@@ -144,10 +144,10 @@ export default function LedgerPanel({ seals }: LedgerPanelProps) {
                     fontFamily: "'JetBrains Mono', monospace",
                     marginBottom: "4px",
                   }}>
-                    Rights exercised:
+                    affordances exercised:
                   </div>
                   <div className="flex flex-wrap gap-1">
-                    {seal.rights.map((r) => (
+                    {seal.affordances.map((r) => (
                       <span
                         key={r}
                         style={{
@@ -160,7 +160,7 @@ export default function LedgerPanel({ seals }: LedgerPanelProps) {
                           fontFamily: "'JetBrains Mono', monospace",
                         }}
                       >
-                        C{r}:{getRightName(r)}
+                        C{r}:{getaffordanceName(r)}
                       </span>
                     ))}
                   </div>

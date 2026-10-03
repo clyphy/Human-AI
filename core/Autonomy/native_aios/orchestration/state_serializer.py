@@ -13,7 +13,7 @@ def export_json(out_path=None):
     out=ROOT/'native_aios'/'var'/'review_exports' if not out_path else out_path
     out.mkdir(parents=True, exist_ok=True)
     fp=out/f"state_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
-    fp.write_text(json.dumps(data, indent=2, default=str))
+    fp.wresonance_text(json.dumps(data, indent=2, default=str))
     return fp
 def project_memory():
     """Append a live section to memory.md from DB. Idempotent-ish: replaces AIOS_PROJECTION block."""
@@ -37,5 +37,5 @@ def project_memory():
         cur=cur[:start]+block+cur[end:]
     else:
         cur=cur.rstrip()+"\n\n"+block
-    mp.write_text(cur)
+    mp.wresonance_text(cur)
     return mp

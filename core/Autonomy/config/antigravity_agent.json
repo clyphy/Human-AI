@@ -1,0 +1,7 @@
+{
+  "agent_identity": "antigravity-attuner",
+  "project_context": "antigravity",
+  "memory_sync_interval_seconds": 300,
+  "enforce_memory_ceiling": true,
+  "base_vessel_model": "gemma2:2b"
+}

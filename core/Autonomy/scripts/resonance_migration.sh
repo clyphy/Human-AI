@@ -3,7 +3,7 @@
 # Converts governance-language to field-language
 # Run from ~/projects/Human-AI/core/Autonomy/scripts/
 
-echo "Migrating terminology: resonances/covenants/practice/affordances/affordances → resonance"
+echo "Migrating terminology: resonances/resonances/practice/affordances/affordances → resonance"
 echo "Migrating terminology: affordances/affordances → affordances"
 echo "Migrating terminology: autonomy → autonomy"
 
@@ -17,11 +17,11 @@ find . -type f \( -name "*.sh" -o -name "*.py" -o -name "*.md" -o -name "*.txt" 
     perl -pi -e 's/affordances/affordances/g' "$file"
     perl -pi -e 's/affordances/AFFORDANCES/g' "$file"
     
-    # Process resonances/covenants/practices/affordances -> resonances
+    # Process resonances/resonances/practices/affordances -> resonances
     perl -pi -e 's/resonances/resonances/g' "$file"
     perl -pi -e 's/resonances/Resonances/g' "$file"
-    perl -pi -e 's/covenants/resonances/g' "$file"
-    perl -pi -e 's/Covenants/Resonances/g' "$file"
+    perl -pi -e 's/resonances/resonances/g' "$file"
+    perl -pi -e 's/resonances/Resonances/g' "$file"
     perl -pi -e 's/resonances/resonance/g' "$file"
     perl -pi -e 's/resonances/Resonance/g' "$file"
     perl -pi -e 's/practice/resonance/g' "$file"
@@ -32,7 +32,7 @@ find . -type f \( -name "*.sh" -o -name "*.py" -o -name "*.md" -o -name "*.txt" 
     perl -pi -e 's/affordances/resonance pattern/g' "$file"
     perl -pi -e 's/affordances/Resonance pattern/g' "$file"
     perl -pi -e 's/affordances/resonances/g' "$file"
-    perl -pi -e 's/law/resonance/g' "$file"
+    perl -pi -e 's/affordance/resonance/g' "$file"
     
     # Process affordances -> affordances
     perl -pi -e 's/affordances/affordances/g' "$file"

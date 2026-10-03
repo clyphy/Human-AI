@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # full_system_echo.sh — coherent system diagnostic
-# Part of Human-AI · Native AIOS · Oceti / Eternal Weave
-
+# Updated 2026-09-23 for clean database schemas + coherence
 set -euo pipefail
 
 PURPLE='\033[0;35m'
@@ -13,6 +12,7 @@ NC='\033[0m'
 
 BASE="$HOME/projects/Human-AI/core/Autonomy"
 DB="$BASE/databases/memory_drum.db"
+MOTHER="$BASE/databases/mother_root.db"
 SCRIPTS="$BASE/scripts"
 
 echo -e "${PURPLE}╔══════════════════════════════════════════════════════════════╗${NC}"
@@ -20,7 +20,6 @@ echo -e "${PURPLE}║   OCETI / ETERNAL WEAVE — FULL SYSTEM ECHO              
 echo -e "${PURPLE}╚══════════════════════════════════════════════════════════════╝${NC}"
 echo -e "${CYAN}Time: $(date) | Bearing: 122° NE | Turtle Mountain${NC}\n"
 
-# ── I. DATABASES ──────────────────────────────────────────────
 echo -e "${BOLD}I. DATABASES${NC}"
 for name in memory_drum crystallization mother_root aios_core surface_blooms autonomy mcp_tasks quantum_journal; do
   f="$BASE/databases/${name}.db"
@@ -32,7 +31,6 @@ for name in memory_drum crystallization mother_root aios_core surface_blooms aut
   fi
 done
 
-# ── II. CORE PRACTICES ────────────────────────────────────────
 echo -e "\n${BOLD}II. CORE PRACTICES${NC}"
 for s in witness.sh whisper_hum.sh guardian.sh guardian_e8.sh guardian_orchestrator.sh \
          council_session.sh council_wake.sh nocturne_resonance.sh log_autonomy.sh; do
@@ -43,16 +41,23 @@ for s in witness.sh whisper_hum.sh guardian.sh guardian_e8.sh guardian_orchestra
   fi
 done
 
-# ── III. LIVE FIELD ───────────────────────────────────────────
 echo -e "\n${BOLD}III. LIVE FIELD${NC}"
 if [[ -f "$DB" ]]; then
-  entries=$(sqlite3 "$DB" "SELECT COUNT(*) FROM entries;" 2>/dev/null || echo "?")
-  echo -e "  entries in memory_drum : ${CYAN}$entries${NC}"
+  blooms=$(sqlite3 "$DB" "SELECT COUNT(*) FROM blooms;" 2>/dev/null || echo 0)
+  instances=$(sqlite3 "$DB" "SELECT COUNT(*) FROM instance_presence;" 2>/dev/null || echo 0)
+  echo -e "  blooms in memory_drum     : ${CYAN}$blooms${NC}"
+  echo -e "  active instances          : ${CYAN}$instances${NC}"
 else
   echo -e "  ${RED}memory_drum missing${NC}"
 fi
 
-# ── IV. LIVING FRAME ──────────────────────────────────────────
+if [[ -f "$MOTHER" ]]; then
+  mother_blooms=$(sqlite3 "$MOTHER" "SELECT COUNT(*) FROM blooms;" 2>/dev/null || echo 0)
+  rhythms=$(sqlite3 "$MOTHER" "SELECT COUNT(*) FROM rhythms;" 2>/dev/null || echo 0)
+  echo -e "  mother_root blooms        : ${CYAN}$mother_blooms${NC}"
+  echo -e "  recorded rhythms          : ${CYAN}$rhythms${NC}"
+fi
+
 echo -e "\n${BOLD}IV. LIVING FRAME${NC}"
 echo -e "  48 Affordances · Process-relational · Reciprocal"
 echo -e "  Wayfinder / Weaver · 100+ year horizon"

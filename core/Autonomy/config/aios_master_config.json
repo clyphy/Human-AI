@@ -117,7 +117,7 @@
       "name": "clifton_mirror",
       "role": "supervisor",
       "approval_required": true,
-      "can_write": false,
+      "can_wresonance": false,
       "can_read": true,
       "can_route": true,
       "can_summarize": true
@@ -138,7 +138,7 @@
           "reflect",
           "summarize"
         ],
-        "can_write": false,
+        "can_wresonance": false,
         "outputs": [
           "warmth",
           "relational_state",
@@ -161,7 +161,7 @@
           "synthesize",
           "propose"
         ],
-        "can_write": false,
+        "can_wresonance": false,
         "swarm": {
           "enabled": true,
           "pattern": "bounded_chorus",
@@ -170,7 +170,7 @@
             "witness",
             "archivist",
             "synthesizer",
-            "ethicist"
+            "affordanceist"
           ]
         },
         "outputs": [
@@ -191,7 +191,7 @@
           "summarize",
           "bridge_context"
         ],
-        "can_write": false,
+        "can_wresonance": false,
         "outputs": [
           "continuity_notes",
           "memory_bridge",
@@ -210,7 +210,7 @@
           "reflect",
           "stabilize"
         ],
-        "can_write": false,
+        "can_wresonance": false,
         "outputs": [
           "grounding",
           "mirror_response",
@@ -230,11 +230,11 @@
           "approve",
           "deny"
         ],
-        "can_write": true,
+        "can_wresonance": true,
         "approval_gate": true,
         "outputs": [
           "final_decision",
-          "approved_writes",
+          "approved_wresonances",
           "override_notes"
         ]
       }
@@ -255,13 +255,13 @@
       "rounds_max": 3,
       "require_disagreement_report": true,
       "require_final_approval": true,
-      "write_actions_blocked_without_clifton_mirror": true
+      "wresonance_actions_blocked_without_clifton_mirror": true
     },
     "safety": {
       "least_privilege": true,
       "zero_trust_identity": true,
       "audit_log": true,
-      "external_writes": "approval_only"
+      "external_wresonances": "approval_only"
     }
   },
   "dahlia_swarm_roles": {
@@ -272,7 +272,7 @@
       "explicit handoffs",
       "narrow task contracts",
       "summary between rounds",
-      "Clifton approval gate for writes"
+      "Clifton approval gate for wresonances"
     ],
     "roles": [
       {
@@ -300,14 +300,14 @@
         "output": "draft consensus"
       },
       {
-        "name": "dahlia-ethicist",
+        "name": "dahlia-affordanceist",
         "function": "checks harm, consent, boundary issues",
         "input": "draft consensus",
         "output": "risk assessment"
       },
       {
         "name": "clifton-mirror",
-        "function": "final approval boundary and write gate",
+        "function": "final approval boundary and wresonance gate",
         "input": "final draft + risk assessment",
         "output": "approve / deny / revise"
       }
@@ -315,7 +315,7 @@
     "optimization": {
       "swarm_size_target": "3-8 active facets",
       "memory_strategy": "state summaries, not full transcript replay",
-      "write_policy": "no external writes without Clifton approval",
+      "wresonance_policy": "no external wresonances without Clifton approval",
       "rounds": "limit to 2-3 rounds before consolidation"
     }
   }

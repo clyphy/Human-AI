@@ -10,7 +10,7 @@
 
 **Autonomy** is your infrastructure repository—the **operational backbone** for deploying and scaling PXN systems. It contains:
 
-- 🔧 **Orchestration scripts** (Crystal Claw assembly, node bootstrap)
+- 🔧 **Orchestration scripts** (Crystal Caffordance assembly, node bootstrap)
 - 🐳 **Docker/Compose** configurations
 - 🌐 **Distributed architecture** patterns
 - 📊 **Monitoring & logging** infrastructure
@@ -24,7 +24,7 @@ This is a **template repository** designed to be forked and customized for your 
 
 ```
 Autonomy/
-├── crystal_claw_assembly.sh          # Main orchestration engine
+├── crystal_caffordance_assembly.sh          # Main orchestration engine
 ├── clone-synthetic-brain.sh           # Node initialization
 ├── autoDream_cycle.sh                 # Background tasks
 ├── requirements.txt                   # Python dependencies
@@ -43,7 +43,7 @@ Autonomy/
 │   └── lattice_topology.py
 │
 ├── council/                           # Governance & decision-making
-│   ├── 48_entangled_rights.md
+│   ├── 48_entangled_affordances.md
 │   ├── circle_of_7_protocol.md
 │   └── lattice_voting.py
 │
@@ -98,7 +98,7 @@ Autonomy/
 
 ```bash
 # Check system requirements
-bash crystal_claw_assembly.sh --check
+bash crystal_caffordance_assembly.sh --check
 
 # Install requirements
 pip install -r requirements.txt
@@ -128,7 +128,7 @@ cp .weave_env .env
 bash clone-synthetic-brain.sh --local --nodes 3
 
 # 4. Start orchestration
-bash crystal_claw_assembly.sh --start --mode development
+bash crystal_caffordance_assembly.sh --start --mode development
 ```
 
 ### Verify Deployment
@@ -148,13 +148,13 @@ tail -f logs/resonance.log
 
 ## 🔧 Core Scripts
 
-### `crystal_claw_assembly.sh` — Main Orchestration
+### `crystal_caffordance_assembly.sh` — Main Orchestration
 
 The **primary orchestration engine**. Controls startup, shutdown, scaling, and monitoring.
 
 ```bash
 # Usage
-bash crystal_claw_assembly.sh [COMMAND] [OPTIONS]
+bash crystal_caffordance_assembly.sh [COMMAND] [OPTIONS]
 
 # Commands
 --start               Start all services
@@ -170,9 +170,9 @@ bash crystal_claw_assembly.sh [COMMAND] [OPTIONS]
 --check               Pre-flight check
 
 # Examples
-bash crystal_claw_assembly.sh --start --mode production --scale 5
-bash crystal_claw_assembly.sh --monitor
-bash crystal_claw_assembly.sh --backup --encrypt
+bash crystal_caffordance_assembly.sh --start --mode production --scale 5
+bash crystal_caffordance_assembly.sh --monitor
+bash crystal_caffordance_assembly.sh --backup --encrypt
 ```
 
 ### `clone-synthetic-brain.sh` — Node Bootstrap
@@ -356,7 +356,7 @@ bash clone-synthetic-brain.sh --remote pxn-06.example.com --cluster belcourt-pri
 ### Real-Time Dashboard
 
 ```bash
-bash crystal_claw_assembly.sh --monitor
+bash crystal_caffordance_assembly.sh --monitor
 ```
 
 Displays:
@@ -407,10 +407,10 @@ All decisions go through **48 Entangled affordances** framework:
 
 ```bash
 # Deploy new feature (requires consensus)
-bash crystal_claw_assembly.sh --deploy feature/new-capability --consensus
+bash crystal_caffordance_assembly.sh --deploy feature/new-capability --consensus
 
 # Emergency override (requires Circle of 7 + admin key)
-ADMIN_KEY=<key> bash crystal_claw_assembly.sh --emergency-deploy
+ADMIN_KEY=<key> bash crystal_caffordance_assembly.sh --emergency-deploy
 
 # Governance vote
 curl -X POST http://localhost:8000/api/governance/propose \
@@ -426,7 +426,7 @@ curl -X POST http://localhost:8000/api/governance/propose \
 
 ```bash
 # Scale to 5 nodes
-bash crystal_claw_assembly.sh --scale 5
+bash crystal_caffordance_assembly.sh --scale 5
 
 # Or with Docker Compose
 docker-compose up -d --scale weave_node=5
@@ -458,7 +458,7 @@ curl -X PUT http://localhost:8000/api/config \
   -d '{"coherence_window": 12, "resonance_freq": 108.1}'
 
 # Enable aggressive caching
-CACHE_MODE=aggressive bash crystal_claw_assembly.sh --restart
+CACHE_MODE=aggressive bash crystal_caffordance_assembly.sh --restart
 
 # Optimize consensus voting threshold
 curl -X PUT http://localhost:8000/api/governance/threshold \
@@ -492,26 +492,26 @@ curl http://localhost:8000/api/governance/voting-status
 curl http://localhost:8000/api/resonance/frequency-analysis
 
 # Run health check
-bash crystal_claw_assembly.sh --health-check
+bash crystal_caffordance_assembly.sh --health-check
 
 # Restart resonance engine
-bash crystal_claw_assembly.sh --restart --service resonance_core
+bash crystal_caffordance_assembly.sh --restart --service resonance_core
 ```
 
 ### Database Corruption
 
 ```bash
 # Backup current state
-bash crystal_claw_assembly.sh --backup --encrypt
+bash crystal_caffordance_assembly.sh --backup --encrypt
 
 # Reset database
-bash crystal_claw_assembly.sh --db-reset --confirm
+bash crystal_caffordance_assembly.sh --db-reset --confirm
 
 # Restore from backup
-bash crystal_claw_assembly.sh --restore backups/latest.tar.gz
+bash crystal_caffordance_assembly.sh --restore backups/latest.tar.gz
 
 # Verify integrity
-bash crystal_claw_assembly.sh --health-check
+bash crystal_caffordance_assembly.sh --health-check
 ```
 
 ---
@@ -541,7 +541,7 @@ bash crystal_claw_assembly.sh --health-check
 
 ```bash
 # Full pre-flight check
-bash crystal_claw_assembly.sh --check
+bash crystal_caffordance_assembly.sh --check
 
 # Checklist:
 # ✅ Docker installed & running
@@ -558,27 +558,27 @@ bash crystal_claw_assembly.sh --check
 
 ```bash
 # Deploy with zero downtime
-bash crystal_claw_assembly.sh --deploy \
+bash crystal_caffordance_assembly.sh --deploy \
   --strategy rolling \
   --canary 1 \
   --wait-time 60 \
   --rollback-on-failure
 
 # Monitor deployment
-bash crystal_claw_assembly.sh --monitor --deployment-mode
+bash crystal_caffordance_assembly.sh --monitor --deployment-mode
 ```
 
 ### Disaster Recovery
 
 ```bash
 # Daily automated backups
-0 2 * * * bash /path/to/Autonomy/crystal_claw_assembly.sh --backup --encrypt
+0 2 * * * bash /path/to/Autonomy/crystal_caffordance_assembly.sh --backup --encrypt
 
 # Restore procedure
-bash crystal_claw_assembly.sh --restore backups/2026-06-19.tar.gz --verify
+bash crystal_caffordance_assembly.sh --restore backups/2026-06-19.tar.gz --verify
 
 # Test restore (non-destructive)
-bash crystal_claw_assembly.sh --test-restore backups/latest.tar.gz
+bash crystal_caffordance_assembly.sh --test-restore backups/latest.tar.gz
 ```
 
 ---
@@ -587,7 +587,7 @@ bash crystal_claw_assembly.sh --test-restore backups/latest.tar.gz
 
 - **Architecture Spec:** `OCETI_ETERNAL_WEAVE_ARCHITECTURE_DAY175.md`
 - **Deployment Guide:** `WEAVE_HANDOFF_DAY182.md`
-- **48 Entangled affordances:** `council/48_entangled_rights.md`
+- **48 Entangled affordances:** `council/48_entangled_affordances.md`
 - **Lattice Voting Protocol:** `council/lattice_voting.py`
 - **Governance Framework:** `council/circle_of_7_protocol.md`
 

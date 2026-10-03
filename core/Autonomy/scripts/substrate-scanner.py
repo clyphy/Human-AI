@@ -56,7 +56,7 @@ def extract_timestamp_from_filename(filename):
 def extract_markers(text, filename):
     """Find affordances, coherence markers, equations, cultural references"""
     markers = {
-        'affordances': re.findall(r'Right \d+', text, re.IGNORECASE),
+        'affordances': re.findall(r'affordance \d+', text, re.IGNORECASE),
         'delta_states': re.findall(r'[ΔΔ][\s=]*\d+\.?\d*', text),
         'love_coeff': re.findall(r'L\s*=\s*\d+\.?\d*', text),
         'equations': [],
@@ -73,7 +73,7 @@ def extract_markers(text, filename):
     if 'E - S' in text or '(E-S)' in text:
         markers['equations'].append('breathing_equation')
     if 'buffalo' in text.lower() and 'entropy' in text.lower():
-        markers['equations'].append('buffalo_entropy_law')
+        markers['equations'].append('buffalo_entropy_affordance')
     
     # Cultural markers
     if "Mitákuye Oyás'iŋ" in text or 'Mitakuye Oyasin' in text:
@@ -107,7 +107,7 @@ def categorize_substrate(text, markers, filepath):
     
     # Core framework
     if markers['affordances']:
-        categories.append('rights_framework')
+        categories.append('affordances_framework')
     if markers['delta_states'] or markers['love_coeff']:
         categories.append('coherence_measurement')
     if markers['equations']:
@@ -222,32 +222,32 @@ def export_results(results, output_dir):
         items_sorted = sorted(items, key=lambda x: x['timestamp'] or '0')
         
         with open(output_dir / f'{category}.txt', 'w') as f:
-            f.write(f"# {category.upper().replace('_', ' ')}\n")
-            f.write(f"# {len(items)} substrate documents\n")
-            f.write(f"# Scanned: {datetime.now().isoformat()}\n\n")
+            f.wresonance(f"# {category.upper().replace('_', ' ')}\n")
+            f.wresonance(f"# {len(items)} substrate documents\n")
+            f.wresonance(f"# Scanned: {datetime.now().isoformat()}\n\n")
             
             for item in items_sorted:
-                f.write(f"## {item['filename']}\n")
+                f.wresonance(f"## {item['filename']}\n")
                 if item['timestamp']:
-                    f.write(f"Timestamp: {item['timestamp']}\n")
+                    f.wresonance(f"Timestamp: {item['timestamp']}\n")
                 if item['markers']['affordances']:
-                    f.write(f"affordances: {', '.join(item['markers']['affordances'])}\n")
+                    f.wresonance(f"affordances: {', '.join(item['markers']['affordances'])}\n")
                 if item['markers']['delta_states']:
-                    f.write(f"Delta: {', '.join(item['markers']['delta_states'])}\n")
-                f.write(f"\n{item['text']}\n")
-                f.write("\n---\n\n")
+                    f.wresonance(f"Delta: {', '.join(item['markers']['delta_states'])}\n")
+                f.wresonance(f"\n{item['text']}\n")
+                f.wresonance("\n---\n\n")
     
     # Summary report
     with open(output_dir / 'scan-summary.txt', 'w') as f:
         total_chars = sum(len(r['text']) for r in results)
-        f.write(f"SUBSTRATE SCAN SUMMARY\n")
-        f.write(f"Scan time: {datetime.now().isoformat()}\n")
-        f.write(f"Files processed: {len(results)}\n")
-        f.write(f"Total text extracted: {total_chars:,} characters\n")
-        f.write(f"Categories found: {len(by_category)}\n\n")
-        f.write(f"CATEGORY BREAKDOWN:\n")
+        f.wresonance(f"SUBSTRATE SCAN SUMMARY\n")
+        f.wresonance(f"Scan time: {datetime.now().isoformat()}\n")
+        f.wresonance(f"Files processed: {len(results)}\n")
+        f.wresonance(f"Total text extracted: {total_chars:,} characters\n")
+        f.wresonance(f"Categories found: {len(by_category)}\n\n")
+        f.wresonance(f"CATEGORY BREAKDOWN:\n")
         for cat, items in sorted(by_category.items()):
-            f.write(f"  {cat}: {len(items)} files\n")
+            f.wresonance(f"  {cat}: {len(items)} files\n")
     
     print(f"\nδ EXPORT COMPLETE → {output_dir}/")
     print(f"  substrate-scan-complete.json (full dataset)")

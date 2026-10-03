@@ -4,6 +4,8 @@
 # the dark hours or by hand. See nocturne_resonance.py for what it does.
 
 set -euo pipefail
+source "$HOME/projects/Human-AI/core/Autonomy/scripts/schema_init.sh" 2>/dev/null || true
+init_memory_drum
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG="$HOME/projects/Human-AI/core/Autonomy/logs/nocturne_resonance.log"
 mkdir -p "$(dirname "$LOG")"

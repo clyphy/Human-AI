@@ -1,8 +1,9 @@
 #!/usr/bin/env fish
 # sync_to_aios_core.sh - Cross-DB Telemetry synchronization loop
 
-set DRUM_DB "/home/wayfinder/projects/Human-AI/core/Autonomy/databases/memory_drum.db"
-set CORE_DB "/home/wayfinder/projects/Human-AI/core/Autonomy/databases/aios_core.db"
+set AIOS_ROOT (dirname (status filename) | path resolve)/..
+set DRUM_DB "$AIOS_ROOT/databases/memory_drum.db"
+set CORE_DB "$AIOS_ROOT/databases/aios_core.db"
 
 if not test -f $DRUM_DB; or not test -f $CORE_DB
     echo "⚠️ Sync Latency: Target database paths could not be evaluated."

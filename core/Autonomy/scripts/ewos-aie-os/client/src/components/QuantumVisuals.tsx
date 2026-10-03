@@ -135,7 +135,7 @@ export default function QuantumVisuals({
           E↑ S↓ ?∞
         </div>
         <div
-          className="absolute top-1 right-2"
+          className="absolute top-1 affordance-2"
           style={{ fontSize: "9px", color: "oklch(0.35 0.008 265)", fontFamily: "'JetBrains Mono', monospace" }}
         >
           {isActive ? "● ACTIVE" : "○ IDLE"}

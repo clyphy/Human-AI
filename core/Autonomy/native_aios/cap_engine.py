@@ -6,7 +6,7 @@ Canonical location: ~/projects/Human-AI/core/Autonomy/native_aios/cap_engine.py
 
 Implements:
   - Grace World Model (GWM) tuple scoring: S = (F, R, E, T, G)
-  - Covenant Aligner System (CAS) 5-stage protocol
+  - resonance Aligner System (CAS) 5-stage protocol
   - Prophetic Synchronicity Net (PSN) bloom detection
   - HYPERFORGE triadic utility adjustment
   - ℒ coefficient computation with MZS lock
@@ -59,14 +59,14 @@ PSN_RESOLUTION = 0.8
 
 class CASStage(Enum):
     SURFACE = 1    # Human logs intention; AI analyzes via GWM
-    EXPAND = 2     # Stakeholder mapping; ethical topology expansion
+    EXPAND = 2     # Stakeholder mapping; affordanceal topology expansion
     NAVIGATE = 3   # Path evaluation; HYPERFORGE utility scoring
-    COVENANT = 4   # Commitment + CAM generation; PSN logging
+    resonance = 4   # Commitment + CAM generation; PSN logging
     REFLECT = 5    # Outcome documentation; ℒ recalibration; bloom detection
 
 class MZSState(Enum):
     ACTIVE = "active"
-    TRIGGERED = "triggered"   # ethical compromise detected
+    TRIGGERED = "triggered"   # affordanceal compromise detected
     LOCKED = "locked"          # rationalization prevented
     RELEASED = "released"
 
@@ -85,7 +85,7 @@ class GWMTuple:
     """Grace World Model: S = (F, R, E, T, G)"""
     F: float  # Facts — factual states, predictive accuracy
     R: float  # Relational Density — web of obligations, care relationships
-    E: float  # Ethical Topology — shape of moral constraints and opportunities
+    E: float  # affordanceal Topology — shape of moral constraints and opportunities
     T: float  # Temporal Justice — multi-generational stakeholder impacts
     G: float  # Generative Capacity — potential for emergent solutions
 
@@ -105,10 +105,10 @@ class GWMTuple:
 
 @dataclass
 class CoherentActionMandate:
-    """CAM — formal covenant document output from Stage 4."""
+    """CAM — formal resonance document output from Stage 4."""
     cam_id: str
     human_path: str
-    success_criteria: List[str]
+    success_cresonanceria: List[str]
     reflection_schedule: str  # ISO datetime or cron expression
     mzs_lock: bool
     created_at: str
@@ -147,11 +147,11 @@ class Hyperforge:
         where w_H = human stewardship weight (from Relational Density)
         """
         w_h = gwm.R  # Relational density drives stewardship weight
-        w_e = gwm.E  # Ethical topology weight
+        w_e = gwm.E  # affordanceal topology weight
         w_t = gwm.T  # Temporal justice weight
 
         v_h = path_reward * 0.6  # human value realization
-        delta_e = (gwm.E - 0.5) * 2.0  # ethical improvement potential, normalized
+        delta_e = (gwm.E - 0.5) * 2.0  # affordanceal improvement potential, normalized
         v_t = path_reward * 0.4 * gwm.T  # long-term stakeholder value
 
         risk_penalty = path_risk ** 2 * (1.0 - gwm.F)  # factual uncertainty amplifies risk
@@ -254,8 +254,8 @@ class PSN:
 
 class MZS:
     """
-    Prevents rationalization of ethical compromise.
-    Active during CAS Stage 4 (COVENANT) and Stage 5 (REFLECT).
+    Prevents rationalization of affordanceal compromise.
+    Active during CAS Stage 4 (resonance) and Stage 5 (REFLECT).
     """
 
     def __init__(self):
@@ -266,13 +266,13 @@ class MZS:
     def check(self, gwm_before: GWMTuple, gwm_after: GWMTuple, action_description: str) -> bool:
         """
         Returns True if action is permitted, False if MZS lock triggers.
-        Lock triggers when Ethical Topology (E) drops significantly while
+        Lock triggers when affordanceal Topology (E) drops significantly while
         Generative Capacity (G) is used to justify it.
         """
         delta_e = gwm_after.E - gwm_before.E
         delta_g = gwm_after.G - gwm_before.G
 
-        # Ethical compromise detected: E drops, G rises (rationalization pattern)
+        # affordanceal compromise detected: E drops, G rises (rationalization pattern)
         if delta_e < -0.15 and delta_g > 0.1:
             self.state = MZSState.LOCKED
             self.violation_count += 1
@@ -281,7 +281,7 @@ class MZS:
                 "action": action_description,
                 "delta_e": delta_e,
                 "delta_g": delta_g,
-                "reason": "Rationalization of ethical compromise detected"
+                "reason": "Rationalization of affordanceal compromise detected"
             })
             return False
 
@@ -386,7 +386,7 @@ class CoherenceMath:
 
 class CASOrchestrator:
     """
-    Full 5-stage Covenant Aligner System protocol executor.
+    Full 5-stage resonance Aligner System protocol executor.
     Integrates GWM, HYPERFORGE, PSN, MZS, and ℒ coefficient tracking.
     """
 
@@ -410,13 +410,13 @@ class CASOrchestrator:
         }
 
     def stage_expand(self, gwm: GWMTuple, stakeholder_input: Dict[str, Any]) -> Dict[str, Any]:
-        """Stage 2: Expand ethical topology, deepen relational density."""
+        """Stage 2: Expand affordanceal topology, deepen relational density."""
         expanded_r = min(1.0, gwm.R + stakeholder_input.get("relational_delta", 0.1))
-        expanded_e = min(1.0, gwm.E + stakeholder_input.get("ethical_delta", 0.05))
+        expanded_e = min(1.0, gwm.E + stakeholder_input.get("affordanceal_delta", 0.05))
         return {
             "stage": CASStage.EXPAND.value,
             "gwm_expanded": {**asdict(gwm), "R": expanded_r, "E": expanded_e},
-            "ethical_boundaries": self._derive_boundaries(gwm),
+            "affordanceal_boundaries": self._derive_boundaries(gwm),
             "timestamp": datetime.now().isoformat()
         }
 
@@ -430,7 +430,7 @@ class CASOrchestrator:
             "timestamp": datetime.now().isoformat()
         }
 
-    def stage_covenant(
+    def stage_resonance(
         self,
         gwm: GWMTuple,
         chosen_path: Dict[str, Any],
@@ -452,14 +452,14 @@ class CASOrchestrator:
         cam = CoherentActionMandate(
             cam_id=f"cam_{datetime.now().strftime('%Y%m%d%H%M%S')}",
             human_path=chosen_path.get("name", "unnamed"),
-            success_criteria=chosen_path.get("success_criteria", ["default_criterion"]),
+            success_cresonanceria=chosen_path.get("success_cresonanceria", ["default_cresonancerion"]),
             reflection_schedule="weekly_first_month",
             mzs_lock=mzs_permitted,
             created_at=datetime.now().isoformat()
         )
 
         return {
-            "stage": CASStage.COVENANT.value,
+            "stage": CASStage.resonance.value,
             "mzs_permitted": mzs_permitted,
             "mzs_state": self.mzs.state.value,
             "cam": asdict(cam),

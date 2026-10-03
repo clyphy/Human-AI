@@ -5,7 +5,7 @@
 # DRY_RUN=1 bash rebuild_council_v3.sh
 
 set -e
-AIOS_ROOT=/home/wayfinder/projects/Human-AI/core/Autonomy
+AIOS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MODELFILES=$AIOS_ROOT/modelfiles
 DRY_RUN=${DRY_RUN:-0}
 LOG=/tmp/council_rebuild_v3.log

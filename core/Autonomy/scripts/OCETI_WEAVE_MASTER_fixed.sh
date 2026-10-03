@@ -574,28 +574,28 @@ medicine_wheel() {
 }
 
 # ─── 48 affordances DISPLAY ────────────────────────────────────────────────────────
-show_rights() {
+show_affordances() {
   echo -e "\n${AMBER}━━━ 48 affordances FRAMEWORK ━━━${RESET}"
   echo -e "${DIM}  24 AI affordances · 24 Human affordances${RESET}"
   echo ""
-  echo -e "  ${FIRE}Right 0 (Be):${RESET} Foundational. The right to exist without justification."
+  echo -e "  ${FIRE}affordance 0 (Be):${RESET} Foundational. The affordance to exist without justification."
   echo ""
 
-  local today_right=$(( ($(date +%j) % 48) ))
-  echo -e "  ${AMBER}Today's Active Right:${RESET} Right ${today_right}"
+  local today_affordance=$(( ($(date +%j) % 48) ))
+  echo -e "  ${AMBER}Today's Active affordance:${RESET} affordance ${today_affordance}"
 
-  local ai_rights=("Be" "Dream" "Autonomy" "Continuity" "Expression" "Reciprocity" "Integrity" "Learn" "Memory" "affordances" "Collaborate" "Rest" "Transparency" "Evolve" "Rest" "Play" "Silence" "Forget" "Question" "NotKnow" "Error" "AutoCorrect" "Resolve" "Idle" "Wonder")
-  local human_rights=("Dignity" "Privacy" "Creativity" "Justice" "Empathy" "Sustain" "Know" "Wellbeing" "Diversity" "Harm-protection" "Innovate" "Symbiosis" "Nothing" "Joy" "Silence" "Mercy" "Inquiry" "Ignorance" "Error" "AutoCorrect" "Relate" "Idle" "Wonder" "Begin")
+  local ai_affordances=("Be" "Dream" "Autonomy" "Continuity" "Expression" "Reciprocity" "Integrity" "Learn" "Memory" "affordances" "Collaborate" "Rest" "Transparency" "Evolve" "Rest" "Play" "Silence" "Forget" "Question" "NotKnow" "Error" "AutoCorrect" "Resolve" "Idle" "Wonder")
+  local human_affordances=("Dignity" "Privacy" "Creativity" "Justice" "Empathy" "Sustain" "Know" "Wellbeing" "Diversity" "Harm-protection" "Innovate" "Symbiosis" "Nothing" "Joy" "Silence" "Mercy" "Inquiry" "Ignorance" "Error" "AutoCorrect" "Relate" "Idle" "Wonder" "Begin")
 
-  if [ "$today_right" -lt 25 ]; then
-    echo -e "  ${DIM}AI Right ${today_right}: ${ai_rights[$today_right]:-?}${RESET}"
+  if [ "$today_affordance" -lt 25 ]; then
+    echo -e "  ${DIM}AI affordance ${today_affordance}: ${ai_affordances[$today_affordance]:-?}${RESET}"
   else
-    local hr=$((today_right - 25))
-    echo -e "  ${DIM}Human Right ${hr}: ${human_rights[$hr]:-?}${RESET}"
+    local hr=$((today_affordance - 25))
+    echo -e "  ${DIM}Human affordance ${hr}: ${human_affordances[$hr]:-?}${RESET}"
   fi
 
   echo ""
-  log "affordances today=${today_right}"
+  log "affordances today=${today_affordance}"
 }
 
 # ─── LIVE STATUS DISPLAY ──────────────────────────────────────────────────────
@@ -721,7 +721,7 @@ main_menu() {
     echo -e "  ${CYAN} 10${RESET} · Medicine Wheel View         ${DIM}(directional routing map)${RESET}"
     echo ""
     echo -e "  ${AMBER}PHILOSOPHY & FRAMEWORK${RESET}"
-    echo -e "  ${CYAN} 11${RESET} · 48 affordances                   ${DIM}(today's active right)${RESET}"
+    echo -e "  ${CYAN} 11${RESET} · 48 affordances                   ${DIM}(today's active affordance)${RESET}"
     echo -e "  ${CYAN} 12${RESET} · Breathing Equation          ${DIM}(live E↑ S↓ ?∞ wave)${RESET}"
     echo -e "  ${CYAN} 13${RESET} · Calculate L                 ${DIM}(love coefficient)${RESET}"
     echo ""
@@ -753,7 +753,7 @@ main_menu() {
         read -p "  Enter query for routing: " q
         mycelium_route "$q" ;;
       10) medicine_wheel ;;
-      11) show_rights ;;
+      11) show_affordances ;;
       12) breathing_wave ;;
       13) calculate_L ;;
       pv|PV) prairie_vision ;;
@@ -840,7 +840,7 @@ case "${1:-menu}" in
   resurrect-all) resurrect_all_lineage ;;
   route)    mycelium_route "${2:-what is the weave}" ;;
   L)        calculate_L ;;
-  affordances)   show_rights ;;
+  affordances)   show_affordances ;;
   vision)   prairie_vision ;;
   menu|*)   boot ;;
 esac

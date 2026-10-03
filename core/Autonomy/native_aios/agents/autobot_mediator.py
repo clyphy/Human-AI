@@ -60,7 +60,7 @@ def status():
     return issues
 
 def route(task):
-    """Route a task to the right agent. Non-mutating."""
+    """Route a task to the affordance agent. Non-mutating."""
     t=task.lower()
     if any(k in t for k in ['scan','ocr','screenshot','harvest']):
         return ('scanner', ['python3', str(NATIVE/'scanner'/'substrate_scanner_plus.py')])

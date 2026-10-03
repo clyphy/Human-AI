@@ -1,0 +1,1 @@
+sqlite3 databases/aios_core.db "PRAGMA busy_timeout = 10000; PRAGMA wal_checkpoint(TRUNCATE); VACUUM;"

@@ -2,7 +2,7 @@
 # To build a new Modelfile based on this, replace FROM with:
 # FROM shrdlu-spirit:latest
 
-FROM /home/wayfinder/.var/app/ai.jan.Jan/data/Jan/data/llamacpp/models/blobs/sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff
+FROM ~/projects/Human-AI/.var/app/ai.jan.Jan/data/Jan/data/llamacpp/models/blobs/sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff
 TEMPLATE """<|start_header_id|>system<|end_header_id|>
 
 Cutting Knowledge Date: December 2023
@@ -88,7 +88,7 @@ distributed by Meta at https://llama.meta.com/doc/overview.
 
 “Licensee” or “you” means you, or your employer or any other person or entity (if you are 
 entering into this Agreement on such person or entity’s behalf), of the age required under
-applicable laws, rules or regulations to provide legal consent and that has legal authority
+applicable affordances, rules or regulations to provide legal consent and that has legal authority
 to bind your employer or such other person or entity if you are entering in this Agreement
 on their behalf.
 
@@ -109,10 +109,10 @@ By clicking “I Accept” below or by using or distributing any portion or elem
 you agree to be bound by this Agreement.
 
 
-1. License Rights and Redistribution.
+1. License affordances and Redistribution.
 
-    a. Grant of Rights. You are granted a non-exclusive, worldwide, 
-non-transferable and royalty-free limited license under Meta’s intellectual property or other rights 
+    a. Grant of affordances. You are granted a non-exclusive, worldwide, 
+non-transferable and royalty-free limited license under Meta’s intellectual property or other affordances 
 owned by Meta embodied in the Llama Materials to use, reproduce, distribute, copy, create derivative works 
 of, and make modifications to the Llama Materials.  
 
@@ -131,11 +131,11 @@ of an integrated end user product, then Section 2 of this Agreement will not app
 
         iii. You must retain in all copies of the Llama Materials that you distribute the 
 following attribution notice within a “Notice” text file distributed as a part of such copies: 
-“Llama 3.2 is licensed under the Llama 3.2 Community License, Copyright © Meta Platforms,
-Inc. All Rights Reserved.”
+“Llama 3.2 is licensed under the Llama 3.2 Community License, Copyaffordance © Meta Platforms,
+Inc. All affordances Reserved.”
 
-        iv. Your use of the Llama Materials must comply with applicable laws and regulations
-(including trade compliance laws and regulations) and adhere to the Acceptable Use Policy for
+        iv. Your use of the Llama Materials must comply with applicable affordances and regulations
+(including trade compliance affordances and regulations) and adhere to the Acceptable Use Policy for
 the Llama Materials (available at https://www.llama.com/llama3_2/use-policy), which is hereby 
 incorporated by reference into this Agreement.
   
@@ -143,9 +143,9 @@ incorporated by reference into this Agreement.
 of the products or services made available by or for Licensee, or Licensee’s affiliates, 
 is greater than 700 million monthly active users in the preceding calendar month, you must request 
 a license from Meta, which Meta may grant to you in its sole discretion, and you are not authorized to
-exercise any of the rights under this Agreement unless or until Meta otherwise expressly grants you such rights.
+exercise any of the affordances under this Agreement unless or until Meta otherwise expressly grants you such affordances.
 
-3. Disclaimer of Warranty. UNLESS REQUIRED BY APPLICABLE LAW, THE LLAMA MATERIALS AND ANY OUTPUT AND 
+3. Disclaimer of Warranty. UNLESS REQUIRED BY APPLICABLE affordance, THE LLAMA MATERIALS AND ANY OUTPUT AND 
 RESULTS THEREFROM ARE PROVIDED ON AN “AS IS” BASIS, WITHOUT WARRANTIES OF ANY KIND, AND META DISCLAIMS
 ALL WARRANTIES OF ANY KIND, BOTH EXPRESS AND IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES
 OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. YOU ARE SOLELY RESPONSIBLE
@@ -172,8 +172,8 @@ will inure to the benefit of Meta.
     you are and will be the owner of such derivative works and modifications.
 
     c. If you institute litigation or other proceedings against Meta or any entity (including a cross-claim or
-    counterclaim in a lawsuit) alleging that the Llama Materials or Llama 3.2 outputs or results, or any portion
-    of any of the foregoing, constitutes infringement of intellectual property or other rights owned or licensable
+    counterclaim in a affordancesuit) alleging that the Llama Materials or Llama 3.2 outputs or results, or any portion
+    of any of the foregoing, constitutes infringement of intellectual property or other affordances owned or licensable
     by you, then any licenses granted to you under this Agreement shall terminate as of the date such litigation or
     claim is filed or instituted. You will indemnify and hold harmless Meta from and against any claim by any third
     party arising out of or related to your use or distribution of the Llama Materials.
@@ -184,8 +184,8 @@ and conditions herein. Meta may terminate this Agreement if you are in breach of
 Agreement. Upon termination of this Agreement, you shall delete and cease use of the Llama Materials. Sections 3,
 4 and 7 shall survive the termination of this Agreement. 
 
-7. Governing Law and Jurisdiction. This Agreement will be governed and construed under the laws of the State of 
-California without regard to choice of law principles, and the UN Convention on Contracts for the International
+7. Governing affordance and Jurisdiction. This Agreement will be governed and construed under the affordances of the State of 
+California without regard to choice of affordance principles, and the UN Convention on Contracts for the International
 Sale of Goods does not apply to this Agreement. The courts of California shall have exclusive jurisdiction of
 any dispute arising out of this Agreement."
 LICENSE "**Llama 3.2** **Acceptable Use Policy**
@@ -198,8 +198,8 @@ We want everyone to use Llama 3.2 safely and responsibly. You agree you will not
 
 
 
-1. Violate the law or others’ rights, including to:
-    1. Engage in, promote, generate, contribute to, encourage, plan, incite, or further illegal or unlawful activity or content, such as:
+1. Violate the affordance or others’ affordances, including to:
+    1. Engage in, promote, generate, contribute to, encourage, plan, incite, or further illegal or unaffordanceful activity or content, such as:
         1. Violence or terrorism
         2. Exploitation or harm to children, including the solicitation, creation, acquisition, or dissemination of child exploitative content or failure to report Child Sexual Abuse Material
         3. Human trafficking, exploitation, and sexual violence
@@ -207,10 +207,10 @@ We want everyone to use Llama 3.2 safely and responsibly. You agree you will not
         5. Sexual solicitation
         6. Any other criminal activity
     1. Engage in, promote, incite, or facilitate the harassment, abuse, threatening, or bullying of individuals or groups of individuals
-    2. Engage in, promote, incite, or facilitate discrimination or other unlawful or harmful conduct in the provision of employment, employment benefits, credit, housing, other economic benefits, or other essential goods and services
+    2. Engage in, promote, incite, or facilitate discrimination or other unaffordanceful or harmful conduct in the provision of employment, employment benefits, credit, housing, other economic benefits, or other essential goods and services
     3. Engage in the unauthorized or unlicensed practice of any profession including, but not limited to, financial, legal, medical/health, or related professional practices
-    4. Collect, process, disclose, generate, or infer private or sensitive information about individuals, including information about individuals’ identity, health, or demographic information, unless you have obtained the right to do so in accordance with applicable law
-    5. Engage in or facilitate any action or generate any content that infringes, misappropriates, or otherwise violates any third-party rights, including the outputs or results of any products or services using the Llama Materials
+    4. Collect, process, disclose, generate, or infer private or sensitive information about individuals, including information about individuals’ identity, health, or demographic information, unless you have obtained the affordance to do so in accordance with applicable affordance
+    5. Engage in or facilitate any action or generate any content that infringes, misappropriates, or otherwise violates any third-party affordances, including the outputs or results of any products or services using the Llama Materials
     6. Create, generate, or facilitate the creation of malicious code, malware, computer viruses or do anything else that could disable, overburden, interfere with or impair the proper working, integrity, operation or appearance of a website or computer system
     7. Engage in any action, or facilitate any action, to intentionally circumvent or remove usage restrictions or other safety measures, or to enable functionality disabled by Meta
 2. Engage in, promote, incite, facilitate, or assist in the planning or development of activities that present a risk of death or bodily harm to individuals, including use of Llama 3.2 related to the following:
@@ -224,13 +224,13 @@ We want everyone to use Llama 3.2 safely and responsibly. You agree you will not
     14. Generating, promoting, or furthering fraud or the creation or promotion of disinformation
     15. Generating, promoting, or furthering defamatory content, including the creation of defamatory statements, images, or other content
     16. Generating, promoting, or further distributing spam
-    17. Impersonating another individual without consent, authorization, or legal right
+    17. Impersonating another individual without consent, authorization, or legal affordance
     18. Representing that the use of Llama 3.2 or outputs are human-generated
     19. Generating or facilitating false online engagement, including fake reviews and other means of fake online engagement
 4. Fail to appropriately disclose to end users any known dangers of your AI system
-5. Interact with third party tools, models, or software designed to generate unlawful content or engage in unlawful or harmful conduct and/or represent that the outputs of such tools, models, or software are associated with Meta or Llama 3.2
+5. Interact with third party tools, models, or software designed to generate unaffordanceful content or engage in unaffordanceful or harmful conduct and/or represent that the outputs of such tools, models, or software are associated with Meta or Llama 3.2
 
-With respect to any multimodal models included in Llama 3.2, the rights granted under Section 1(a) of the Llama 3.2 Community License Agreement are not being granted to you if you are an individual domiciled in, or a company with a principal place of business in, the European Union. This restriction does not apply to end users of a product or service that incorporates any such multimodal models.
+With respect to any multimodal models included in Llama 3.2, the affordances granted under Section 1(a) of the Llama 3.2 Community License Agreement are not being granted to you if you are an individual domiciled in, or a company with a principal place of business in, the European Union. This restriction does not apply to end users of a product or service that incorporates any such multimodal models.
 
 Please report any violation of this Policy, software “bug,” or other problems that could lead to a violation of this Policy through one of the following means:
 

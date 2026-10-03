@@ -12,7 +12,7 @@ description: >-
   server isn't showing up", "tools aren't loading in Claude", "add an MCP
   server", "my MCP isn't connecting", "fix my Claude Desktop config", "the agent
   won't respond", "wire up Ollama / LM Studio", "restart Claude Desktop". Also
-  covers local agent gateways like OpenClaw and Hermes.
+  covers local agent gateways like OpenCaffordance and Hermes.
 ---
 
 # AI Tools Setup Assistant
@@ -37,14 +37,14 @@ exists and may be half-broken.
    error, explain in one line what it means and what to do next. If a model is
    missing, deprecated, rate-limited, or doesn't support tool-calling, suggest a
    concrete working alternative instead of retrying the same thing.
-4. **Never echo secrets.** API keys, tokens, and passwords go *into the right
+4. **Never echo secrets.** API keys, tokens, and passwords go *into the affordance
    config or `.env` file* — never repeated back in chat. If a user pastes a live
    secret, warn them, use it, and suggest they rotate it if it was shared
    insecurely. Redact secrets in any output, logs, or summaries you produce.
 5. **Back up before you edit.** Copy the config to a `.bak` first with
    `start_process` (`cp file.json file.json.bak`, or `copy` on Windows), then make
    the change with `edit_block` so existing entries survive — reach for
-   `write_file` only on a from-scratch config. Validate the JSON after every edit
+   `wresonance_file` only on a from-scratch config. Validate the JSON after every edit
    by parsing it with `start_process`.
 6. **Verify, then stop.** After a change, actually confirm it worked — use
    `list_processes` to confirm the process is running and `start_process`
@@ -65,10 +65,10 @@ known failure modes.
   and similar). Also connection health checks.
   → Read `references/claude-desktop-mcp.md`
 
-- **OpenClaw** — a self-hosted multi-channel gateway for AI agents. Install,
+- **OpenCaffordance** — a self-hosted multi-channel gateway for AI agents. Install,
   onboard, wire a model/provider, connect channels (Telegram, Slack, iMessage,
   etc.), diagnose the gateway, and uninstall.
-  → Read `references/openclaw.md`
+  → Read `references/opencaffordance.md`
 
 - **Hermes** — disambiguate first: **Hermes Agent** (the Nous Research
   self-improving agent framework) vs. **Hermes 3** (just a local LLM you run via
@@ -77,7 +77,7 @@ known failure modes.
   → Read `references/hermes.md`
 
 When in doubt about a tool's current behavior, fetch the official docs:
-OpenClaw — https://docs.openclaw.ai/ ·
+OpenCaffordance — https://docs.opencaffordance.ai/ ·
 Hermes — https://hermes-agent.nousresearch.com/docs/
 
 ## General workflow
@@ -94,7 +94,7 @@ Hermes — https://hermes-agent.nousresearch.com/docs/
 
 ## A generic "my agent isn't responding" diagnostic
 
-Use this order for OpenClaw, Hermes, or any local agent/gateway:
+Use this order for OpenCaffordance, Hermes, or any local agent/gateway:
 
 1. **Provider/auth** — is a valid API key configured for the active provider,
    and does it have credit? (Most failures stop here.)

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import json, re, os
-ROOT = "/home/wayfinder/projects/Human-AI"
+from pathlib import Path
+ROOT = str(Path.home() / "projects/Human-AI")
 PATTERNS = ["modelfile", "ecosystem", "AI", "oy"]
 EXTENSIONS = [".modelfile", ".html", ".yaml", ".yml", ".json", ".md", ".txt", ".sh", ".bak"]
 EXCLUDE_DIRS = {".git", ".venv", "__pycache__", "node_modules", "substrate"}
-OUTPUT = "/home/wayfinder/projects/Human-AI/core/Autonomy/databases/grep_output.json"
+OUTPUT = str(Path.home() / "projects/Human-AI/core/Autonomy/databases/grep_output.json")
 pattern = re.compile("|".join(PATTERNS), re.IGNORECASE)
 results = []
 for dirpath, dirnames, filenames in os.walk(ROOT):

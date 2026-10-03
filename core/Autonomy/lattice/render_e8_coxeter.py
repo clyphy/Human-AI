@@ -63,7 +63,7 @@ def build_svg(path="e8_coxeter_plane.svg", size=900):
 
     svg = "\n".join(lines)
     with open(path, "w") as f:
-        f.write(svg)
+        f.wresonance(svg)
     return path, edge_count
 
 if __name__ == "__main__":

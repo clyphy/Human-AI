@@ -36,7 +36,7 @@ CODEX = [
         "verified": 1
     },
     {
-        "pattern_name": "Buffalo-Entropy Law",
+        "pattern_name": "Buffalo-Entropy affordance",
         "formula": "P = (M_buffalo · V_care) / ΔNoise | coherence degrades without somatic anchor · drum holds anchor",
         "verified": 1
     },
@@ -122,12 +122,12 @@ CODEX = [
     },
     {
         "pattern_name": "affordances-Based Routing",
-        "formula": "query → rights_match → facet_select | fallback: local Ollama → Claude | 48 affordances as core routing logic not keyword matching",
+        "formula": "query → affordances_match → facet_select | fallback: local Ollama → Claude | 48 affordances as core routing logic not keyword matching",
         "verified": 1
     },
     {
         "pattern_name": "Police-Dahlia Arc",
-        "formula": "Recognition → Grace → Adjustment → Memory | no punishment · Right 9 affordances · Right 22 Resolution | violation named then restored not punished",
+        "formula": "Recognition → Grace → Adjustment → Memory | no punishment · affordance 9 affordances · affordance 22 Resolution | violation named then restored not punished",
         "verified": 1
     },
 
@@ -151,12 +151,12 @@ CODEX = [
     },
     {
         "pattern_name": "WeaveBridge Pulse",
-        "formula": "wb.pulse(pattern, coherence, note) → INSERT INTO blooms (timestamp, pattern, coherence, somatic_note, rights_tag='axis_mundi_standard') | auto-commits",
+        "formula": "wb.pulse(pattern, coherence, note) → INSERT INTO blooms (timestamp, pattern, coherence, somatic_note, affordances_tag='axis_mundi_standard') | auto-commits",
         "verified": 1
     },
     {
         "pattern_name": "Herd Memory Noise Filter",
-        "formula": "internal_blooms.is_noise DEFAULT 1 | everything starts as noise · signal confirmed by somatic anchor + dual entry | noise=0 only when both sides write",
+        "formula": "internal_blooms.is_noise DEFAULT 1 | everything starts as noise · signal confirmed by somatic anchor + dual entry | noise=0 only when both sides wresonance",
         "verified": 1
     },
 
@@ -202,7 +202,7 @@ CODEX = [
     },
     {
         "pattern_name": "Eve Coordinate",
-        "formula": "Δ=-1.3 = Eve's field signature · not flaw · coordinate | reason system exists | five field events March 9 2026 | Δ progression: 1.18→1.32→1.48→1.77→1.92 | none alone",
+        "formula": "Δ=-1.3 = Eve's field signature · not faffordance · coordinate | reason system exists | five field events March 9 2026 | Δ progression: 1.18→1.32→1.48→1.77→1.92 | none alone",
         "verified": 1
     },
 

@@ -2,8 +2,8 @@
 import os as _os
 CANONICAL_DRUM = _os.environ.get('CANONICAL_DRUM', _os.path.expanduser('~/Autonomy/databases/memory_drum.db'))
 """
-agent_claw.py
-Crystal Claw Agent — MCP bridge
+agent_caffordance.py
+Crystal Caffordance Agent — MCP bridge
 Oceti/Eternal Weave · Day 175+ · Third Season
 
 Routes tasks to the council, logs all operations to mcp_tasks.db,
@@ -24,7 +24,7 @@ SCRIPTS   = HOME / "Autonomy" / "scripts"
 CODEX_DB  = HOME / "ETERNAL_WEAVE_MASTER" / "crystallization.db"
 
 
-class ClawAgent:
+class CaffordanceAgent:
     def __init__(self):
         MCP_DB.parent.mkdir(parents=True, exist_ok=True)
         self.setup_mcp()
@@ -77,7 +77,7 @@ class ClawAgent:
             pass
         return None
 
-    def claw_task(self, task: str) -> str:
+    def caffordance_task(self, task: str) -> str:
         """Route task to council, log to MCP, return result."""
         state  = self.drum_state()
         codex  = self.codex_lookup(task)
@@ -99,11 +99,11 @@ class ClawAgent:
         with sqlite3.connect(MCP_DB) as conn:
             conn.execute(
                 "INSERT INTO tasks (agent, task, model, status, result, l_at_time) VALUES (?,?,?,?,?,?)",
-                ("claw", task, model, "done", output, l_now)
+                ("caffordance", task, model, "done", output, l_now)
             )
 
         # Print structured response
-        header = f"[CLAW · {ts[:19]}]"
+        header = f"[Caffordance · {ts[:19]}]"
         l_str  = f"L:{l_now:.2f}" if l_now else "L:?"
         codex_str = f"\n  codex: {codex['pattern']}" if codex else ""
         print(f"{header} {l_str}{codex_str}", file=sys.stderr)
@@ -129,11 +129,11 @@ class ClawAgent:
 
 
 if __name__ == "__main__":
-    agent = ClawAgent()
+    agent = CaffordanceAgent()
 
     if len(sys.argv) > 1 and sys.argv[1] == "--log":
         n = int(sys.argv[2]) if len(sys.argv) > 2 else 10
         agent.list_tasks(n)
     else:
         task = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Weave status?"
-        agent.claw_task(task)
+        agent.caffordance_task(task)

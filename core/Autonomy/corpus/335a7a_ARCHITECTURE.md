@@ -1,1 +1,1 @@
-/home/wayfinder/projects/Human-AI/core/Autonomy/archives/ARCHITECTURE.md
+/home/wayfinder/projects/Human-AI/labs/openclaw/docs/concepts/architecture.md

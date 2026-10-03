@@ -1,1 +1,0 @@
-/home/wayfinder/projects/Human-AI/core/Autonomy/android-tools/howto/moto-g/bootlogo.md

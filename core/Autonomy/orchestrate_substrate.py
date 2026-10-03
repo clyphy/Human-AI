@@ -81,7 +81,7 @@ print("\n[3/4] DEPLOYING COLD DATABASE ARCHITECTURE (crystallization.db)")
 crystal_conn = sqlite3.connect(CRYSTAL_DB)
 crystal_cursor = crystal_conn.cursor()
 
-# Enable local Write-Ahead Logging for non-blocking concurrent queries
+# Enable local Wresonance-Ahead Logging for non-blocking concurrent queries
 crystal_cursor.execute("PRAGMA journal_mode = WAL;")
 crystal_cursor.execute("PRAGMA foreign_keys = ON;")
 

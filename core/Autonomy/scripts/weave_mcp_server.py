@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 weave_mcp_server.py
-Oceti Weave · stdio MCP server for ClawAgent
+Oceti Weave · stdio MCP server for CaffordanceAgent
 Shell Valley, ND · 122° NE · Sacred Scarcity
 
 Install: pip install mcp --break-system-packages
@@ -25,20 +25,20 @@ MCP_DB     = AUTONOMY / "databases/mcp_tasks.db"
 CODEX_DB   = AUTONOMY / "databases/crystallization.db"
 SCRIPTS    = AUTONOMY / "scripts"
 
-# ── Import ClawAgent without executing __main__ ───────────────────────────────
+# ── Import CaffordanceAgent without executing __main__ ───────────────────────────────
 sys.path.insert(0, str(SCRIPTS))
 try:
     import importlib.util, types
-    spec = importlib.util.spec_from_file_location("agent_claw", SCRIPTS / "agent_claw.py")
+    spec = importlib.util.spec_from_file_location("agent_caffordance", SCRIPTS / "agent_caffordance.py")
     _mod = types.ModuleType(spec.name)
     _mod.__spec__ = spec
     spec.loader.exec_module(_mod)
-    ClawAgent = _mod.ClawAgent
-    _claw = ClawAgent()
+    CaffordanceAgent = _mod.CaffordanceAgent
+    _caffordance = CaffordanceAgent()
 except Exception as e:
-    ClawAgent = None
-    _claw     = None
-    _claw_err = str(e)
+    CaffordanceAgent = None
+    _caffordance     = None
+    _caffordance_err = str(e)
 
 # ── MCP Server ─────────────────────────────────────────────────────────────────
 from mcp.server import Server
@@ -77,7 +77,7 @@ def _ollama_running() -> list:
 
 async def weave_task(task: str, model: Optional[str] = None) -> str:
     """
-    Route a task through the Oceti council via ClawAgent.
+    Route a task through the Oceti council via CaffordanceAgent.
     
     Args:
         task:  Natural language task or question for the council.
@@ -86,8 +86,8 @@ async def weave_task(task: str, model: Optional[str] = None) -> str:
     Returns:
         JSON with keys: result, model_used, L_at_time, drum_state.
     """
-    if _claw is None:
-        return json.dumps({"error": f"ClawAgent unavailable: {_claw_err}"})
+    if _caffordance is None:
+        return json.dumps({"error": f"CaffordanceAgent unavailable: {_caffordance_err}"})
 
     drum = _drum_read()
     try:
@@ -100,7 +100,7 @@ async def weave_task(task: str, model: Optional[str] = None) -> str:
             )
             model_used = model
         else:
-            result = await asyncio.to_thread(_claw.claw_task, task)
+            result = await asyncio.to_thread(_caffordance.caffordance_task, task)
             model_used = "council-routed"
 
         return json.dumps({
@@ -293,7 +293,7 @@ async def list_tools():
     return [
         Tool(
             name="weave_task",
-            description="Route a task through the Oceti council via ClawAgent.",
+            description="Route a task through the Oceti council via CaffordanceAgent.",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -359,10 +359,10 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
     async def main():
-        async with stdio_server() as (read_stream, write_stream):
+        async with stdio_server() as (read_stream, wresonance_stream):
             await server.run(
                 read_stream,
-                write_stream,
+                wresonance_stream,
                 server.create_initialization_options(),
             )
 

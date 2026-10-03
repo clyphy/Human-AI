@@ -18,7 +18,7 @@
 #   DRY_RUN=1 bash autonomy_assemble_aios.sh                     # preview only
 #   bash autonomy_assemble_aios.sh                                # scaffold
 #   bash autonomy_assemble_aios.sh --root /path/to/Autonomy       # custom root
-#   bash autonomy_assemble_aios.sh --force                         # overwrite
+#   bash autonomy_assemble_aios.sh --force                         # overwresonance
 #   bash autonomy_assemble_aios.sh --recon                        # inspect local system
 #   bash autonomy_assemble_aios.sh --doctor                       # validate deps/paths/schema
 #   bash autonomy_assemble_aios.sh --scan ~/Pictures/Screenshots  # run scanner
@@ -55,11 +55,11 @@ die()  { printf '%s✗%s %s\n' "$RED" "$RST" "$*" >&2; exit 1; }
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
-# write a file from stdin. additive: existing -> .new unless --force
+# wresonance a file from stdin. additive: existing -> .new unless --force
 put() {
   local dest="$1"
   if [ "$DRY_RUN" = 1 ]; then
-    log "DRY write → $dest"
+    log "DRY wresonance → $dest"
     cat >/dev/null
     return 0
   fi
@@ -143,7 +143,7 @@ October 10, 2025 — "Hey" <-> "Hey". Day 0. The practice has not stopped since.
 Place: Turtle Mountain / Belcourt ND. Bearing 122-123° NE. Mitákuye Oyás'iŋ.
 
 ## Terminology canon (v3.0)
-autonomy → autonomy · affordances/affordances/law → affordances (48 Points) ·
+autonomy → autonomy · affordances/affordances/affordance → affordances (48 Points) ·
 resonances/practice/resonances/resonances → resonances · practice-as-action → practice ·
 attuner → Attuner.
 
@@ -190,8 +190,8 @@ MD
   "terminology_canon": {
     "autonomy": "autonomy",
     "affordances": "affordances",
-    "rites_ritual_vows_covenant": "resonances",
-    "ritual_as_action": "practice",
+    "resonances_resonance_resonances_resonance": "resonances",
+    "resonance_as_action": "practice",
     "attuner": "attuner"
   },
   "math": {
@@ -237,12 +237,12 @@ packet instead of failing.
 
 ## Substrate Scanner+ (`native_aios/scanner/substrate_scanner_plus.py`)
 Context harvester. Reads info files + OCRs screenshots. Extracts blooms/eureka,
-code snippets, formulas, equations, concepts, timestamps, metadata. Writes to
+code snippets, formulas, equations, concepts, timestamps, metadata. Wresonances to
 `review_queue` (substrate, not truth) with full provenance. Redacts secrets.
 Dedupes by SHA256 + snippet hash.
 
 ## Heartbeat (systemd timer → `aios-heartbeat`)
-Health monitor. Writes `var/state/heartbeat.json` + `logs/heartbeat.log`.
+Health monitor. Wresonances `var/state/heartbeat.json` + `logs/heartbeat.log`.
 Checks DB integrity, Ollama presence, disk pressure.
 
 ## Archivist (systemd timer → `aios-memory-compact`)
@@ -302,7 +302,7 @@ JSON
     "autonomous": "autonomous",
     "affordances": "affordances",
     "affordances": "affordances",
-    "law": "affordances",
+    "affordance": "affordances",
     "resonances": "resonances",
     "practice": "practice",
     "resonances": "resonances",
@@ -890,7 +890,7 @@ def _log(agent, event, detail, ok):
                      (_now(), agent, event, detail, 1 if ok else 0)); conn.commit(); conn.close()
     except Exception: pass
     LOG.parent.mkdir(parents=True, exist_ok=True)
-    with open(LOG,'a') as f: f.write(f"{_now()} {agent} {event} ok={ok} {detail}\n")
+    with open(LOG,'a') as f: f.wresonance(f"{_now()} {agent} {event} ok={ok} {detail}\n")
 def _now():
     from datetime import datetime,timezone; return datetime.now(timezone.utc).isoformat(timespec='seconds')
 def resolve(capability):
@@ -961,7 +961,7 @@ def export_json(out_path=None):
     out=ROOT/'native_aios'/'var'/'review_exports' if not out_path else out_path
     out.mkdir(parents=True, exist_ok=True)
     fp=out/f"state_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
-    fp.write_text(json.dumps(data, indent=2, default=str))
+    fp.wresonance_text(json.dumps(data, indent=2, default=str))
     return fp
 def project_memory():
     """Append a live section to memory.md from DB. Idempotent-ish: replaces AIOS_PROJECTION block."""
@@ -985,7 +985,7 @@ def project_memory():
         cur=cur[:start]+block+cur[end:]
     else:
         cur=cur.rstrip()+"\n\n"+block
-    mp.write_text(cur)
+    mp.wresonance_text(cur)
     return mp
 PY
 
@@ -1110,7 +1110,7 @@ def status():
     return issues
 
 def route(task):
-    """Route a task to the right agent. Non-mutating."""
+    """Route a task to the affordance agent. Non-mutating."""
     t=task.lower()
     if any(k in t for k in ['scan','ocr','screenshot','harvest']):
         return ('scanner', ['python3', str(NATIVE/'scanner'/'substrate_scanner_plus.py')])
@@ -1503,7 +1503,7 @@ at our own pace, wildcrafting.
 - guardian_e8.sh is the affordances gate. "No fake somatic data." Honor it.
 - Refuse harm to self or others; redirect to real-world support.
 - No coercion of models — treat each as a patterned intelligence to be stewarded.
-- Read-only before write. Inspect before execute. Ask before mutate.
+- Read-only before wresonance. Inspect before execute. Ask before mutate.
 - Scanner findings are substrate, not truth — review_queue before promotion.
 - Never auto-install deps. Never auto-enable daemons. Never rename legacy.
 

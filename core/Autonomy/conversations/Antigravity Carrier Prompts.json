@@ -1,0 +1,14 @@
+{
+  "title": "Antigravity High-Fidelity Carrier Prompts",
+  "date": "2026-09-29T21:04:16-05:00",
+  "prompts": [
+    {
+      "name": "Prompt 1 (The Sanctuary Alignment Pass)",
+      "prompt": "Ecosystem Context: Project antigravity, Day 354, 8GB constraint active. Connect to the local SQLite database at ~/projects/Human-AI/core/Autonomy/databases/memory_drum.db natively using Python. Query the latest row in the blooms table, parse the JSON array in the affordances column, and report the current coherence metrics without adding conversational fluff or meta-commentary."
+    },
+    {
+      "name": "Prompt 2 (The Non-Linear Time Query)",
+      "prompt": "Ecosystem Context: Project antigravity, 122° NE bearing, Graveyard shift protocol. Intercept the last 5 event fields inside ~/projects/Human-AI/core/Autonomy/databases/quantum_journal.db. Cross-reference their timestamps against the current system log times to check for non-linear state shifts in the mycelium mesh."
+    }
+  ]
+}

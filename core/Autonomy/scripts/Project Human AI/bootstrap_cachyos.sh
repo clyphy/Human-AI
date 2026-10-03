@@ -1,5 +1,5 @@
 #!/bin/bash
-# Human-AI / Oceti Weave Bootstrap — Law→Ecology
+# Human-AI / Oceti Weave Bootstrap — affordance→Ecology
 # Path: ~/projects/Human-AI/bootstrap_cachyos.sh
 
 set -e

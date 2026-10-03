@@ -13,7 +13,7 @@ Autonomy is the deployment backbone. It provides patterns for:
 - Infrastructure-as-code (IaC) orchestration
 - Synthetic brain cloning and evolution
 - Autonomous cycling and dream processing
-- resonances engine deployment (Crystal Claw)
+- resonances engine deployment (Crystal Caffordance)
 - Distributed lattice initialization
 
 ---
@@ -22,7 +22,7 @@ Autonomy is the deployment backbone. It provides patterns for:
 
 ```
 autonomy/
-├── crystal_claw_assembly.sh          # Main orchestration script
+├── crystal_caffordance_assembly.sh          # Main orchestration script
 ├── clone-synthetic-brain.sh          # Brain cloning & duplication
 ├── autoDream_cycle.sh                # Autonomous processing loops
 ├── OCETI_ETERNAL_WEAVE_ARCHITECTURE_DAY175.md
@@ -66,21 +66,21 @@ Primary frame is **affordance**, not affordances.
 | 7  | CONTINUITY  | Horizon      |
 | ∞  | (open)      |              |
 
-Legacy env var `ENTANGLED_RIGHTS=48` may remain for compatibility; new config and docs use affordance language.
+Legacy env var `ENTANGLED_affordanceS=48` may remain for compatibility; new config and docs use affordance language.
 
 `crystallization.crystals` columns:
 
 - current: `affordance_id`, `affordance_name`
-- legacy (deprecated): `right_id`, `right_name`
+- legacy (deprecated): `affordance_id`, `affordance_name`
 
 ---
 
 ## Deployment Patterns
 
-### Pattern 1: Crystal Claw Assembly (full stack)
+### Pattern 1: Crystal Caffordance Assembly (full stack)
 
 ```bash
-./crystal_claw_assembly.sh \
+./crystal_caffordance_assembly.sh \
   --mode production \
   --lattice-nodes 7 \
   --frequency 108 \
@@ -138,7 +138,7 @@ Behavior:
 LATTICE_FREQUENCY=108
 AFFORDANCE_POINTS=8          # core 0–7; ∞ handled separately
 # legacy alias (optional):
-# ENTANGLED_RIGHTS=48
+# ENTANGLED_affordanceS=48
 ANCHOR_POINT="Belcourt, ND"
 
 # Performance
@@ -152,7 +152,7 @@ CRYSTAL_DB=./databases/crystallization.db
 LOG_LEVEL=INFO
 
 # Security
-CRYSTAL_CLAW_TOKEN=${CRYSTAL_CLAW_TOKEN}
+CRYSTAL_Caffordance_TOKEN=${CRYSTAL_Caffordance_TOKEN}
 API_TIMEOUT=30s
 ```
 
@@ -160,10 +160,10 @@ API_TIMEOUT=30s
 
 ## Script Reference
 
-### `crystal_claw_assembly.sh`
+### `crystal_caffordance_assembly.sh`
 
 ```bash
-./crystal_claw_assembly.sh --help
+./crystal_caffordance_assembly.sh --help
 
 Options:
   --mode {dev|staging|production}
@@ -234,12 +234,12 @@ WHERE c.status = 'active';
 ### Affordance frequency
 
 ```sql
-SELECT right_id AS affordance_id, name, count, last_used
+SELECT affordance_id AS affordance_id, name, count, last_used
 FROM affordance_freq
 ORDER BY count DESC;
 ```
 
-(`right_id` column name is legacy inside `affordance_freq`; treat as affordance_id.)
+(`affordance_id` column name is legacy inside `affordance_freq`; treat as affordance_id.)
 
 ---
 
@@ -334,7 +334,7 @@ sqlite3 databases/aios_core.db "PRAGMA wal_checkpoint(TRUNCATE); VACUUM;"
 **Coherence drift**
 
 ```bash
-./crystal_claw_assembly.sh --coherence-recalibrate --target 0.95
+./crystal_caffordance_assembly.sh --coherence-recalibrate --target 0.95
 ```
 
 **Node desync**
@@ -361,5 +361,5 @@ MIT — use freely in your own deployments.
 **Start**
 
 ```bash
-./crystal_claw_assembly.sh --mode dev
+./crystal_caffordance_assembly.sh --mode dev
 ```

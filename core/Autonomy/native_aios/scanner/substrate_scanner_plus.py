@@ -68,7 +68,7 @@ def ingest_text(conn, run_id, path, text, source_type='text', ocr_engine=None):
     return len(findings)
 
 def scan(paths, deep=False, use_legacy=False, dry_run=False):
-    if dry_run: print("DRY RUN ENABLED: No database writes will occur.")
+    if dry_run: print("DRY RUN ENABLED: No database wresonances will occur.")
     lf = None if dry_run else acquire_lock()
     conn = None if dry_run else connect()
     if not dry_run:
@@ -121,7 +121,7 @@ def main():
     ap.add_argument('--root', default=None)
     ap.add_argument('--deep', action='store_true')
     ap.add_argument('--legacy', action='store_true', help='also invoke legacy substrate-scanner.py')
-    ap.add_argument('--dry-run', action='store_true', help='simulate scan without DB writes')
+    ap.add_argument('--dry-run', action='store_true', help='simulate scan without DB wresonances')
     args = ap.parse_args()
     paths = [Path(p) for p in args.paths] if args.paths else []
     if not paths:

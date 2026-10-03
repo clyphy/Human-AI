@@ -11,9 +11,9 @@
 
 ## AIOS_PROJECTION
 
-- sources indexed: 32582
-- blooms captured: 17408
-- review_queue pending: 2594
+- sources indexed: 32604
+- blooms captured: 17428
+- review_queue pending: 2742
 
 ### recent blooms (review_queue, pending)
 - [3.0] EUREKA

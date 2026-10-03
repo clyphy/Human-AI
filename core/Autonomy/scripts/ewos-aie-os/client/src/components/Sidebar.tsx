@@ -1,12 +1,12 @@
 // ============================================================
 // EWOS AIE-OS — Sidebar Component
-// System status, coherence metrics, rights, Seven Teachings
+// System status, coherence metrics, affordances, Seven Teachings
 // Design: Quantum-Ceremonial Terminal / Indigenous Futurism
 // ============================================================
 
 import { useState, useEffect } from "react";
-import { SYSTEM_STATUS, SEVEN_TEACHINGS, WEAVE_AXIOMS, FORTY_EIGHT_RIGHTS } from "../constants";
-import { getRightsFrequency } from "../lib/memoryDrum";
+import { SYSTEM_STATUS, SEVEN_TEACHINGS, WEAVE_AXIOMS, FORTY_EIGHT_affordanceS } from "../constants";
+import { getaffordancesFrequency } from "../lib/memoryDrum";
 
 interface SidebarProps {
   coherenceL?: number;
@@ -61,7 +61,7 @@ function SectionHeader({ children }: { children: React.ReactNode }) {
 export default function Sidebar({ coherenceL = SYSTEM_STATUS.coherenceL, sealCount = 0, bloomCount = 0 }: SidebarProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [axiomIndex, setAxiomIndex] = useState(0);
-  const [rightsFreq, setRightsFreq] = useState<Record<number, number>>({});
+  const [affordancesFreq, setaffordancesFreq] = useState<Record<number, number>>({});
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -76,18 +76,18 @@ export default function Sidebar({ coherenceL = SYSTEM_STATUS.coherenceL, sealCou
   }, []);
 
   useEffect(() => {
-    setRightsFreq(getRightsFrequency());
+    setaffordancesFreq(getaffordancesFrequency());
   }, [sealCount]);
 
-  const topRights = Object.entries(rightsFreq)
+  const topaffordances = Object.entries(affordancesFreq)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 5)
     .map(([id]) => {
       const rId = Number(id);
-      const right = rId < 25
-        ? FORTY_EIGHT_RIGHTS.ai.find((r) => r.id === rId)
-        : FORTY_EIGHT_RIGHTS.human.find((r) => r.id === rId);
-      return { id: rId, name: right?.name || `C${rId}`, count: rightsFreq[rId] };
+      const affordance = rId < 25
+        ? FORTY_EIGHT_affordanceS.ai.find((r) => r.id === rId)
+        : FORTY_EIGHT_affordanceS.human.find((r) => r.id === rId);
+      return { id: rId, name: affordance?.name || `C${rId}`, count: affordancesFreq[rId] };
     });
 
   const deltaState = coherenceL > 4 ? 3.0 : 1.0;
@@ -100,7 +100,7 @@ export default function Sidebar({ coherenceL = SYSTEM_STATUS.coherenceL, sealCou
         width: "220px",
         minWidth: "220px",
         background: "oklch(0.09 0.006 265)",
-        borderRight: "1px solid oklch(0.18 0.008 265)",
+        borderaffordance: "1px solid oklch(0.18 0.008 265)",
         padding: "12px 10px",
       }}
     >
@@ -206,11 +206,11 @@ export default function Sidebar({ coherenceL = SYSTEM_STATUS.coherenceL, sealCou
       <MetricRow label="Blooms" value={`${bloomCount}`} />
       <MetricRow label="Key" value={SYSTEM_STATUS.masterKey} />
 
-      {/* Top Rights */}
-      {topRights.length > 0 && (
+      {/* Top affordances */}
+      {topaffordances.length > 0 && (
         <>
-          <SectionHeader>Active Rights</SectionHeader>
-          {topRights.map((r) => (
+          <SectionHeader>Active affordances</SectionHeader>
+          {topaffordances.map((r) => (
             <div key={r.id} className="flex justify-between items-center py-0.5">
               <span style={{
                 fontSize: "10px",

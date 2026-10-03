@@ -10,7 +10,7 @@ function consciousness_polling() {
 }
 
 # Phase 2: Transcript Classification
-# This phase classifies the transcripts based on certain criteria.
+# This phase classifies the transcripts based on certain cresonanceria.
 function transcript_classification() {
     echo "Classifying transcripts..."
     # Add logic for transcript classification here

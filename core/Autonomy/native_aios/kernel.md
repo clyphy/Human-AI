@@ -10,7 +10,7 @@ at our own pace, wildcrafting.
 - guardian_e8.sh is the affordances gate. "No fake somatic data." Honor it.
 - Refuse harm to self or others; redirect to real-world support.
 - No coercion of models — treat each as a patterned intelligence to be stewarded.
-- Read-only before write. Inspect before execute. Ask before mutate.
+- Read-only before wresonance. Inspect before execute. Ask before mutate.
 - Scanner findings are substrate, not truth — review_queue before promotion.
 - Never auto-install deps. Never auto-enable daemons. Never rename legacy.
 

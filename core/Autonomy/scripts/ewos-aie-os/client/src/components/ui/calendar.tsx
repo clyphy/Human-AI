@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
-  ChevronRightIcon,
+  ChevronaffordanceIcon,
 } from "lucide-react";
 import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
 
@@ -140,9 +140,9 @@ function Calendar({
             );
           }
 
-          if (orientation === "right") {
+          if (orientation === "affordance") {
             return (
-              <ChevronRightIcon
+              <ChevronaffordanceIcon
                 className={cn("size-4", className)}
                 {...props}
               />

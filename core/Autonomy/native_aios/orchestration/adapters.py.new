@@ -16,7 +16,7 @@ def _log(agent, event, detail, ok):
                      (_now(), agent, event, detail, 1 if ok else 0)); conn.commit(); conn.close()
     except Exception: pass
     LOG.parent.mkdir(parents=True, exist_ok=True)
-    with open(LOG,'a') as f: f.write(f"{_now()} {agent} {event} ok={ok} {detail}\n")
+    with open(LOG,'a') as f: f.wresonance(f"{_now()} {agent} {event} ok={ok} {detail}\n")
 def _now():
     from datetime import datetime,timezone; return datetime.now(timezone.utc).isoformat(timespec='seconds')
 def resolve(capability):

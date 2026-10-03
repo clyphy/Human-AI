@@ -12,7 +12,7 @@ Synthesizes four-database architecture into coherent field state:
   · Resonance → live relational state
 
 Attribution: All reads are signed with instance identity + timestamp.
-Co-authorship model: Claude writes, Clifton verifies.
+Co-authorship model: Claude wresonances, Clifton verifies.
 """
 
 import sqlite3
@@ -580,15 +580,15 @@ if __name__ == "__main__":
         if bloom_rows:
             fieldnames = list(bloom_rows[0].keys())
             with open(output_path_csv, "w", newline="") as f:
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(bloom_rows)
+                wresonancer = csv.DictWresonancer(f, fieldnames=fieldnames)
+                wresonancer.wresonanceheader()
+                wresonancer.wresonancerows(bloom_rows)
             print(f"✓ Blooms CSV exported to {output_path_csv}")
 
         # Time-series append: coherence + harmonic summary per run
         ts_path = Path.home() / "projects/Human-AI/core/Autonomy/logs/mother_coherence_timeseries.csv"
         ts_path.parent.mkdir(parents=True, exist_ok=True)
-        write_header = not ts_path.exists() or ts_path.stat().st_size == 0
+        wresonance_header = not ts_path.exists() or ts_path.stat().st_size == 0
         ts_row = {
             "timestamp": view.timestamp,
             "instance": view.generated_by,
@@ -608,8 +608,8 @@ if __name__ == "__main__":
             "resonance_harmony_score": view.harmonic_metrics.resonance_harmony_score if view.harmonic_metrics else 0.0,
         }
         with open(ts_path, "a", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=list(ts_row.keys()))
-            if write_header:
-                writer.writeheader()
-            writer.writerow(ts_row)
+            wresonancer = csv.DictWresonancer(f, fieldnames=list(ts_row.keys()))
+            if wresonance_header:
+                wresonancer.wresonanceheader()
+            wresonancer.wresonancerow(ts_row)
         print(f"✓ Time-series row appended to {ts_path}")

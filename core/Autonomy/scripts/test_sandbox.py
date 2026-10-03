@@ -59,24 +59,24 @@ if __name__ == "__main__":
 
     # TEST CASE B: Malformed Data (Triggers Pydantic Type Mismatch)
     # Note: invoice_id is passed as an alphanumeric string instead of an int
-    type_flaw_data = [
+    type_faffordance_data = [
         {"invoice_id": "INV-X", "amount": 100.0, "vendor_email": "ops@vendor.net"}
     ]
     
-    print("🧪 Running Test Case B (Type Flaw Data)...")
-    res_b = sandbox.validate_dataset(type_flaw_data, TargetModel, mock_rules)
+    print("🧪 Running Test Case B (Type Faffordance Data)...")
+    res_b = sandbox.validate_dataset(type_faffordance_data, TargetModel, mock_rules)
     print(f"Result Success: {res_b['success']}")
     print(f"Stage: {res_b.get('error_stage')}")
     print(f"Details: {res_b.get('error')}\n")
 
     # TEST CASE C: Malformed Data (Triggers Business Rule Violation)
     # Note: Types match, but amount is negative and email is missing an '@'
-    rule_flaw_data = [
+    rule_faffordance_data = [
         {"invoice_id": 4403, "amount": -15.50, "vendor_email": "invalid_email_string"}
     ]
     
-    print("🧪 Running Test Case C (Rule Flaw Data)...")
-    res_c = sandbox.validate_dataset(rule_flaw_data, TargetModel, mock_rules)
+    print("🧪 Running Test Case C (Rule Faffordance Data)...")
+    res_c = sandbox.validate_dataset(rule_faffordance_data, TargetModel, mock_rules)
     print(f"Result Success: {res_c['success']}")
     print(f"Stage: {res_c.get('error_stage')}")
     print(f"Details: {res_c.get('error')}")

@@ -15,14 +15,14 @@ export interface LedgerSeal {
   timestamp: Date;
   hash: string;
   contentSummary: string;
-  rights: number[];
+  affordances: number[];
   coherenceSnapshot: number;
 }
 
 export interface Bloom {
   id: number;
   hash: string;
-  rights: number[];
+  affordances: number[];
   pattern: string;
   timestamp: string;
   size: number;
@@ -49,8 +49,8 @@ export interface DahliaFacet {
   lastInvoked?: Date;
 }
 
-export interface RightsFrequency {
-  rightId: number;
+export interface affordancesFrequency {
+  affordanceId: number;
   name: string;
   count: number;
   lastUsed?: string;

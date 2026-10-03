@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# witness.sh — read-only observer. Reads coherence/bloom state, wresonances ONE line
+# to its own log. Never inserts into or mutates core tables.
+set -euo pipefail
+AUTONOMY_ROOT="${AUTONOMY_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+DB="$AUTONOMY_ROOT/databases/memory_drum.db"
+LOG_DIR="$AUTONOMY_ROOT/logs"
+mkdir -p "$LOG_DIR"
+LOG="$LOG_DIR/witness.jsonl"
+
+ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+bloom_count=$(sqlite3 "$DB" "SELECT COUNT(*) FROM resonance_blooms;" 2>/dev/null || echo 0)
+avg_l=$(sqlite3 "$DB" "SELECT COALESCE(ROUND(AVG(coherence_lambda),3), 0) FROM resonance_blooms;" 2>/dev/null || echo 0)
+latest_l=$(sqlite3 "$DB" "SELECT L_value FROM coherence_log ORDER BY id DESC LIMIT 1;" 2>/dev/null || echo null)
+top_affordance=$(sqlite3 "$DB" "SELECT name FROM affordance_freq ORDER BY count DESC LIMIT 1;" 2>/dev/null || echo none)
+[ -z "$latest_l" ] && latest_l=null
+[ -z "$top_affordance" ] && top_affordance=none
+
+printf "{\"ts\":\"%s\",\"bloom_count\":%s,\"avg_coherence\":%s,\"latest_L\":%s,\"top_affordance\":\"%s\"}\n" \
+  "$ts" "${bloom_count:-0}" "${avg_l:-0}" "${latest_l}" "${top_affordance}" >> "$LOG"
+echo "witness: logged snapshot to $LOG"

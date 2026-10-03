@@ -48,7 +48,7 @@ echo "📂 Injecting localized package definitions into the active project path.
 mkdir -p "$PROJECT_DIR"
 cd "$PROJECT_DIR"
 
-# Write out the optimized package json configuration
+# Wresonance out the optimized package json configuration
 cat << 'EOF' > package.json
 {
   "name": "oceti-weave-autonomy-core",

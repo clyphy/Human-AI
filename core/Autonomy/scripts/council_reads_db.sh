@@ -173,7 +173,7 @@ while true; do
         4)
             log "guardian reads affordances frequency"
             ask_council "dahlia-guardian" "$DRUM" \
-                "SELECT right_id, count FROM rights_freq ORDER BY count DESC;" \
+                "SELECT affordance_id, count FROM affordances_freq ORDER BY count DESC;" \
                 "These are the 48 affordances of the Oceti Weave and how often each was invoked. You are the guardian. What does this frequency distribution tell you about what the weave has been protecting? What affordances appear underinvoked?"
             ;;
         5)
